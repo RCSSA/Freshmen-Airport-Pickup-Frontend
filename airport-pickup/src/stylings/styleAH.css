@@ -1,0 +1,11 @@
+.full-white{
+    background-color: white;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.homepage-btn{
+    width: 200pt;
+    box-shadow: 3px 5px 10px 1px rgba(0, 0, 255, .2);;
+}
