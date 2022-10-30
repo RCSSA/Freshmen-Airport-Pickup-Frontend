@@ -3,4 +3,6 @@
 * @param  {String} name
 *
 **/
-function saveNewStudentInfo(name, email, wechat, dateTime, airport)
+function saveNewStudentInfo()
+
+function queryStudentStatus()
