@@ -9,3 +9,21 @@
     width: 200pt;
     box-shadow: 3px 5px 10px 1px rgba(0, 0, 255, .2);;
 }
+
+.unselectedEvent{
+    background-color: rgb(0, 230, 243);
+    border: 0;
+}
+
+.unselectedEvent:hover{
+    cursor: pointer;
+}
+
+.selectedEvent:hover{
+    cursor: pointer;
+}
+
+.selectedEvent{
+    background-color: rgb(0, 47, 50);
+    border: 0;
+}

@@ -1,6 +1,12 @@
-import React from 'react'
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function () {
+    const navigate = useNavigate();
+    function onFormSubmit(e){
+        e.preventDefault();
+        navigate("/choosetime")
+    }
   return (
     <div className='row justify-content-center p-5'>
         <div className='col-12 col-md-8'>
@@ -15,7 +21,7 @@ export default function () {
             友情提醒：新生普遍会携带两个大号托运箱和一个登机箱，请您也考虑行李所需的空间。（家用轿车，小型suv大概可以接下两位新生，大suv可以接下三位新生）
             </div>
 
-            <form className='mt-3 row'>
+            <form className='mt-3 row' onSubmit={(e)=>onFormSubmit(e)}>
                 <div className="my-2 col-12 col-md-6">
                     <div className='fw-bold mb-2'>姓名</div>
                     <input type="text" className="form-control" placeholder=""/>
