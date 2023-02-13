@@ -11,7 +11,12 @@
 }
 
 .unselectedEvent{
-    background-color: rgb(0, 230, 243);
+    background-color: rgb(78, 213, 220);
+    border: 0;
+}
+
+.selectedEvent{
+    background-color: rgb(29, 107, 112);
     border: 0;
 }
 
@@ -23,7 +28,3 @@
     cursor: pointer;
 }
 
-.selectedEvent{
-    background-color: rgb(0, 47, 50);
-    border: 0;
-}
