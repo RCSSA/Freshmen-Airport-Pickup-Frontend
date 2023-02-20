@@ -11,12 +11,12 @@
 }
 
 .unselectedEvent{
-    background-color: rgb(78, 213, 220);
+    background-color: rgb(14, 119, 217);
     border: 0;
 }
 
 .selectedEvent{
-    background-color: rgb(29, 107, 112);
+    background-color: rgb(73, 246, 255);
     border: 0;
 }
 

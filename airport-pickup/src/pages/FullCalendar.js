@@ -6,15 +6,19 @@ import { Tooltip } from 'bootstrap'
 
 
 export default function FullCalendarModel(props) {
-  const [e1color, sete1color] = useState("rgb(78, 213, 220)");
-  const [e2color, sete2color] = useState("rgb(78, 213, 220)");
+  const [e1color, sete1color] = useState("rgb(14, 119, 217)");
+  const [e2color, sete2color] = useState("rgb(14, 119, 217)");
   const setColors = [sete1color, sete2color];
+    
     function handleEventDidMount(info){
+      let eventDescription = info.event.extendedProps.description;
+      eventDescription = eventDescription.replaceAll("\n", "<br/>");
         var tooltip = new Tooltip(info.el, {
-            title: info.event.extendedProps.description,
+            title: eventDescription,
             placement: 'top',
             trigger: 'hover',
-            container: 'body'
+            container: 'body',
+            html: true,
           });
         return tooltip;
     }
@@ -24,10 +28,10 @@ export default function FullCalendarModel(props) {
       const eventId = info.event.id;
         if (props.selected.includes(eventId)){
           props.setSelected(props.selected.filter((elem)=>{return elem != eventId}));
-          setColors[eventId-1]("rgb(78, 213, 220)");
+          setColors[eventId-1]("rgb(14, 119, 217)");
         } else {
           props.setSelected([...props.selected, eventId]);
-          setColors[eventId-1]("rgb(29, 107, 112)");
+          setColors[eventId-1]("rgb(73, 246, 255)");
         }
     }
     
@@ -37,10 +41,12 @@ export default function FullCalendarModel(props) {
         initialView="dayGridMonth"
         events={[
             { id: '1',
-              title: 'Event 1', 
+              title: "Event 1", 
               date: '2023-02-13',
+              // start:  '2023-02-13T14:30:00',
+              // end: '2023-02-13T18:30:00',
               classNames: ['selectedEvent'],
-              description: "Event Description1",
+              description: "机场\n 时间段\n 待接人数 ",
               backgroundColor: e1color,
             },
               
@@ -48,13 +54,19 @@ export default function FullCalendarModel(props) {
               title: 'Event 2', 
               date: '2023-02-27' ,
               classNames: ['unselectedEvent'],
-              description: "Event Description2",
+              description: "event description",
               backgroundColor: e2color,
             },
               
           ]}
         eventDidMount={(info)=>handleEventDidMount(info)}
         eventClick={(info)=>handleEventClick(info)}
+        eventTimeFormat= {[ // like '14:30:00'
+          {hour: '2-digit'},
+          {minute: '2-digit'},
+          {second: '2-digit'},
+          {meridiem: false}]
+        }
       />
   )
 }
