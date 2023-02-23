@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function () {
@@ -7,25 +7,26 @@ export default function () {
   const [name, setName] = useState("");
   function onFormSubmit(e) {
     e.preventDefault();
-    console.log("Email: ", email, "Name: ", name);
-    fetch(
-      "https://script.google.com/macros/s/AKfycbyiVJc00jIT6V9ahs2NF4f4C6EQRzE1-dpaJVlIg9uJ6j5_XG3xz1Ic7T3uiRaoHaov/exec" +
-        new URLSearchParams({
-          action: "insert",
-          name: name,
-          email: email,
-        }),
-      { method: "GET" }
-    )
+    // add name and email in the URL
+    // action is insert
+    let url =
+      "https://script.google.com/macros/s/AKfycbyiVJc00jIT6V9ahs2NF4f4C6EQRzE1-dpaJVlIg9uJ6j5_XG3xz1Ic7T3uiRaoHaov/exec?" +
+      "action=insert" +
+      "&name=" +
+      name +
+      "&email=" +
+      email;
+    console.log("Url: ", url);
+    fetch(url)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
       });
     // navigate("/choosetime");
   }
-  useEffect(() => {
-    console.log("Email: ", email, "Name: ", name);
-  }, [email, name]);
+  //   useEffect(() => {
+  //     console.log("Email: ", email, "Name: ", name);
+  //   }, [email, name]);
   return (
     <div className="row justify-content-center p-5">
       <div className="col-12 col-md-8">
