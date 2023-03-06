@@ -1,12 +1,16 @@
 import React, {useEffect, useState} from 'react'
 import { useNavigate } from 'react-router-dom'
-import FullCalendarModel from './FullCalendar';
+import FullCalendarModel from '../component/FullCalendar';
 export default function ChooseTimePage() {
   const navigate = useNavigate();
   const [selected, setSelected] = useState([]);
   const [choices, setChoices] = useState(<div></div>);
+  const ids = ["1", "2"];
+  const titles = ["IAH: 7人", "HOU: 10人"];
+  const dates = ["2023-03-13", "2023-03-23"];
+  const descriptions = ["event description1", "event description2"];
+
   useEffect(()=>{
-    console.log(selected)
     setChoices( <div>
       {
         selected.map((element, key) => {
@@ -26,7 +30,7 @@ export default function ChooseTimePage() {
           <iframe src="https://calendar.google.com/calendar/embed?src=61hqh4guqb0gttl6j5ijubegn4%40group.calendar.google.com&ctz=America%2FChicago" style={{border:"0"}} width={"100%"} height="600" frameBorder="0" scrolling="no"></iframe>
         </div> */}
         <div>
-          <FullCalendarModel selected = {selected} setSelected = {setSelected}/>
+          <FullCalendarModel selected = {selected} setSelected = {setSelected} ids = {ids} titles = {titles} dates = {dates} descriptions = {descriptions}/>
         </div>
         <div className='d-flex justify-content-end mt-4'>
           <button type='button' className='btn btn-info homepage-btn' data-bs-toggle="modal" data-bs-target="#exampleModal">查看并确认选择</button>

@@ -5,7 +5,7 @@ import Registerpage from "./pages/Registerpage";
 import Loginpage from "./pages/Loginpage";
 import ChooseTimePage from "./pages/ChooseTimePage";
 import TimeInfoPage from "./pages/TimeInfoPage";
-import FullCalendarTest from "./pages/FullCalendar";
+import FullCalendarTest from "./component/FullCalendar";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
