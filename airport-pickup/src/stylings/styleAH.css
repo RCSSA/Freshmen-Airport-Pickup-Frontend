@@ -5,6 +5,10 @@
     overflow: hidden;
 }
 
+.color-light-blue{
+    color: rgb(14, 119, 217);
+}
+
 .homepage-btn{
     width: 200pt;
     box-shadow: 3px 5px 10px 1px rgba(0, 0, 255, .2);;
@@ -18,14 +22,6 @@
 .selectedEvent{
     background-color: rgb(73, 246, 255);
     border: 0;
-}
-
-.unselectedEvent:hover{
-    cursor: pointer;
-}
-
-.selectedEvent:hover{
-    cursor: pointer;
 }
 
 .eventInfoModalFrame{
