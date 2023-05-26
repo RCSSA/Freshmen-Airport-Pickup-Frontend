@@ -22,6 +22,18 @@ export default function EventInfoModal(props) {
         return false;
     }
 
+    function updateSelection(){
+        const checkNumbers = props.pickUpNumber[`${props.id}`];
+        const selections = [eventId]
+        for (var i = 0; i < checkNumbers.length; i++){
+            if (checkNumbers[i] > 0) {
+                let selection = props.date + " " + props.title.substring(0, 3) + " " + props.description[i][0] + ": " + checkNumbers[i] + "人"
+                selections.push(selection)
+            }
+        }
+        return selections
+    }
+
     function handleClose(){
         openModals[eventId] = false;
         setOpenModals({...openModals, [`${eventId}`]: false});
@@ -37,7 +49,7 @@ export default function EventInfoModal(props) {
             setEventColors({...eventColors, [`${eventId}`]: "rgb(14, 119, 217)"});
         } else {
             setSelect("更新选择");
-
+            const selections = updateSelection();
             var selectedCopy = props.selected;
             var i = 0;
             var repeat = false;
@@ -49,15 +61,15 @@ export default function EventInfoModal(props) {
                 i += 1;
             }
             if (repeat){
-                selectedCopy[i] = [eventId, ["Hey"]]
+                selectedCopy[i] = selections
                 props.setSelected([...selectedCopy])
 
             } else {
-                props.setSelected([...props.selected, [eventId, ["Hey"]]])
+                props.setSelected([...props.selected, selections])
             }
 
-            eventColors[[eventId]] = "rgb(73, 246, 255)"
-            setEventColors({...eventColors, [`${eventId}`]: "rgb(73, 246, 255)"});
+            eventColors[[eventId]] = "#0dcafd"
+            setEventColors({...eventColors, [`${eventId}`]: "#0dcafd"});
         }
     }
 
@@ -74,7 +86,7 @@ export default function EventInfoModal(props) {
                 时间段信息
             </Typography>
             <div className='mt-2'>请输入每个时间段计划的接机人数，并点击“选择”。</div>
-            <div className='color-light-blue'>温馨提示：一个同学一般会携带2-3个箱子，请志愿者合理计算安排自己车辆的空间哦</div>
+            <div className='color-light-blue'>友情提醒：新生普遍会携带两个大号托运箱和一个登机箱，请您也考虑行李所需的空间。<br/>（家用轿车，小型suv大概可以接下两位新生，大suv可以接下三位新生）</div>
             <form className='d-flex flex-column mt-2' onSubmit={handleSelect}>
                 {props.description.map((time, idx)=>{
                     return (

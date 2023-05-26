@@ -63,6 +63,7 @@ export default function FullCalendarModel(props) {
             id = {id}
             key = {idx}
             date = {props.dates[idx]}
+            title = {props.titles[idx]}
             openModals = {openModals}
             setOpenModals = {setOpenModals}
             description = {props.descriptions[idx]}
