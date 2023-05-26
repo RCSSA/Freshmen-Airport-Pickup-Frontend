@@ -13,35 +13,34 @@ export default function ChooseTimePage() {
       "date": "2023-05-13",
       "HOU": {"TotalToBePicked": 3,
               "10:00-12:00": 2,
-              "2:00-4:00": 1,},
+              "14:00-16:00": 1,},
       "IAH": {"TotalToBePicked": 8,
             "10:00-12:00": 2,
-            "2:00-4:00": 4,
-            "4:00-6:00": 2},
+            "14:00-16:00": 4,
+            "16:00-18:00": 2},
     },
 
     "2": {
       "date": "2023-05-14",
       "HOU": {"TotalToBePicked": 10,
               "10:00-12:00": 2,
-              "2:00-4:00": 5,
-              "4:00-6:00": 3},
+              "14:00-16:00": 5,
+              "16:00-18:00": 3},
       "IAH": {"TotalToBePicked": 7,
-      "10:00-12:00": 1,
-      "2:00-4:00": 4,
-      "4:00-6:00": 2},
+              "10:00-12:00": 1,
+              "14:00-16:00": 4,
+              "16:00-18:00": 2},
     },
 
     "5": {
       "date": "2023-05-17",
       "IAH": {"TotalToBePicked": 5,
-      "10:00-12:00": 1,
-      "2:00-4:00": 2,
-      "4:00-6:00": 2},
+              "10:00-12:00": 1,
+              "14:00-16:00": 2,
+              "16:00-18:00": 2},
     },
   }
 
-  //Initialization --------------------------------------------------------------------------
   var [fullCalendarEvents, setFullCalendarEvents] = useState([]);
 
   const dataManagement = useCallback(() => {
@@ -107,8 +106,16 @@ export default function ChooseTimePage() {
     setChoices( 
     <div>
       {
-        selected.map((element, key) => {
-          return <div key={key}>{element}</div>
+        selected.map((day, key) => {
+          return (
+            <div key={key} style={{fontSize: "12px"}}>
+              {day.map((event, key2)=>{
+                if (key2 !== 0){
+                  return <div key={key2}>{event}</div>
+                }
+              })}
+            </div>
+          )
         })
       }
     </div>)
@@ -135,13 +142,13 @@ export default function ChooseTimePage() {
             
           </div>
           <div className='col-lg-3 col-12 pt-3 selectedEventsFrame'>
-            <p>已选时间段和人数：</p>
+            <p className='fw-bold'>已选时间段和人数：</p>
             {choices}
           </div>
         </div>
         
         <div className='d-flex justify-content-center mt-4'>
-          <button type='button' className='btn btn-info homepage-btn' onClick={()=>navigate("/choosetime")}>下一步</button>
+          <button type='button' className='btn btn-info homepage-btn' onClick={()=>navigate("/info")}>下一步</button>
         </div> 
       </div>
     </div>
