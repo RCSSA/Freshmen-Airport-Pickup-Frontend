@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Devpage from "./pages/devPage";
+import FreshmenProgress from "./pages/freshmenProgress";
 import NewStudentPage from "./pages/NewStudent";
 import Homepage from "./pages/Homepage";
 import Registerpage from "./pages/Registerpage";
@@ -18,7 +19,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Devpage />}></Route>
-        <Route path="/newstudent" element={<NewStudentPage />}></Route>
+        <Route path="/nsprogress" element={<FreshmenProgress />}></Route>
+        <Route path="/ns" element={<NewStudentPage />}></Route>
         <Route path="/homepage" element={<Homepage />}></Route>
         <Route path="/login" element={<Loginpage />}></Route>
         <Route path="/register" element={<Registerpage />}></Route>

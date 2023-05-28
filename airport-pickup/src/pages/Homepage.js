@@ -10,7 +10,7 @@ export default function Homepage() {
           <button
             type="button"
             className="btn btn-info fs-5 m-2 py-2 homepage-btn"
-            onClick={() => navigate("/newstudent")}
+            onClick={() => navigate("/ns")}
           >
             新生接机信息填报
           </button>

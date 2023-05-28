@@ -9,7 +9,7 @@ export default function Devpage() {
         <label
           type="button"
           className="label label-info homepage-btn"
-          onClick={() => navigate("/homepage")}
+          // onClick={() => navigate("/homepage")}
         >
           接机平台正在快马加鞭开发中，敬请期待...
         </label>
