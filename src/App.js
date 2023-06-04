@@ -15,6 +15,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import "./stylings/styleAH.css";
 
 function App() {
+  console.log("App.js");
   return (
     <BrowserRouter>
       <Routes>
