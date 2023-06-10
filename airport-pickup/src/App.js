@@ -6,6 +6,7 @@ import Loginpage from "./pages/Loginpage";
 import ChooseTimePage from "./pages/ChooseTimePage";
 import TimeInfoPage from "./pages/TimeInfoPage";
 import FullCalendarTest from "./component/FullCalendar";
+import StudentOrVolunteer from "./pages/StudentOrVolunteer";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -15,7 +16,8 @@ function App() {
   return (
     <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Homepage/>}></Route>
+      <Route path="/" element={<StudentOrVolunteer/>}></Route>
+      <Route path="/volunteerhome" element={<Homepage/>}></Route>
       <Route path="/login" element={<Loginpage/>}></Route>
       <Route path="/register" element={<Registerpage/>}></Route>
       <Route path="/choosetime" element={<ChooseTimePage/>}></Route>
