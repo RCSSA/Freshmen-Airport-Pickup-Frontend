@@ -17,7 +17,7 @@ export default function NewStudentPage() {
   const [arriveTime, setArriveTime] = useState(new Date());
 
   useEffect(() => {
-    // let action = "get_all";
+    let action = "insert_student";
     let data = {};
     let student_data = {
       firstname: "Ge",
@@ -28,14 +28,26 @@ export default function NewStudentPage() {
       airport: "IAH",
       arrivingTime: "11",
     };
+    // let url =
+    //   "https://script.google.com/macros/s/AKfycbxs2po4S89fcHYmt7ZaeA3h8Skp0Svgu-Oet44mKWKH-O1WBZedorVa8N74bmhgu8rM/exec?action=insert_student";
+    let baseUrl =
+      "https://script.google.com/macros/s/AKfycbwW_PC-ZKk-4PKK7-uHArZ__2ZZJo5eweyXGqP0iWKmA9MJQIx1_XgQPqA_lyAmIHnM/exec";
     let url =
-      "https://script.google.com/macros/s/AKfycbxs2po4S89fcHYmt7ZaeA3h8Skp0Svgu-Oet44mKWKH-O1WBZedorVa8N74bmhgu8rM/exec?action=insert_student";
+      "https://script.google.com/macros/s/AKfycbwW_PC-ZKk-4PKK7-uHArZ__2ZZJo5eweyXGqP0iWKmA9MJQIx1_XgQPqA_lyAmIHnM/exec?" +
+      "action=" +
+      action;
     console.log("Url: ", url, JSON.stringify(student_data));
+    fetch(baseUrl)
+      .then((response) => response.json(data))
+      .then((data) => {
+        console.log(data);
+      });
     fetch(url, {
+      redirect: "follow",
       method: "POST",
       body: JSON.stringify(student_data),
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "text/plain;charset=utf-8",
       },
     })
       .then((response) => response.json(data))
