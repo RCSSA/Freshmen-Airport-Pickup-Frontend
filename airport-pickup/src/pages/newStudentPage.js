@@ -17,6 +17,34 @@ export default function NewStudentPage() {
   const [arriveTime, setArriveTime] = useState(new Date());
 
   useEffect(() => {
+    // let action = "get_all";
+    let data = {};
+    let student_data = {
+      firstname: "Ge",
+      lastname: "Test",
+      phone: "7133975755",
+      email: "hs56@rice.edu",
+      wechat: "allensun11",
+      airport: "IAH",
+      arrivingTime: "11",
+    };
+    let url =
+      "https://script.google.com/macros/s/AKfycbxs2po4S89fcHYmt7ZaeA3h8Skp0Svgu-Oet44mKWKH-O1WBZedorVa8N74bmhgu8rM/exec?action=insert_student";
+    console.log("Url: ", url, JSON.stringify(student_data));
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(student_data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json(data))
+      .then((data) => {
+        console.log(data);
+      });
+  }, []);
+
+  useEffect(() => {
     console.log(`firstname: ${firstName} \n`);
     console.log(`lastname: ${lastName} \n`);
     console.log(`phonenumber: ${phoneNumber} \n`);
