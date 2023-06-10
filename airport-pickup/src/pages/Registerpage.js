@@ -43,10 +43,12 @@ export default function RegisterPage() {
             </div>
             <form className='mt-3 row' onSubmit={(e)=>onFormSubmit(e)}>
                 <div className="my-2 col-12 col-md-6">
-                    <div className='fw-bold mb-2'>姓名</div>
+                    <div className='fw-bold mb-2'>姓</div>
                     <input type="text" className="form-control" value={name} onChange={(e) => setName(e.target.value)} placeholder=""/>
                 </div>
                 <div className="my-2 col-12 col-md-6">
+                    <div className='fw-bold mb-2'>名</div>
+                    <input type="text" className="form-control" value={name}  placeholder=""/>
                 </div>
                 <div className="my-2 col-12 col-md-6">
                     <div className='mb-2'><b>邮箱</b> (请填入@rice.edu邮箱以便于身份核实)</div>
