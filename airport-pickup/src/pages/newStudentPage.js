@@ -1,20 +1,60 @@
 import React, { useState, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import DateTimePicker from "react-datetime-picker";
 import "react-datetime-picker/dist/DateTimePicker.css";
 import "react-calendar/dist/Calendar.css";
 import "react-clock/dist/Clock.css";
 
 export default function NewStudentPage() {
-  //   const navigate = useNavigate();
+  const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
   const [wechat, setWechat] = useState("");
   const [flightNumber, setFlightNumber] = useState("");
-  const [airport, setAirport] = useState("");
+  const [airport, setAirport] = useState("IAH");
   const [arriveTime, setArriveTime] = useState(new Date());
+
+  // On submit form, send a request to google sheet
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("In submiting form ");
+    let action = "insert_student";
+    let data = {};
+    //TODO:: Still missing the flight number
+    let student_data = {
+      firstname: firstName,
+      lastname: lastName,
+      phone: phoneNumber,
+      email: email,
+      wechat: wechat,
+      airport: airport,
+      arrivingTime: arriveTime,
+    };
+    let baseUrl =
+      "https://script.google.com/macros/s/AKfycbxs2po4S89fcHYmt7ZaeA3h8Skp0Svgu-Oet44mKWKH-O1WBZedorVa8N74bmhgu8rM/exec";
+    let url = baseUrl + "?" + "action=" + action;
+    console.log("Url: ", url, JSON.stringify(student_data));
+    fetch(url, {
+      redirect: "follow",
+      method: "POST",
+      body: JSON.stringify(student_data),
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8",
+      },
+    })
+      .then((response) => response.json(data))
+      .then((data) => {
+        console.log(data);
+        if (data.status === true) {
+          alert("注册成功！请等待志愿者联系！");
+          navigate("/");
+        } else {
+          alert("注册失败！请重试！");
+        }
+      });
+  };
 
   useEffect(() => {
     console.log(`firstname: ${firstName} \n`);
@@ -51,7 +91,7 @@ export default function NewStudentPage() {
           <div class="row spacing">
             <div class="col-md-1 mb-3"> </div>
             <div class="col-md-12 mb-3">
-              <form class="needs-validation" novalidate>
+              <form class="needs-validation" onSubmit={handleSubmit} novalidate>
                 <div class="row form-row">
                   <div class="col-md-4 mb-3">
                     <label for="validationCustom01">First name(拼音)</label>
