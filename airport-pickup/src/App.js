@@ -7,6 +7,7 @@ import ChooseTimePage from "./pages/ChooseTimePage";
 import TimeInfoPage from "./pages/TimeInfoPage";
 import NewStudentPage from "./pages/newStudentPage";
 import FullCalendarTest from "./component/FullCalendar";
+import StudentStatusPage from "./pages/studentStatusPage";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -23,6 +24,7 @@ function App() {
         <Route path="/info" element={<TimeInfoPage />}></Route>
         <Route path="/calendartest" element={<FullCalendarTest />}></Route>
         <Route path="/nstudent" element={<NewStudentPage />}></Route>
+        <Route path="/stustatus" element={<StudentStatusPage />}></Route>
       </Routes>
     </BrowserRouter>
   );

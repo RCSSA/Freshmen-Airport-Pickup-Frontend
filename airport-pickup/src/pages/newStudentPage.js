@@ -4,6 +4,7 @@ import DateTimePicker from "react-datetime-picker";
 import "react-datetime-picker/dist/DateTimePicker.css";
 import "react-calendar/dist/Calendar.css";
 import "react-clock/dist/Clock.css";
+import { serverUrl } from "../const";
 
 export default function NewStudentPage() {
   const navigate = useNavigate();
@@ -32,8 +33,7 @@ export default function NewStudentPage() {
       airport: airport,
       arrivingTime: arriveTime,
     };
-    let baseUrl =
-      "https://script.google.com/macros/s/AKfycbxs2po4S89fcHYmt7ZaeA3h8Skp0Svgu-Oet44mKWKH-O1WBZedorVa8N74bmhgu8rM/exec";
+    let baseUrl = serverUrl;
     let url = baseUrl + "?" + "action=" + action;
     console.log("Url: ", url, JSON.stringify(student_data));
     fetch(url, {
@@ -49,7 +49,7 @@ export default function NewStudentPage() {
         console.log(data);
         if (data.status === true) {
           alert("注册成功！请等待志愿者联系！");
-          navigate("/");
+          navigate("/stustatus");
         } else {
           alert("注册失败！请重试！");
         }
