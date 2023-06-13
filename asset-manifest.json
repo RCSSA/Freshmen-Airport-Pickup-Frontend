@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/Freshmen-Airport-Pickup-Frontend/static/css/main.ad44c4b4.css",
-    "main.js": "/Freshmen-Airport-Pickup-Frontend/static/js/main.d4d6e68f.js",
+    "main.js": "/Freshmen-Airport-Pickup-Frontend/static/js/main.4786db40.js",
     "static/js/787.e3d2d017.chunk.js": "/Freshmen-Airport-Pickup-Frontend/static/js/787.e3d2d017.chunk.js",
     "static/media/bootstrap-icons.woff?": "/Freshmen-Airport-Pickup-Frontend/static/media/bootstrap-icons.e559bf06bc84fd9525e6.woff",
     "static/media/bootstrap-icons.woff2?": "/Freshmen-Airport-Pickup-Frontend/static/media/bootstrap-icons.ea98e12d2d58747f9fc5.woff2",
     "index.html": "/Freshmen-Airport-Pickup-Frontend/index.html",
     "main.ad44c4b4.css.map": "/Freshmen-Airport-Pickup-Frontend/static/css/main.ad44c4b4.css.map",
-    "main.d4d6e68f.js.map": "/Freshmen-Airport-Pickup-Frontend/static/js/main.d4d6e68f.js.map",
+    "main.4786db40.js.map": "/Freshmen-Airport-Pickup-Frontend/static/js/main.4786db40.js.map",
     "787.e3d2d017.chunk.js.map": "/Freshmen-Airport-Pickup-Frontend/static/js/787.e3d2d017.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ad44c4b4.css",
-    "static/js/main.d4d6e68f.js"
+    "static/js/main.4786db40.js"
   ]
 }
