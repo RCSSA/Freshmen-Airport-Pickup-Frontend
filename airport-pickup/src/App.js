@@ -1,6 +1,7 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Homepage from "./pages/Homepage";
+import DevPage from "./pages/devPage";
 import Registerpage from "./pages/Registerpage";
 import Loginpage from "./pages/Loginpage";
 import ChooseTimePage from "./pages/ChooseTimePage";
@@ -15,9 +16,10 @@ import "./stylings/styleAH.css";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
-        <Route path="/" element={<Homepage />}></Route>
+        <Route path="/" element={<DevPage />}></Route>
+        <Route path="/home" element={<Homepage />}></Route>
         <Route path="/login" element={<Loginpage />}></Route>
         <Route path="/register" element={<Registerpage />}></Route>
         <Route path="/choosetime" element={<ChooseTimePage />}></Route>
@@ -26,7 +28,7 @@ function App() {
         <Route path="/nstudent" element={<NewStudentPage />}></Route>
         <Route path="/stustatus" element={<StudentStatusPage />}></Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
