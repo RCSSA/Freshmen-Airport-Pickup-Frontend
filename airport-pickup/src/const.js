@@ -1,2 +1,2 @@
 export const serverUrl =
-  "https://script.google.com/macros/s/AKfycbxs2po4S89fcHYmt7ZaeA3h8Skp0Svgu-Oet44mKWKH-O1WBZedorVa8N74bmhgu8rM/exec";
+  "https://script.google.com/macros/s/AKfycbwVDv634q70Jwi6pMTG5NbCc_DsDlIJ1voW5wKSalMszm0FjZ50aVTCHWA7OXtrHLhi/exec";

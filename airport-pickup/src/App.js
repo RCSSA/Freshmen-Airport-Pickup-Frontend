@@ -6,6 +6,7 @@ import Loginpage from "./pages/Loginpage";
 import ChooseTimePage from "./pages/ChooseTimePage";
 import TimeInfoPage from "./pages/TimeInfoPage";
 import NewStudentPage from "./pages/newStudentPage";
+import StudentLoginPage from "./pages/studentLogin";
 import FullCalendarTest from "./component/FullCalendar";
 import StudentStatusPage from "./pages/studentStatusPage";
 import "bootstrap/dist/css/bootstrap.css";
@@ -18,6 +19,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Homepage />}></Route>
+        <Route path="/stulogin" element={<StudentLoginPage />}></Route>
         <Route path="/login" element={<Loginpage />}></Route>
         <Route path="/register" element={<Registerpage />}></Route>
         <Route path="/choosetime" element={<ChooseTimePage />}></Route>
