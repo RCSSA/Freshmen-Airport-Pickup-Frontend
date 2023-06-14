@@ -13,6 +13,13 @@ export default function Homepage() {
         >
           新生注册
         </button>
+        <button
+          type="button"
+          className="btn btn-info fs-5 m-2 py-2 homepage-btn"
+          onClick={() => navigate("/stulogin")}
+        >
+          新生接机状态查询
+        </button>
       </div>
       <div className="row justify-content-center">
         <div className="col-12 col-md-6 d-flex justify-content-center">
