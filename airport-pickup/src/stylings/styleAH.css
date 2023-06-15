@@ -39,3 +39,9 @@
 .selectedEventsFrame{
     background-color: aliceblue;
 }
+
+.button-frame{
+    border: #1976d2 3px solid;
+    border-radius: 15px;
+    height: fit-content;
+}
