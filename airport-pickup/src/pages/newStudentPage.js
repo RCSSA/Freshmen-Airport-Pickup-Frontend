@@ -98,7 +98,9 @@ export default function NewStudentPage() {
               <form class="needs-validation" onSubmit={handleSubmit} novalidate>
                 <div class="row form-row">
                   <div class="col-md-4 mb-3">
-                    <label for="validationCustom01">First name(拼音)</label>
+                    <b>
+                      <label for="validationCustom01">First name(拼音)</label>
+                    </b>
                     <input
                       type="text"
                       class="form-control"
@@ -110,7 +112,9 @@ export default function NewStudentPage() {
                     <div class="valid-feedback">Looks good!</div>
                   </div>
                   <div class="col-md-4 mb-3">
-                    <label for="validationCustom02">Last name（拼音）</label>
+                    <b>
+                      <label for="validationCustom02">Last name（拼音）</label>
+                    </b>
                     <input
                       type="text"
                       class="form-control"
@@ -124,7 +128,10 @@ export default function NewStudentPage() {
                 </div>
                 <div class="row form-row">
                   <div class="col-md-6 mb-3">
-                    <label for="validationCustom03">电话</label>
+                    <b>
+                      {" "}
+                      <label for="validationCustom03">电话</label>
+                    </b>
                     <input
                       type="text"
                       class="form-control"
@@ -141,9 +148,11 @@ export default function NewStudentPage() {
 
                 <div class="row form-row">
                   <div class="col-md-6 mb-3">
-                    <label for="email">
-                      邮箱 (请填入@rice.edu邮箱以便于身份核实)
-                    </label>
+                    <b>
+                      <label for="email">
+                        邮箱 (请填入@rice.edu邮箱以便于身份核实)
+                      </label>
+                    </b>
                     <input
                       type="email"
                       class="form-control"
@@ -161,7 +170,10 @@ export default function NewStudentPage() {
 
                 <div class="row form-row">
                   <div class="col-md-6 mb-3">
-                    <label for="validationCustom05">微信号</label>
+                    <b>
+                      {" "}
+                      <label for="validationCustom05">微信号</label>{" "}
+                    </b>
                     <input
                       type="text"
                       class="form-control"
@@ -179,7 +191,9 @@ export default function NewStudentPage() {
 
                 <div class="row form-row">
                   <div class="col-md-6 mb-3">
-                    <label for="validationCustom06">航班号</label>
+                    <b>
+                      <label for="validationCustom06">航班号</label>
+                    </b>
                     <input
                       type="text"
                       class="form-control"
@@ -195,7 +209,9 @@ export default function NewStudentPage() {
                 </div>
 
                 <div class="row">
-                  <legend class="col-form-label col-sm-2 pt-0">机场</legend>
+                  <b>
+                    <legend class="col-form-label col-sm-2 pt-0">机场</legend>
+                  </b>
                   <div class="col-sm-10">
                     <div class="form-check">
                       <input
