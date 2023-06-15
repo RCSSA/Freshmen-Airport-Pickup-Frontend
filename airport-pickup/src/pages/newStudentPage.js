@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-// import DateTimePicker from "react-datetime-picker";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
+import dayjs from "dayjs";
+import "dayjs/locale/zh-cn";
 import "react-datetime-picker/dist/DateTimePicker.css";
 import "react-calendar/dist/Calendar.css";
 import "react-clock/dist/Clock.css";
@@ -228,16 +229,18 @@ export default function NewStudentPage() {
 
                 <div class="row form-row">
                   <div class="col-md-6 mb-3">
-                    <label for="datepicker">到达时间 (休斯顿时间 CST)</label>
                     <br />
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                      <DateTimePicker onChange={(e)=>setArriveTime(e)}/>
-                    </LocalizationProvider> 
-                    {/* <DateTimePicker
-                      id="datepicker"
-                      onChange={(val)=>setArriveTime(val)}
-                      value={arriveTime}
-                    /> */}
+                    <br />
+                    <LocalizationProvider
+                      dateAdapter={AdapterDayjs}
+                      adapterLocale="zh-cn"
+                    >
+                      <DateTimePicker
+                        label="到达时间（CST）"
+                        onChange={(e) => setArriveTime(e)}
+                        value={dayjs(arriveTime)}
+                      />
+                    </LocalizationProvider>
                   </div>
                 </div>
 
