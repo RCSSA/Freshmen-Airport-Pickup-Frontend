@@ -44,19 +44,19 @@ export default function RegisterPage() {
             <form className='mt-3 row' onSubmit={(e)=>onFormSubmit(e)}>
                 <div className="my-2 col-12 col-md-6">
                     <div className='fw-bold mb-2'>姓</div>
-                    <input type="text" className="form-control" value={name} onChange={(e) => setName(e.target.value)} placeholder=""/>
+                    <input type="text" className="form-control" value={name} onChange={(e) => setName(e.target.value)} placeholder="" required/>
                 </div>
                 <div className="my-2 col-12 col-md-6">
                     <div className='fw-bold mb-2'>名</div>
-                    <input type="text" className="form-control" value={name}  placeholder=""/>
+                    <input type="text" className="form-control" value={name}  placeholder="" required/>
                 </div>
                 <div className="my-2 col-12 col-md-6">
                     <div className='mb-2'><b>邮箱</b> (请填入@rice.edu邮箱以便于身份核实)</div>
-                    <input type="email" id="email" pattern=".+@rice.edu" value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" placeholder="@rice.edu"/>
+                    <input type="email" id="email" pattern=".+@rice.edu" value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" placeholder="@rice.edu" required/>
                 </div>
                 <div className="my-2 col-12 col-md-6">
                     <div className='fw-bold mb-2'>微信号</div>
-                    <input type="text" className="form-control" placeholder="" value={wechat} onChange={e => setWechat(e.target.value)}/>
+                    <input type="text" className="form-control" placeholder="" value={wechat} onChange={e => setWechat(e.target.value)} />
                 </div>
                 <div className="my-2 col-12 col-md-6">
                     <div className='mb-2'><b>手机号</b> (格式: 123-456-7890) </div> 
