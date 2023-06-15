@@ -34,8 +34,9 @@ export default function NewStudentPage() {
       phone: phoneNumber,
       email: email,
       wechat: wechat,
+      flight_number: flightNumber,
       airport: airport,
-      arrivingTime: arriveTime,
+      arriving_time: arriveTime,
     };
     let baseUrl = serverUrl;
     let url = baseUrl + "?" + "action=" + action;
