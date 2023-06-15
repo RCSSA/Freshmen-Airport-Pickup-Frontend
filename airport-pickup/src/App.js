@@ -24,7 +24,6 @@ function App() {
       <Route path="/register" element={<Registerpage/>}></Route>
       <Route path="/choosetime" element={<ChooseTimePage/>}></Route>
       <Route path="/info" element={<TimeInfoPage/>}></Route>
-      <Route path="/calendartest" element={<FullCalendarTest/>}></Route>
         <Route path="/stulogin" element={<StudentLoginPage />}></Route>
         <Route path="/nstudent" element={<NewStudentPage />}></Route>
         <Route path="/stustatus" element={<StudentStatusPage />}></Route>
