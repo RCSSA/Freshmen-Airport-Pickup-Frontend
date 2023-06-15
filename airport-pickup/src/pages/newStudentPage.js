@@ -231,7 +231,7 @@ export default function NewStudentPage() {
                     <label for="datepicker">到达时间 (休斯顿时间 CST)</label>
                     <br />
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
-                      <DateTimePicker/>
+                      <DateTimePicker onChange={(e)=>setArriveTime(e)}/>
                     </LocalizationProvider> 
                     {/* <DateTimePicker
                       id="datepicker"
