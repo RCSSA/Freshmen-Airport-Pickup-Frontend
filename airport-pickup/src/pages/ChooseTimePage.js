@@ -10,21 +10,8 @@ export default function ChooseTimePage() {
   const [selected, setSelected] = useState([]); // note down selected event
   const [choices, setChoices] = useState(<div></div>); // for showing of choices on the right side
   const [pickUpNumber, setPickUpNumber] = useState({}); // note down number of pickups in each event
-
-  function fetchEvents() {
-    fetch(testUrl)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if ((data.status = true)) {
-          console.log(data.events);
-          return data.events;
-        } else {
-          return {};
-        }
-      })
-      .catch((err) => console.log(err));
-  }
+  const [matchData, setMatchData] = useState([]); // note down match data
+  const [email, setEmail] = useState("hs56@rice.edu"); // volunteers email
 
   var eventData = {};
 
@@ -96,6 +83,10 @@ export default function ChooseTimePage() {
   );
 
   useEffect(() => {
+    console.log("matchData: ", matchData);
+  }, [matchData]);
+
+  useEffect(() => {
     fetch(testUrl)
       .then((res) => res.json())
       .then((data) => {
@@ -115,6 +106,7 @@ export default function ChooseTimePage() {
   }, []);
 
   useEffect(() => {
+    // set Choices to display on side bar
     setChoices(
       <div>
         {selected.map((day, key) => {
@@ -130,6 +122,25 @@ export default function ChooseTimePage() {
         })}
       </div>
     );
+    // set post data for matching
+    setMatchData([]);
+    selected.map((day) => {
+      day.map((event, key2) => {
+        if (key2 !== 0) {
+          const event_breakdown = event.split(" ");
+          setMatchData((prev) => [
+            ...prev,
+            {
+              date: event_breakdown[0],
+              airport: event_breakdown[1],
+              hour: event_breakdown[2],
+              number: parseInt(event_breakdown[3]),
+              vol_email: email,
+            },
+          ]);
+        }
+      });
+    });
   }, [selected]);
 
   return loaded ? (
