@@ -2,6 +2,8 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import FullCalendarModel from "../component/FullCalendar";
 import LoadingPage from "./LoadingPage";
+import { testUrl } from "../const";
+
 export default function ChooseTimePage() {
   const navigate = useNavigate();
   const [loaded, setLoaded] = useState(false);
@@ -9,74 +11,52 @@ export default function ChooseTimePage() {
   const [choices, setChoices] = useState(<div></div>); // for showing of choices on the right side
   const [pickUpNumber, setPickUpNumber] = useState({}); // note down number of pickups in each event
 
-  var sampleData = {
-    8: {
-      date: "2023-05-13",
-      HOU: { TotalToBePicked: 3, "10:00-12:00": 2, "14:00-16:00": 1 },
-      IAH: {
-        TotalToBePicked: 8,
-        "10:00-12:00": 2,
-        "14:00-16:00": 4,
-        "16:00-18:00": 2,
-      },
-    },
+  function fetchEvents() {
+    fetch(testUrl)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if ((data.status = true)) {
+          console.log(data.events);
+          return data.events;
+        } else {
+          return {};
+        }
+      })
+      .catch((err) => console.log(err));
+  }
 
-    2: {
-      date: "2023-05-14",
-      HOU: {
-        TotalToBePicked: 10,
-        "10:00-12:00": 2,
-        "14:00-16:00": 5,
-        "16:00-18:00": 3,
-      },
-      IAH: {
-        TotalToBePicked: 7,
-        "10:00-12:00": 1,
-        "14:00-16:00": 4,
-        "16:00-18:00": 2,
-      },
-    },
-
-    5: {
-      date: "2023-05-17",
-      IAH: {
-        TotalToBePicked: 5,
-        "10:00-12:00": 1,
-        "14:00-16:00": 2,
-        "16:00-18:00": 2,
-      },
-    },
-  };
+  var eventData = {};
 
   var [fullCalendarEvents, setFullCalendarEvents] = useState([]);
 
   const dataManagement = useCallback(
-    (sampleData) => {
+    (eventData) => {
       let idCount = 0;
       let idList = [],
         titles = [],
         dates = [],
         descriptions = [],
         pickUpStructures = [];
-      let ids = Object.keys(sampleData);
+      let ids = Object.keys(eventData);
       for (var i = 0; i < ids.length; i++) {
         const key1 = ids[i];
-        const date = sampleData[key1]["date"];
-        const keys2 = Object.keys(sampleData[key1]);
+        const date = eventData[key1]["date"];
+        const keys2 = Object.keys(eventData[key1]);
         if (keys2.includes("IAH")) {
           idCount += 1;
           titles.push(
-            "IAH: " + sampleData[key1]["IAH"]["TotalToBePicked"] + " 人"
+            "IAH: " + eventData[key1]["IAH"]["TotalToBePicked"] + " 人"
           );
           dates.push(date);
 
-          const keys3 = Object.keys(sampleData[key1]["IAH"]).filter((key3) => {
+          const keys3 = Object.keys(eventData[key1]["IAH"]).filter((key3) => {
             return key3 !== "TotalToBePicked";
           });
           let description = [];
           let pickUpStructure = [];
           for (var j = 0; j < keys3.length; j++) {
-            description.push([keys3[j], sampleData[key1]["IAH"][keys3[j]]]);
+            description.push([keys3[j], eventData[key1]["IAH"][keys3[j]]]);
             pickUpStructure.push(0);
           }
           descriptions.push(description);
@@ -86,17 +66,17 @@ export default function ChooseTimePage() {
         if (keys2.includes("HOU")) {
           idCount += 1;
           titles.push(
-            "HOU: " + sampleData[key1]["HOU"]["TotalToBePicked"] + " 人"
+            "HOU: " + eventData[key1]["HOU"]["TotalToBePicked"] + " 人"
           );
           dates.push(date);
 
-          const keys3 = Object.keys(sampleData[key1]["HOU"]).filter((key3) => {
+          const keys3 = Object.keys(eventData[key1]["HOU"]).filter((key3) => {
             return key3 !== "TotalToBePicked";
           });
           let description = [];
           let pickUpStructure = [];
           for (var j = 0; j < keys3.length; j++) {
-            description.push([keys3[j], sampleData[key1]["HOU"][keys3[j]]]);
+            description.push([keys3[j], eventData[key1]["HOU"][keys3[j]]]);
             pickUpStructure.push(0);
           }
           descriptions.push(description);
@@ -112,16 +92,26 @@ export default function ChooseTimePage() {
 
       return [idList, titles, dates, descriptions];
     },
-    [sampleData, pickUpNumber]
+    [eventData, pickUpNumber]
   );
 
   useEffect(() => {
-    let [a, b, c, d] = dataManagement(sampleData);
-    fullCalendarEvents = [a, b, c, d];
-    setFullCalendarEvents([...fullCalendarEvents, a, b, c, d]);
-    setTimeout(() => {
-      setLoaded(true);
-    }, 1000);
+    fetch(testUrl)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if ((data.status = true)) {
+          console.log(data.events);
+          eventData = data.events;
+          let [a, b, c, d] = dataManagement(eventData);
+          fullCalendarEvents = [a, b, c, d];
+          setFullCalendarEvents([...fullCalendarEvents, a, b, c, d]);
+          setLoaded(true);
+        } else {
+          return;
+        }
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   useEffect(() => {
