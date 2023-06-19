@@ -1,8 +1,9 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import FullCalendarModel from "../component/FullCalendar";
 import LoadingPage from "./LoadingPage";
 import { testUrl } from "../const";
+import { UserContext } from "../App";
 
 export default function ChooseTimePage() {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ export default function ChooseTimePage() {
   const [pickUpNumber, setPickUpNumber] = useState({}); // note down number of pickups in each event
   const [matchData, setMatchData] = useState([]); // note down match data
   const [email, setEmail] = useState("hs56@rice.edu"); // volunteers email
+  const { volunteerLoggedIn } = useContext(UserContext); // student logged in or not
 
   var eventData = {};
 
@@ -86,7 +88,15 @@ export default function ChooseTimePage() {
     console.log("matchData: ", matchData);
   }, [matchData]);
 
+  const checkIsLoggin = () => {
+    return volunteerLoggedIn;
+  };
+
   useEffect(() => {
+    if (checkIsLoggin() === false) {
+      navigate("/login");
+      return;
+    }
     fetch(testUrl)
       .then((res) => res.json())
       .then((data) => {
