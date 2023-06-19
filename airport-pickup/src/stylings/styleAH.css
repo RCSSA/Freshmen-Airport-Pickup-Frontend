@@ -5,6 +5,10 @@
     overflow: hidden;
 }
 
+.full-width{
+    width: 100%;
+}
+
 .color-light-blue{
     color: rgb(14, 119, 217);
 }
