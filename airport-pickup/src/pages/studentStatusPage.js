@@ -1,18 +1,12 @@
-// import React, { useState } from "react";
-import { Alert, Space, Button } from "antd";
-
-// import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { Alert } from "antd";
+import { useNavigate } from 'react-router-dom';
 
 export default function StudentStatusPage() {
+  const navigate = useNavigate();
   return (
-    <div className="row justify-content-center p-5">
-      <Space
-        direction="vertical"
-        style={{
-          width: "100%",
-        }}
-      >
-        <div className="col-12 col-md-8">
+    <div className="full-white d-flex flex-column align-items-center p-5">
+        <div className="full-width">
           <Alert
             message="注册成功"
             description="您的信息已被记录，稍后我们会给您发送一封确认邮件，请注意查收。"
@@ -22,7 +16,7 @@ export default function StudentStatusPage() {
           />
         </div>
 
-        <div className="col-12 col-md-8">
+        <div className="full-width">
           <Alert
             message="信息审核中"
             description="您的信息正在审核中，您可以通过姓名邮箱查询审核和匹配进度，谢谢您的参与。"
@@ -30,12 +24,7 @@ export default function StudentStatusPage() {
             showIcon
           />
         </div>
-        <div className="row justify-content-center p-5">
-          <div className="col-10 col-md-6">
-            <Button href="/"> 返回首页 </Button>
-          </div>
-        </div>
-      </Space>
+        <button onClick={()=>{navigate("/")}} className="btn btn-info fs-5 my-3 py-2 homepage-btn"> 返回首页 </button>
     </div>
   );
 }
