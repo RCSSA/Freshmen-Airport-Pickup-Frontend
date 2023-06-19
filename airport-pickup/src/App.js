@@ -19,7 +19,7 @@ export const UserContext = React.createContext(null);
 
 function App() {
   const [studentLoggedIn, setStudentLoggedIn] = useState(false);
-  const [volunteerLoggedIn, setVolunteerLoggedIn] = useState(false);
+  const [volunteerLoggedIn, setVolunteerLoggedIn] = useState(true);
   return (
     <UserContext.Provider
       value={{

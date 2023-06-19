@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import FullCalendarModel from "../component/FullCalendar";
 import LoadingPage from "./LoadingPage";
-import { testUrl } from "../const";
+import { serverUrl, testUrl } from "../const";
 import { UserContext } from "../App";
 
 export default function ChooseTimePage() {
@@ -97,13 +97,16 @@ export default function ChooseTimePage() {
       navigate("/login");
       return;
     }
-    fetch(testUrl)
+    // get all await students
+    const url = serverUrl + "?action=get_all";
+    fetch(url)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if ((data.status = true)) {
+        // TODO:: check if status is true
+        if (true) {
           console.log(data.events);
-          eventData = data.events;
+          eventData = data;
           let [a, b, c, d] = dataManagement(eventData);
           fullCalendarEvents = [a, b, c, d];
           setFullCalendarEvents([...fullCalendarEvents, a, b, c, d]);
@@ -153,6 +156,39 @@ export default function ChooseTimePage() {
     });
   }, [selected]);
 
+  const handleBatchMatch = () => {
+    if (matchData.length === 0) {
+      alert("请先选择接机时间！");
+      return;
+    }
+    matchData.forEach((m_data) => {
+      const url = testUrl + "?action=match";
+      let data = {};
+      fetch(url, {
+        redirect: "follow",
+        method: "POST",
+        body: JSON.stringify(m_data),
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+      })
+        .then((response) => response.json(data))
+        .then((data) => {
+          console.log(data);
+          if (data.success && data.success > 0) {
+            console.log("成功匹配" + data.success + "人！");
+            alert("成功匹配" + data.success + "人！");
+            // navigate("/stustatus");
+          }
+          if (data.fail && data.fail > 0) {
+            alert("很遗憾，有" + data.sucess + "人未能匹配！");
+            // navigate("/stustatus");
+          }
+          navigate("/info");
+        });
+    });
+  };
+
   return loaded ? (
     <div className="row justify-content-center py-5">
       <div className="col-12 col-md-8">
@@ -181,7 +217,7 @@ export default function ChooseTimePage() {
           <button
             type="button"
             className="btn btn-info homepage-btn"
-            onClick={() => navigate("/info")}
+            onClick={handleBatchMatch}
           >
             下一步
           </button>
