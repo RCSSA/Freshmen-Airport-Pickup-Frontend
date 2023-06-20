@@ -18,7 +18,7 @@ export default function StudentLoginPage() {
     let data = {};
     let baseUrl = serverUrl;
     let action = "student_login_search";
-    let url = baseUrl + "?" + "action=" + action;
+    let url = baseUrl + "?action=" + action;
     console.log("Student login with Url: ", url, JSON.stringify(login_data));
     fetch(url, {
       redirect: "follow",

@@ -18,7 +18,7 @@ import "./stylings/styleAH.css";
 export const UserContext = React.createContext(null);
 
 function App() {
-  const [studentLoggedIn, setStudentLoggedIn] = useState(false);
+  const [studentLoggedIn, setStudentLoggedIn] = useState(true);
   const [volunteerLoggedIn, setVolunteerLoggedIn] = useState(true);
   return (
     <UserContext.Provider

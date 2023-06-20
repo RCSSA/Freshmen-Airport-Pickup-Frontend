@@ -39,7 +39,7 @@ export default function NewStudentPage() {
       arriving_time: arriveTime,
     };
     let baseUrl = serverUrl;
-    let url = baseUrl + "?" + "action=" + action;
+    let url = baseUrl + "?action=" + action;
     console.log("Url: ", url, JSON.stringify(student_data));
     fetch(url, {
       redirect: "follow",
