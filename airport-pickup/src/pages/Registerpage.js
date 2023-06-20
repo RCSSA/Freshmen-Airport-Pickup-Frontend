@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { serverUrl } from "../const";
+import { UserContext } from "../App";
 
 export default function RegisterPage() {
   const navigate = useNavigate();
@@ -9,6 +10,7 @@ export default function RegisterPage() {
   const [email, setEmail] = useState("");
   const [wechat, setWechat] = useState("");
   const [phone, setPhone] = useState("");
+  const { setVolunteerLoggedIn } = useContext(UserContext); // update volunteer logged in status
 
   function onFormSubmit(e) {
     e.preventDefault();
@@ -37,6 +39,7 @@ export default function RegisterPage() {
         console.log(data);
         if (data.status === true) {
           alert("注册成功！");
+          setVolunteerLoggedIn(true);
           navigate("/choosetime");
         } else {
           alert("注册失败！请重试！");

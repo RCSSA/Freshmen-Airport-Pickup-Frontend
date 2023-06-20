@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -9,6 +9,7 @@ import "react-datetime-picker/dist/DateTimePicker.css";
 import "react-calendar/dist/Calendar.css";
 import "react-clock/dist/Clock.css";
 import { serverUrl } from "../const";
+import { UserContext } from "../App";
 
 export default function NewStudentPage() {
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ export default function NewStudentPage() {
   const [flightNumber, setFlightNumber] = useState("");
   const [airport, setAirport] = useState("IAH");
   const [arriveTime, setArriveTime] = useState(new Date());
+  const { setStudentLoggedIn } = useContext(UserContext); // update student logged in status
 
   // On submit form, send a request to google sheet
   const handleSubmit = (e) => {
@@ -54,6 +56,7 @@ export default function NewStudentPage() {
         console.log(data);
         if (data.status === true) {
           alert("注册成功！请等待志愿者联系！");
+          setStudentLoggedIn(true);
           navigate("/stustatus");
         } else {
           alert("注册失败！请重试！");

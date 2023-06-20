@@ -12,7 +12,7 @@ export default function StudentStatusPage() {
 
   useEffect(() => {
     if (checkIsLoggin() === false) {
-      navigate("/stulogin");
+      navigate("/");
       return;
     }
   }, []);

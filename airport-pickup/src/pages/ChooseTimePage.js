@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import FullCalendarModel from "../component/FullCalendar";
 import LoadingPage from "./LoadingPage";
-import { serverUrl, testUrl } from "../const";
+import { serverUrl } from "../const";
 import { UserContext } from "../App";
 
 export default function ChooseTimePage() {
@@ -12,8 +12,9 @@ export default function ChooseTimePage() {
   const [choices, setChoices] = useState(<div></div>); // for showing of choices on the right side
   const [pickUpNumber, setPickUpNumber] = useState({}); // note down number of pickups in each event
   const [matchData, setMatchData] = useState([]); // note down match data
+  //TODO::Make use of setEmail
   const [email, setEmail] = useState("hs56@rice.edu"); // volunteers email
-  const { volunteerLoggedIn } = useContext(UserContext); // student logged in or not
+  const { volunteerLoggedIn } = useContext(UserContext); // volunteer logged in or not
 
   var eventData = {};
 
@@ -89,12 +90,13 @@ export default function ChooseTimePage() {
   }, [matchData]);
 
   const checkIsLoggin = () => {
+    console.log("volunteerLoggedIn", volunteerLoggedIn);
     return volunteerLoggedIn;
   };
 
   useEffect(() => {
     if (checkIsLoggin() === false) {
-      navigate("/login");
+      navigate("/");
       return;
     }
     // get all await students

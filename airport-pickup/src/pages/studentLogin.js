@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { serverUrl } from "../const";
+import { UserContext } from "../App";
 
 export default function StudentLoginPage() {
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const { setStudentLoggedIn } = useContext(UserContext); // update student logged in status
+
   function handleSubmit(e) {
     e.preventDefault();
     // navigate("/info");
@@ -33,6 +36,7 @@ export default function StudentLoginPage() {
         console.log(data);
         if (data.status === true) {
           alert("登陆成功！");
+          setStudentLoggedIn(true);
           navigate("/stustatus");
         } else {
           alert("登陆失败！请重试！");

@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { serverUrl } from "../const";
+import { UserContext } from "../App";
 
 export default function Loginpage() {
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const { setVolunteerLoggedIn } = useContext(UserContext); // update volunteer logged in status
+
   function handleSubmit(e) {
     e.preventDefault();
     // navigate("/info");
@@ -36,6 +39,7 @@ export default function Loginpage() {
           data.message.toLowerCase() === "record found."
         ) {
           alert("登陆成功！");
+          setVolunteerLoggedIn(true);
           navigate("/info");
         } else {
           alert("登陆失败！请重试！");
