@@ -104,9 +104,9 @@ export default function ChooseTimePage() {
       .then((data) => {
         console.log(data);
         // TODO:: check if status is true
-        if (true) {
+        if (data.status === true) {
           console.log(data.events);
-          eventData = data;
+          eventData = data.events;
           let [a, b, c, d] = dataManagement(eventData);
           fullCalendarEvents = [a, b, c, d];
           setFullCalendarEvents([...fullCalendarEvents, a, b, c, d]);
@@ -162,7 +162,7 @@ export default function ChooseTimePage() {
       return;
     }
     matchData.forEach((m_data) => {
-      const url = testUrl + "?action=match";
+      const url = serverUrl + "?action=match";
       let data = {};
       fetch(url, {
         redirect: "follow",
@@ -175,18 +175,17 @@ export default function ChooseTimePage() {
         .then((response) => response.json(data))
         .then((data) => {
           console.log(data);
-          if (data.success && data.success > 0) {
-            console.log("成功匹配" + data.success + "人！");
-            alert("成功匹配" + data.success + "人！");
+          if (data.num_allocated && data.num_allocated > 0) {
+            console.log("成功匹配" + data.num_allocated + "人！");
+            alert("成功匹配" + data.num_allocated + "人！");
+            // navigate("/stustatus");
+          } else {
+            alert("很遗憾，（部分）选择时间段未能匹配成功！");
             // navigate("/stustatus");
           }
-          if (data.fail && data.fail > 0) {
-            alert("很遗憾，有" + data.sucess + "人未能匹配！");
-            // navigate("/stustatus");
-          }
-          navigate("/info");
         });
     });
+    // navigate("/info");
   };
 
   return loaded ? (
@@ -219,7 +218,7 @@ export default function ChooseTimePage() {
             className="btn btn-info homepage-btn"
             onClick={handleBatchMatch}
           >
-            下一步
+            提交选择
           </button>
         </div>
       </div>
