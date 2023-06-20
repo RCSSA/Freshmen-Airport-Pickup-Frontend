@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import { Image } from "mui-image";
-import { siteUrl, localUrl } from "./const";
+import { localUrl } from "./const";
 
 export default function BtnAppBar() {
   const redirectToHomepage = () => {

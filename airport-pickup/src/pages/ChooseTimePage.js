@@ -64,7 +64,7 @@ export default function ChooseTimePage() {
           });
           let description = [];
           let pickUpStructure = [];
-          for (var j = 0; j < keys3.length; j++) {
+          for (j = 0; j < keys3.length; j++) {
             description.push([keys3[j], eventData[key1]["HOU"][keys3[j]]]);
             pickUpStructure.push(0);
           }
@@ -73,7 +73,7 @@ export default function ChooseTimePage() {
         }
       }
 
-      for (var i = 0; i < idCount; i++) {
+      for (i = 0; i < idCount; i++) {
         idList.push(i);
         pickUpNumber[`${i}`] = pickUpStructures[i];
         setPickUpNumber({ ...pickUpNumber, [`${i}`]: pickUpStructures[i] });

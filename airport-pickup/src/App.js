@@ -8,8 +8,6 @@ import ChooseTimePage from "./pages/ChooseTimePage";
 import TimeInfoPage from "./pages/TimeInfoPage";
 import NewStudentPage from "./pages/newStudentPage";
 import StudentLoginPage from "./pages/studentLogin";
-import FullCalendarTest from "./component/FullCalendar";
-import StudentOrVolunteer from "./pages/StudentOrVolunteer";
 import StudentStatusPage from "./pages/studentStatusPage";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
