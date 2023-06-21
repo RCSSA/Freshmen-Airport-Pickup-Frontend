@@ -8,41 +8,57 @@ import ChooseTimePage from "./pages/volunteers/ChooseTimePage";
 import TimeInfoPage from "./pages/volunteers/TimeInfoPage";
 import NewStudentPage from "./pages/students/newStudentPage";
 import StudentLoginPage from "./pages/students/studentLogin";
-import StudentStatusPage from "./pages/students/studentStatusPage";
+import StudentStatusPage from "./pages/StatusPage";
 import BtnAppBar from "./component/BtnAppBar";
+import StudentAllocatePage from "./pages/students/studentAllocatePage";
 import RequireAuth from "./component/RequireAuth";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./stylings/styleAH.css";
-export const UserContext = React.createContext(null);
 
 function App() {
   const [studentLoggedIn, setStudentLoggedIn] = useState(false);
   const [volunteerLoggedIn, setVolunteerLoggedIn] = useState(false);
+  const [status, setStatus] = useState(0);
   return (
-    <UserContext.Provider
-      value={{
-        studentLoggedIn: studentLoggedIn,
-        setStudentLoggedIn: setStudentLoggedIn,
-        volunteerLoggedIn: volunteerLoggedIn,
-        setVolunteerLoggedIn: setVolunteerLoggedIn,
-      }}
-    >
       <BrowserRouter>
         <BtnAppBar/>
         <Routes>
-          <Route path="/" element={<Homepage />}></Route>
-          <Route path="/login" element={<Loginpage />}></Route>
-          <Route path="/register" element={<Registerpage />}></Route>
-          <Route path="/choosetime" element={<ChooseTimePage />}></Route>
-          <Route path="/info" element={<TimeInfoPage />}></Route>
-          <Route path="/studentlogin" element={<StudentLoginPage />}></Route>
-          <Route path="/studentregister" element={<NewStudentPage />}></Route>
-          <Route path="/studentstatus" element={<StudentStatusPage />}></Route>
+          {/* volunteer */}
+          <Route path="/" element={<Homepage setStudentLoggedIn={setStudentLoggedIn} setVolunteerLoggedIn={setVolunteerLoggedIn}/>}></Route>
+          <Route path="/login" element={<Loginpage setVolunteerLoggedIn={setVolunteerLoggedIn}/>}></Route>
+          <Route path="/register" element={<Registerpage setVolunteerLoggedIn={setVolunteerLoggedIn}/>}></Route>
+          <Route path="/volunteerstatus" element={
+            <RequireAuth user={volunteerLoggedIn}>
+              <StudentStatusPage status={status}/>
+            </RequireAuth>}>
+          </Route>
+          <Route path="/choosetime" element={
+            <RequireAuth user={volunteerLoggedIn}>
+              <ChooseTimePage />
+            </RequireAuth>
+          }></Route>
+          <Route path="/info" element={
+            <RequireAuth user={volunteerLoggedIn}>
+              <TimeInfoPage />
+            </RequireAuth>
+          }></Route>
+          {/* student */}
+          <Route path="/studentlogin" element={<StudentLoginPage setStudentLoggedIn={setStudentLoggedIn}/>}></Route>
+          <Route path="/studentregister" element={<NewStudentPage setStudentLoggedIn={setStudentLoggedIn}/>}></Route>
+          <Route path="/studentstatus" element={
+            <RequireAuth user={studentLoggedIn}>
+              <StudentStatusPage status={status}/>
+            </RequireAuth>}>
+          </Route>
+          <Route path="/studentallocate" element={
+            <RequireAuth user={studentLoggedIn}>
+              <StudentAllocatePage />
+            </RequireAuth>}>
+          </Route>
         </Routes>
       </BrowserRouter>
-    </UserContext.Provider>
   );
 }
 

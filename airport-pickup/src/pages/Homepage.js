@@ -2,18 +2,15 @@ import React, { useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import HailIcon from "@mui/icons-material/Hail";
 import NoCrashIcon from "@mui/icons-material/NoCrash";
-import { UserContext } from "../App";
 
-export default function Homepage() {
-  const navigate = useNavigate();
-  const { volunteerLoggedIn, setStudentLoggedIn, setVolunteerLoggedIn } =
-    useContext(UserContext); // student logged in or not
+export default function Homepage(props) {
+  const navigate = useNavigate(); 
 
   useEffect(() => {
-    setStudentLoggedIn(false);
-    setVolunteerLoggedIn(false);
-    console.log("set both to false, volunteerLoggedIn:", volunteerLoggedIn);
+    props.setStudentLoggedIn(false);
+    props.setVolunteerLoggedIn(false);
   }, []);
+  
   return (
     <div className="full-white d-flex justify-content-center align-items-center">
       <div className="row">

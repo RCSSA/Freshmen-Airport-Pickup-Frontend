@@ -1,18 +1,16 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { serverUrl } from "../../const";
-import { UserContext } from "../../App";
 
-export default function StudentLoginPage() {
+export default function StudentLoginPage(props) {
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const { setStudentLoggedIn } = useContext(UserContext); // update student logged in status
+  const setStudentLoggedIn = props.setStudentLoggedIn; // update student logged in status
 
   function handleSubmit(e) {
     e.preventDefault();
-    // navigate("/info");
     let login_data = {
       firstname: firstName,
       lastname: lastName,
@@ -52,7 +50,7 @@ export default function StudentLoginPage() {
         <form className="mt-3 row" onSubmit={handleSubmit}>
           <div className="row form-row">
             <div className="col-md-4 mb-3">
-              <label for="validationCustom01" className="fw-bold">名（请输入拼音）</label>
+              <label htmlFor="validationCustom01" className="fw-bold">名（请输入拼音）</label>
               <input
                 type="text"
                 className="form-control"
@@ -64,7 +62,7 @@ export default function StudentLoginPage() {
               <div className="valid-feedback">Looks good!</div>
             </div>
             <div className="col-md-4 mb-3">
-              <label for="validationCustom02" className="fw-bold">姓（请输入拼音）</label>
+              <label htmlFor="validationCustom02" className="fw-bold">姓（请输入拼音）</label>
               <input
                 type="text"
                 className="form-control"

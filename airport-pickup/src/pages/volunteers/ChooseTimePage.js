@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import FullCalendarModel from "../../component/FullCalendar";
 import { serverUrl } from "../../const";
-import { UserContext } from "../../App";
 
 export default function ChooseTimePage() {
   const navigate = useNavigate();
@@ -13,7 +12,6 @@ export default function ChooseTimePage() {
   const [matchData, setMatchData] = useState([]); // note down match data
   //TODO::Make use of setEmail
   const [email, setEmail] = useState("hs56@rice.edu"); // volunteers email
-  const { volunteerLoggedIn } = useContext(UserContext); // volunteer logged in or not
 
   var eventData = {};
 
@@ -88,16 +86,7 @@ export default function ChooseTimePage() {
     console.log("matchData: ", matchData);
   }, [matchData]);
 
-  const checkIsLoggin = () => {
-    console.log("volunteerLoggedIn", volunteerLoggedIn);
-    return volunteerLoggedIn;
-  };
-
   useEffect(() => {
-    if (checkIsLoggin() === false) {
-      navigate("/");
-      return;
-    }
     // get all await students
     const url = serverUrl + "?action=get_all";
     fetch(url)

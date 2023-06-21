@@ -11,9 +11,8 @@ import "react-datetime-picker/dist/DateTimePicker.css";
 import "react-calendar/dist/Calendar.css";
 import "react-clock/dist/Clock.css";
 import { serverUrl } from "../../const";
-import { UserContext } from "../../App";
 
-export default function NewStudentPage() {
+export default function NewStudentPage(props) {
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -23,7 +22,7 @@ export default function NewStudentPage() {
   const [flightNumber, setFlightNumber] = useState("");
   const [airport, setAirport] = useState("IAH");
   const [arriveTime, setArriveTime] = useState(new Date());
-  const { setStudentLoggedIn } = useContext(UserContext); // update student logged in status
+  const { setStudentLoggedIn } = props.setStudentLoggedIn; // update student logged in status
 
   dayjs.extend(utc);
   dayjs.extend(timezone);

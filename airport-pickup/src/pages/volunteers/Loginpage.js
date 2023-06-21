@@ -1,14 +1,13 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { serverUrl } from "../../const";
-import { UserContext } from "../../App";
 
-export default function Loginpage() {
+export default function Loginpage(props) {
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const { setVolunteerLoggedIn } = useContext(UserContext); // update volunteer logged in status
+  const setVolunteerLoggedIn = props.setVolunteerLoggedIn; // update volunteer logged in status
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -54,7 +53,7 @@ export default function Loginpage() {
         <form className="mt-3 row" onSubmit={handleSubmit}>
           <div className="row form-row">
             <div className="col-md-4 mb-3">
-              <label for="validationCustom01" className="fw-bold">名（请输入拼音）</label>
+              <label htmlFor="validationCustom01" className="fw-bold">名（请输入拼音）</label>
               <input
                 type="text"
                 className="form-control"
@@ -66,7 +65,7 @@ export default function Loginpage() {
               <div className="valid-feedback">Looks good!</div>
             </div>
             <div className="col-md-4 mb-3">
-              <label for="validationCustom02" className="fw-bold">姓（请输入拼音）</label>
+              <label htmlFor="validationCustom02" className="fw-bold">姓（请输入拼音）</label>
               <input
                 type="text"
                 className="form-control"
@@ -86,6 +85,7 @@ export default function Loginpage() {
               placeholder="e.g. gh38@rice.edu"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
           </div>
           <div className="d-flex justify-content-end mt-4">
