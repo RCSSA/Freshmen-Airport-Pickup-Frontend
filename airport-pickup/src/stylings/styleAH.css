@@ -1,7 +1,7 @@
 .full-white{
     background-color: white;
     width: 100vw;
-    height: 100vh;
+    height: 90vh;
     overflow: hidden;
 }
 
@@ -11,6 +11,14 @@
 
 .color-light-blue{
     color: rgb(14, 119, 217);
+}
+
+.bg-light-blue{
+    background-color: #1976d2;
+}
+
+.bg-light-grey{
+    background-color: #D9D9D9;
 }
 
 .homepage-btn{
@@ -48,4 +56,17 @@
     border: #1976d2 3px solid;
     border-radius: 15px;
     height: fit-content;
+}
+
+.progress-node{
+    border-radius: 100%;
+    width: 15px;
+    height: 15px;
+}
+
+.progress-node-frame{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top:0;
 }

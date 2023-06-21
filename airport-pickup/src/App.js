@@ -2,13 +2,15 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React, { useState } from "react";
 import "./App.css";
 import Homepage from "./pages/Homepage";
-import Registerpage from "./pages/Registerpage";
-import Loginpage from "./pages/Loginpage";
-import ChooseTimePage from "./pages/ChooseTimePage";
-import TimeInfoPage from "./pages/TimeInfoPage";
-import NewStudentPage from "./pages/newStudentPage";
-import StudentLoginPage from "./pages/studentLogin";
-import StudentStatusPage from "./pages/studentStatusPage";
+import Registerpage from "./pages/volunteers/Registerpage";
+import Loginpage from "./pages/volunteers/Loginpage";
+import ChooseTimePage from "./pages/volunteers/ChooseTimePage";
+import TimeInfoPage from "./pages/volunteers/TimeInfoPage";
+import NewStudentPage from "./pages/students/newStudentPage";
+import StudentLoginPage from "./pages/students/studentLogin";
+import StudentStatusPage from "./pages/students/studentStatusPage";
+import BtnAppBar from "./component/BtnAppBar";
+import RequireAuth from "./component/RequireAuth";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -28,15 +30,16 @@ function App() {
       }}
     >
       <BrowserRouter>
+        <BtnAppBar/>
         <Routes>
           <Route path="/" element={<Homepage />}></Route>
           <Route path="/login" element={<Loginpage />}></Route>
           <Route path="/register" element={<Registerpage />}></Route>
           <Route path="/choosetime" element={<ChooseTimePage />}></Route>
           <Route path="/info" element={<TimeInfoPage />}></Route>
-          <Route path="/stulogin" element={<StudentLoginPage />}></Route>
-          <Route path="/nstudent" element={<NewStudentPage />}></Route>
-          <Route path="/stustatus" element={<StudentStatusPage />}></Route>
+          <Route path="/studentlogin" element={<StudentLoginPage />}></Route>
+          <Route path="/studentregister" element={<NewStudentPage />}></Route>
+          <Route path="/studentstatus" element={<StudentStatusPage />}></Route>
         </Routes>
       </BrowserRouter>
     </UserContext.Provider>

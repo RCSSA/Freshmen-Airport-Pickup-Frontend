@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@date-io/moment": "^2.16.1",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@fullcalendar/core": "^6.0.3",
@@ -26,7 +27,10 @@
     "dayjs": "^1.11.8",
     "google-spreadsheet": "^3.3.0",
     "googleapis": "^105.0.0",
+    "moment": "^2.29.4",
+    "moment-timezone": "^0.5.43",
     "mui-image": "^1.0.7",
+    "rc-progress": "^3.4.2",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.0",
     "react-dom": "^18.2.0",

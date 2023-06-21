@@ -23,14 +23,14 @@ export default function Homepage() {
             <button
               type="button"
               className="btn btn-info fs-5 m-2 py-2 homepage-btn"
-              onClick={() => navigate("/nstudent")}
+              onClick={() => navigate("/studentregister")}
             >
               新生注册
             </button>
             <button
               type="button"
               className="btn btn-info fs-5 m-2 py-2 homepage-btn"
-              onClick={() => navigate("/stulogin")}
+              onClick={() => navigate("/studentlogin")}
             >
               新生接机状态查询
             </button>

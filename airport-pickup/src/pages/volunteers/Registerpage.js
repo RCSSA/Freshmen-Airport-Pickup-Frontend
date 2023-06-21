@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { serverUrl } from "../const";
-import { UserContext } from "../App";
+import { serverUrl } from "../../const";
+import { UserContext } from "../../App";
 
 export default function RegisterPage() {
   const navigate = useNavigate();

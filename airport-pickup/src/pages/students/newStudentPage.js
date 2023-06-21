@@ -4,12 +4,14 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
 import "dayjs/locale/zh-cn";
 import "react-datetime-picker/dist/DateTimePicker.css";
 import "react-calendar/dist/Calendar.css";
 import "react-clock/dist/Clock.css";
-import { serverUrl } from "../const";
-import { UserContext } from "../App";
+import { serverUrl } from "../../const";
+import { UserContext } from "../../App";
 
 export default function NewStudentPage() {
   const navigate = useNavigate();
@@ -22,6 +24,23 @@ export default function NewStudentPage() {
   const [airport, setAirport] = useState("IAH");
   const [arriveTime, setArriveTime] = useState(new Date());
   const { setStudentLoggedIn } = useContext(UserContext); // update student logged in status
+
+  dayjs.extend(utc);
+  dayjs.extend(timezone);
+  // America/Ojinaga
+  useEffect(()=>{
+    const getServerData = async () => {
+      const dataFromServerHouston = {
+        unix: 1687339343000,
+        timezone: "America/Ojinaga"
+      };
+      const datetimeHouston = dayjs(dataFromServerHouston.unix).tz(
+        dataFromServerHouston.timezone
+      );
+      setArriveTime(datetimeHouston);
+    };
+    void getServerData();
+  }, [])
 
   // On submit form, send a request to google sheet
   const handleSubmit = (e) => {
@@ -57,7 +76,7 @@ export default function NewStudentPage() {
         if (data.status === true) {
           alert("注册成功！请等待志愿者联系！");
           setStudentLoggedIn(true);
-          navigate("/stustatus");
+          navigate("/studentstatus");
         } else {
           alert("注册失败！请重试！");
         }
@@ -95,131 +114,127 @@ export default function NewStudentPage() {
         <div className="my-2 color-light-blue">
           友情提醒：请您随身带好带有签证的护照和 I-20。
         </div>
-        <div class="justify-content-center form">
-          <div class="row spacing">
-            <div class="col-md-1 mb-3"> </div>
-            <div class="col-md-12 mb-3">
-              <form class="needs-validation" onSubmit={handleSubmit} novalidate>
-                <div class="row form-row">
-                  <div class="col-md-4 mb-3">
-                    <b>
-                      <label for="validationCustom01">First name(拼音)</label>
-                    </b>
+        <div className="justify-content-center form">
+          <div className="row spacing">
+            <div className="col-md-1 mb-3"> </div>
+            <div className="col-md-12 mb-3">
+              <form className="needs-validation" onSubmit={handleSubmit} noValidate>
+                <div className="row form-row">
+                  <div className="col-md-4 mb-3">
+                    <label htmlFor="validationCustom01" className="fw-bold">名（请输入拼音）</label>
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       id="validationCustom01"
                       placeholder="e.g. Yifan"
                       onChange={(e) => setFirstName(e.target.value)}
                       required
                     />
-                    <div class="valid-feedback">Looks good!</div>
+                    <div className="valid-feedback">Looks good!</div>
                   </div>
-                  <div class="col-md-4 mb-3">
-                    <b>
-                      <label for="validationCustom02">Last name（拼音）</label>
-                    </b>
+                  <div className="col-md-4 mb-3">
+                    <label htmlFor="validationCustom02" className="fw-bold">姓（请输入拼音）</label>
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       id="validationCustom02"
                       placeholder="e.g. Hong"
                       onChange={(e) => setLastName(e.target.value)}
                       required
                     />
-                    <div class="valid-feedback">Looks good!</div>
+                    <div className="valid-feedback">Looks good!</div>
                   </div>
                 </div>
-                <div class="row form-row">
-                  <div class="col-md-6 mb-3">
+                <div className="row form-row">
+                  <div className="col-md-6 mb-3">
                     <b>
                       {" "}
-                      <label for="validationCustom03">电话</label>
+                      <label htmlFor="validationCustom03">电话</label>
                     </b>
                     <input
-                      type="text"
-                      class="form-control"
+                      type="number"
+                      className="form-control"
                       id="validationCustom03"
                       placeholder="Phone Number"
                       onChange={(e) => setPhoneNumber(e.target.value)}
                       required
                     />
-                    <div class="invalid-feedback">
+                    <div className="invalid-feedback">
                       Please provide a valid phone number.
                     </div>
                   </div>
                 </div>
 
-                <div class="row form-row">
-                  <div class="col-md-6 mb-3">
+                <div className="row form-row">
+                  <div className="col-md-6 mb-3">
                     <b>
-                      <label for="email">
+                      <label htmlFor="email">
                         邮箱 (请填入@rice.edu邮箱以便于身份核实)
                       </label>
                     </b>
                     <input
                       type="email"
-                      class="form-control"
+                      className="form-control"
                       id="email"
                       placeholder="e.g. bj01@rice.edu"
                       pattern=".+@rice.edu"
                       onChange={(e) => setEmail(e.target.value)}
                       required
                     />
-                    <div class="invalid-feedback">
+                    <div className="invalid-feedback">
                       Please provide a valid rice email.
                     </div>
                   </div>
                 </div>
 
-                <div class="row form-row">
-                  <div class="col-md-6 mb-3">
+                <div className="row form-row">
+                  <div className="col-md-6 mb-3">
                     <b>
                       {" "}
-                      <label for="validationCustom05">微信号</label>{" "}
+                      <label htmlFor="validationCustom05">微信号</label>{" "}
                     </b>
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       id="validationCustom05"
                       placeholder="WeChat ID (example: yw01)"
                       onChange={(e) => setWechat(e.target.value)}
                       required
                     />
 
-                    <div class="invalid-feedback">
+                    <div className="invalid-feedback">
                       Please provide a rice id.
                     </div>
                   </div>
                 </div>
 
-                <div class="row form-row">
-                  <div class="col-md-6 mb-3">
+                <div className="row form-row">
+                  <div className="col-md-6 mb-3">
                     <b>
-                      <label for="validationCustom06">航班号</label>
+                      <label htmlFor="validationCustom06">航班号</label>
                     </b>
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       id="validationCustom06"
                       placeholder="Flight Number (example: NH114)"
                       onChange={(e) => setFlightNumber(e.target.value)}
                       required
                     />
-                    <div class="invalid-feedback">
+                    <div className="invalid-feedback">
                       Please provide a Flight Number.
                     </div>
                   </div>
                 </div>
 
-                <div class="row">
+                <div className="row">
                   <b>
-                    <legend class="col-form-label col-sm-2 pt-0">机场</legend>
+                    <legend className="col-form-label col-sm-2 pt-0">机场</legend>
                   </b>
-                  <div class="col-sm-10">
-                    <div class="form-check">
+                  <div className="col-sm-10">
+                    <div className="form-check">
                       <input
-                        class="form-check-input"
+                        className="form-check-input"
                         type="radio"
                         name="gridRadios"
                         id="gridRadios1"
@@ -227,28 +242,28 @@ export default function NewStudentPage() {
                         onClick={() => setAirport("IAH")}
                         defaultChecked
                       />
-                      <label class="form-check-label" for="gridRadios1">
+                      <label className="form-check-label" htmlFor="gridRadios1">
                         Houston Intercontinental Airport(IAH)
                       </label>
                     </div>
-                    <div class="form-check">
+                    <div className="form-check">
                       <input
-                        class="form-check-input"
+                        className="form-check-input"
                         type="radio"
                         name="gridRadios"
                         id="gridRadios2"
                         value="option2"
                         onClick={() => setAirport("HOU")}
                       />
-                      <label class="form-check-label" for="gridRadios2">
+                      <label className="form-check-label" htmlFor="gridRadios2">
                         William P. Hobby Airport(HOU)
                       </label>
                     </div>
                   </div>
                 </div>
 
-                <div class="row form-row">
-                  <div class="col-md-6 mb-3">
+                <div className="row form-row">
+                  <div className="col-md-6 mb-3">
                     <br />
                     <br />
                     <LocalizationProvider
@@ -263,10 +278,11 @@ export default function NewStudentPage() {
                     </LocalizationProvider>
                   </div>
                 </div>
-
-                <button class="btn btn-primary" type="submit">
-                  Submit
-                </button>
+                <div className="d-flex justify-content-end">
+                  <button className="btn btn-info homepage-btn my-2" type="submit">
+                    提交
+                  </button>
+                </div>
               </form>
             </div>
           </div>
