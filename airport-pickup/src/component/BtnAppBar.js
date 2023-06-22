@@ -5,8 +5,8 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
-import { Image } from "mui-image";
-import { localUrl } from "./const";
+import { localUrl } from "../const";
+import logo from "../images/logo.png";
 
 export default function BtnAppBar() {
   const redirectToHomepage = () => {
@@ -21,13 +21,9 @@ export default function BtnAppBar() {
             edge="start"
             color="inherit"
             aria-label="menu"
-            sx={{ mr: 2 }}
+            onClick={()=>window.location.replace("https://rcssa.rice.edu/")}
           >
-            <Image
-              src="https://i.ibb.co/PCLy9nc/RCSSA-120x120.jpg"
-              fit="contain"
-              height="5vh"
-            />
+            <img placeholder="rcssa logo" src={logo} style={{height: "55px"}}/>
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Button color="inherit" onClick={redirectToHomepage}>

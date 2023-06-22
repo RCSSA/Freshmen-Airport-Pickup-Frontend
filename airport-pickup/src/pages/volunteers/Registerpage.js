@@ -1,16 +1,15 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { serverUrl } from "../const";
-import { UserContext } from "../App";
+import { serverUrl } from "../../const";
 
-export default function RegisterPage() {
+export default function RegisterPage(props) {
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [wechat, setWechat] = useState("");
   const [phone, setPhone] = useState("");
-  const { setVolunteerLoggedIn } = useContext(UserContext); // update volunteer logged in status
+  const { setVolunteerLoggedIn } = props.setVolunteerLoggedIn; // update volunteer logged in status
 
   function onFormSubmit(e) {
     e.preventDefault();

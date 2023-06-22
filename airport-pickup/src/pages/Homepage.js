@@ -2,18 +2,15 @@ import React, { useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import HailIcon from "@mui/icons-material/Hail";
 import NoCrashIcon from "@mui/icons-material/NoCrash";
-import { UserContext } from "../App";
 
-export default function Homepage() {
-  const navigate = useNavigate();
-  const { volunteerLoggedIn, setStudentLoggedIn, setVolunteerLoggedIn } =
-    useContext(UserContext); // student logged in or not
+export default function Homepage(props) {
+  const navigate = useNavigate(); 
 
   useEffect(() => {
-    setStudentLoggedIn(false);
-    setVolunteerLoggedIn(false);
-    console.log("set both to false, volunteerLoggedIn:", volunteerLoggedIn);
+    props.setStudentLoggedIn(false);
+    props.setVolunteerLoggedIn(false);
   }, []);
+  
   return (
     <div className="full-white d-flex justify-content-center align-items-center">
       <div className="row">
@@ -23,14 +20,14 @@ export default function Homepage() {
             <button
               type="button"
               className="btn btn-info fs-5 m-2 py-2 homepage-btn"
-              onClick={() => navigate("/nstudent")}
+              onClick={() => navigate("/studentregister")}
             >
               新生注册
             </button>
             <button
               type="button"
               className="btn btn-info fs-5 m-2 py-2 homepage-btn"
-              onClick={() => navigate("/stulogin")}
+              onClick={() => navigate("/studentlogin")}
             >
               新生接机状态查询
             </button>

@@ -1,9 +1,7 @@
 import React, { useCallback, useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import FullCalendarModel from "../component/FullCalendar";
-import LoadingPage from "./LoadingPage";
-import { serverUrl } from "../const";
-import { UserContext } from "../App";
+import FullCalendarModel from "../../component/FullCalendar";
+import { serverUrl } from "../../const";
 
 export default function ChooseTimePage() {
   const navigate = useNavigate();
@@ -14,7 +12,6 @@ export default function ChooseTimePage() {
   const [matchData, setMatchData] = useState([]); // note down match data
   //TODO::Make use of setEmail
   const [email, setEmail] = useState("hs56@rice.edu"); // volunteers email
-  const { volunteerLoggedIn } = useContext(UserContext); // volunteer logged in or not
 
   var eventData = {};
 
@@ -89,16 +86,7 @@ export default function ChooseTimePage() {
     console.log("matchData: ", matchData);
   }, [matchData]);
 
-  const checkIsLoggin = () => {
-    console.log("volunteerLoggedIn", volunteerLoggedIn);
-    return volunteerLoggedIn;
-  };
-
   useEffect(() => {
-    if (checkIsLoggin() === false) {
-      navigate("/");
-      return;
-    }
     // get all await students
     const url = serverUrl + "?action=get_all";
     fetch(url)
@@ -180,10 +168,10 @@ export default function ChooseTimePage() {
           if (data.num_allocated && data.num_allocated > 0) {
             console.log("成功匹配" + data.num_allocated + "人！");
             alert("成功匹配" + data.num_allocated + "人！");
-            // navigate("/stustatus");
+            // navigate("/studentstatus");
           } else {
             alert("很遗憾，（部分）选择时间段未能匹配成功！");
-            // navigate("/stustatus");
+            // navigate("/studentstatus");
           }
         });
     });
@@ -226,6 +214,8 @@ export default function ChooseTimePage() {
       </div>
     </div>
   ) : (
-    <LoadingPage />
+    <div className="spinner-border" role="status">
+      <span className="visually-hidden">Loading...</span>
+    </div>
   );
 }
