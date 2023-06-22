@@ -21,6 +21,7 @@ function App() {
   const [studentLoggedIn, setStudentLoggedIn] = useState(false);
   const [volunteerLoggedIn, setVolunteerLoggedIn] = useState(false);
   const [status, setStatus] = useState(0);
+  const [progress,setProgress] = useState(0);
   return (
       <BrowserRouter>
         <BtnAppBar/>
@@ -35,9 +36,10 @@ function App() {
             </RequireAuth>}>
           </Route>
           <Route path="/choosetime" element={
-            <RequireAuth user={volunteerLoggedIn}>
-              <ChooseTimePage />
-            </RequireAuth>
+            // <RequireAuth user={volunteerLoggedIn}>
+            //   <ChooseTimePage />
+            // </RequireAuth>
+            <ChooseTimePage />
           }></Route>
           <Route path="/info" element={
             <RequireAuth user={volunteerLoggedIn}>
@@ -53,10 +55,11 @@ function App() {
             </RequireAuth>}>
           </Route>
           <Route path="/studentallocate" element={
-            <RequireAuth user={studentLoggedIn}>
-              <StudentAllocatePage />
-            </RequireAuth>}>
-          </Route>
+            // <RequireAuth user={studentLoggedIn}>
+            //   <StudentAllocatePage />
+            // </RequireAuth>
+            <StudentAllocatePage progress={progress}/>
+          }></Route>
         </Routes>
       </BrowserRouter>
   );

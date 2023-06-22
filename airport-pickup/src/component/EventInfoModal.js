@@ -9,6 +9,7 @@ export default function EventInfoModal(props) {
   const eventColors = props.eventColors;
   const setEventColors = props.setEventColors;
   const [select, setSelect] = useState("确认选择");
+  
 
   function checkAllZero() {
     const checkNumbers = props.pickUpNumber[`${props.id}`];
@@ -43,6 +44,12 @@ export default function EventInfoModal(props) {
   }
 
   function handleClose() {
+    openModals[eventId] = false;
+    setOpenModals({ ...openModals, [`${eventId}`]: false });
+  }
+
+  function handleSelect(e) {
+    e.preventDefault();
     props.setSelected(
       props.selected.filter((elem) => {
         return elem[0] !== eventId;
@@ -76,20 +83,13 @@ export default function EventInfoModal(props) {
       setEventColors({ ...eventColors, [`${eventId}`]: "#0dcafd" });
     }
 
-    openModals[eventId] = false;
-    setOpenModals({ ...openModals, [`${eventId}`]: false });
-  }
-
-  function handleSelect(e) {
-    e.preventDefault();
-
     handleClose();
   }
 
   return (
     <Modal
       open={openModals[eventId]}
-      onClose={handleClose}
+      // onClose={handleClose}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
       className="eventInfoModalFrame d-flex justify-content-center align-items-center"
