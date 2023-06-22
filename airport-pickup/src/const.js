@@ -1,5 +1,7 @@
+// export const serverUrl =
+//   "https://script.google.com/macros/s/AKfycbwSVZc9xwbywtu7FaNXo8kxXUDXfpVsMtSQMgIBd62feVc4n6O7VhP_RKIV1Pc5Rf0n/exec";
 export const serverUrl =
-  "https://script.google.com/macros/s/AKfycbwSVZc9xwbywtu7FaNXo8kxXUDXfpVsMtSQMgIBd62feVc4n6O7VhP_RKIV1Pc5Rf0n/exec";
+  "https://script.google.com/macros/s/AKfycbyk8TTJkJ0lRELMZ50nEYi_U8Z7yH7jN3G-BKJZBrc_l8LpAtFkHXa96d-riZCaz8WJ/exec";
 export const testUrl =
   "https://script.google.com/macros/s/AKfycbwW_PC-ZKk-4PKK7-uHArZ__2ZZJo5eweyXGqP0iWKmA9MJQIx1_XgQPqA_lyAmIHnM/exec";
 export const siteUrl =

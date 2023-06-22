@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState} from "react";
 import { useNavigate } from "react-router-dom";
 import { serverUrl } from "../../const";
 
@@ -32,12 +32,13 @@ export default function StudentLoginPage(props) {
       .then((response) => response.json(data))
       .then((data) => {
         console.log(data);
-        if (data.status === true) {
+        if (data.found === true && data.confirmed === true){
           alert("登陆成功！");
           setStudentLoggedIn(true);
-          navigate("/studentstatus");
+          navigate("/info");
         } else {
-          alert("登陆失败！请重试！");
+          props.setStatus(2);
+          navigate("/status");
         }
       });
   }
@@ -53,6 +54,7 @@ export default function StudentLoginPage(props) {
               <label htmlFor="validationCustom01" className="fw-bold">名（请输入拼音）</label>
               <input
                 type="text"
+                pattern = "[A-Za-z]+"
                 className="form-control"
                 id="validationCustom01"
                 placeholder="e.g. Yifan"
@@ -65,6 +67,7 @@ export default function StudentLoginPage(props) {
               <label htmlFor="validationCustom02" className="fw-bold">姓（请输入拼音）</label>
               <input
                 type="text"
+                pattern = "[A-Za-z]+"
                 className="form-control"
                 id="validationCustom02"
                 placeholder="e.g. Hong"

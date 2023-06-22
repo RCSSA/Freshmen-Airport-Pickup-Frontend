@@ -20,21 +20,22 @@ import "./stylings/styleAH.css";
 function App() {
   const [studentLoggedIn, setStudentLoggedIn] = useState(false);
   const [volunteerLoggedIn, setVolunteerLoggedIn] = useState(false);
-  const [status, setStatus] = useState(0);
+  const [status, setStatus] = useState(3);
   const [progress,setProgress] = useState(0);
   return (
       <BrowserRouter>
         <BtnAppBar/>
         <Routes>
-          {/* volunteer */}
-          <Route path="/" element={<Homepage setStudentLoggedIn={setStudentLoggedIn} setVolunteerLoggedIn={setVolunteerLoggedIn}/>}></Route>
-          <Route path="/login" element={<Loginpage setVolunteerLoggedIn={setVolunteerLoggedIn}/>}></Route>
-          <Route path="/register" element={<Registerpage setVolunteerLoggedIn={setVolunteerLoggedIn}/>}></Route>
-          <Route path="/volunteerstatus" element={
-            <RequireAuth user={volunteerLoggedIn}>
-              <StudentStatusPage status={status}/>
-            </RequireAuth>}>
+          <Route path="/" element={
+            <Homepage setStudentLoggedIn={setStudentLoggedIn} setVolunteerLoggedIn={setVolunteerLoggedIn} setStatus={setStatus}/>}>
           </Route>
+          <Route path="/status" element={
+              <StudentStatusPage status={status}/>}>
+          </Route>
+
+          {/* volunteer */}
+          <Route path="/login" element={<Loginpage setVolunteerLoggedIn={setVolunteerLoggedIn} setStatus={setStatus}/>}></Route>
+          <Route path="/register" element={<Registerpage setVolunteerLoggedIn={setVolunteerLoggedIn} setStatus={setStatus}/>}></Route>
           <Route path="/choosetime" element={
             // <RequireAuth user={volunteerLoggedIn}>
             //   <ChooseTimePage />
@@ -42,18 +43,20 @@ function App() {
             <ChooseTimePage />
           }></Route>
           <Route path="/info" element={
-            <RequireAuth user={volunteerLoggedIn}>
-              <TimeInfoPage />
-            </RequireAuth>
+            // <RequireAuth user={volunteerLoggedIn}>
+            //   <TimeInfoPage />
+            // </RequireAuth>
+            <TimeInfoPage />
           }></Route>
+
+
           {/* student */}
-          <Route path="/studentlogin" element={<StudentLoginPage setStudentLoggedIn={setStudentLoggedIn}/>}></Route>
-          <Route path="/studentregister" element={<NewStudentPage setStudentLoggedIn={setStudentLoggedIn}/>}></Route>
-          <Route path="/studentstatus" element={
-            <RequireAuth user={studentLoggedIn}>
+          <Route path="/studentlogin" element={<StudentLoginPage setStudentLoggedIn={setStudentLoggedIn} setStatus={setStatus}/>}></Route>
+          <Route path="/studentregister" element={<NewStudentPage setStudentLoggedIn={setStudentLoggedIn} setStatus={setStatus}/>}></Route>
+          {/* <Route path="/studentstatus" element={
               <StudentStatusPage status={status}/>
-            </RequireAuth>}>
-          </Route>
+            }>
+          </Route> */}
           <Route path="/studentallocate" element={
             // <RequireAuth user={studentLoggedIn}>
             //   <StudentAllocatePage />

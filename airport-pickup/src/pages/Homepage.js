@@ -7,6 +7,7 @@ export default function Homepage(props) {
   const navigate = useNavigate(); 
 
   useEffect(() => {
+    props.setStatus(3);
     props.setStudentLoggedIn(false);
     props.setVolunteerLoggedIn(false);
   }, []);

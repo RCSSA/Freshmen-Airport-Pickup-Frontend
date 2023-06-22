@@ -72,12 +72,13 @@ export default function NewStudentPage(props) {
       .then((response) => response.json(data))
       .then((data) => {
         console.log(data);
-        if (data.status === true) {
-          alert("注册成功！请等待志愿者联系！");
+        if (data.found === true && data.confirmed === true){
+          alert("登陆成功！");
           setStudentLoggedIn(true);
-          navigate("/studentstatus");
+          navigate("/info");
         } else {
-          alert("注册失败！请重试！");
+          props.setStatus(2);
+          navigate("/status");
         }
       });
   };
@@ -117,12 +118,13 @@ export default function NewStudentPage(props) {
           <div className="row spacing">
             <div className="col-md-1 mb-3"> </div>
             <div className="col-md-12 mb-3">
-              <form className="needs-validation" onSubmit={handleSubmit} noValidate>
+              <form className="needs-validation" onSubmit={handleSubmit}>
                 <div className="row form-row">
                   <div className="col-md-4 mb-3">
                     <label htmlFor="validationCustom01" className="fw-bold">名（请输入拼音）</label>
                     <input
                       type="text"
+                      pattern = "[A-Za-z]+"
                       className="form-control"
                       id="validationCustom01"
                       placeholder="e.g. Yifan"
@@ -135,6 +137,7 @@ export default function NewStudentPage(props) {
                     <label htmlFor="validationCustom02" className="fw-bold">姓（请输入拼音）</label>
                     <input
                       type="text"
+                      pattern = "[A-Za-z]+"
                       className="form-control"
                       id="validationCustom02"
                       placeholder="e.g. Hong"
