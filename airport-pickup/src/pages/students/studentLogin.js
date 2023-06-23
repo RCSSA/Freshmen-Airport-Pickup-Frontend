@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { serverUrl } from "../../const";
 
@@ -32,10 +32,13 @@ export default function StudentLoginPage(props) {
       .then((response) => response.json(data))
       .then((data) => {
         console.log(data);
-        if (data.found === true && data.confirmed === true){
+        if (data.found === true && data.confirmed === true) {
           alert("登陆成功！");
+          JSON.stringify(data.record) === "{}"
+            ? props.setProgress(1)
+            : props.setProgress(2);
           setStudentLoggedIn(true);
-          navigate("/info");
+          navigate("/studentallocate");
         } else {
           props.setStatus(2);
           navigate("/status");
@@ -51,10 +54,12 @@ export default function StudentLoginPage(props) {
         <form className="mt-3 row" onSubmit={handleSubmit}>
           <div className="row form-row">
             <div className="col-md-4 mb-3">
-              <label htmlFor="validationCustom01" className="fw-bold">名（请输入拼音）</label>
+              <label htmlFor="validationCustom01" className="fw-bold">
+                名（请输入拼音）
+              </label>
               <input
                 type="text"
-                pattern = "[A-Za-z]+"
+                pattern="[A-Za-z]+"
                 className="form-control"
                 id="validationCustom01"
                 placeholder="e.g. Yifan"
@@ -64,10 +69,12 @@ export default function StudentLoginPage(props) {
               <div className="valid-feedback">Looks good!</div>
             </div>
             <div className="col-md-4 mb-3">
-              <label htmlFor="validationCustom02" className="fw-bold">姓（请输入拼音）</label>
+              <label htmlFor="validationCustom02" className="fw-bold">
+                姓（请输入拼音）
+              </label>
               <input
                 type="text"
-                pattern = "[A-Za-z]+"
+                pattern="[A-Za-z]+"
                 className="form-control"
                 id="validationCustom02"
                 placeholder="e.g. Hong"

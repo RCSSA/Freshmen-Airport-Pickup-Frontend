@@ -8,7 +8,7 @@ import ChooseTimePage from "./pages/volunteers/ChooseTimePage";
 import TimeInfoPage from "./pages/volunteers/TimeInfoPage";
 import NewStudentPage from "./pages/students/newStudentPage";
 import StudentLoginPage from "./pages/students/studentLogin";
-import StudentStatusPage from "./pages/StatusPage";
+import StatusPage from "./pages/StatusPage";
 import BtnAppBar from "./component/BtnAppBar";
 import StudentAllocatePage from "./pages/students/studentAllocatePage";
 import RequireAuth from "./component/RequireAuth";
@@ -21,50 +21,99 @@ function App() {
   const [studentLoggedIn, setStudentLoggedIn] = useState(false);
   const [volunteerLoggedIn, setVolunteerLoggedIn] = useState(false);
   const [status, setStatus] = useState(3);
-  const [progress,setProgress] = useState(0);
+  const [progress, setProgress] = useState(0);
   return (
-      <BrowserRouter>
-        <BtnAppBar/>
-        <Routes>
-          <Route path="/" element={
-            <Homepage setStudentLoggedIn={setStudentLoggedIn} setVolunteerLoggedIn={setVolunteerLoggedIn} setStatus={setStatus}/>}>
-          </Route>
-          <Route path="/status" element={
-              <StudentStatusPage status={status}/>}>
-          </Route>
+    <BrowserRouter>
+      <BtnAppBar />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Homepage
+              setStudentLoggedIn={setStudentLoggedIn}
+              setVolunteerLoggedIn={setVolunteerLoggedIn}
+              setStatus={setStatus}
+            />
+          }
+        ></Route>
+        <Route path="/status" element={<StatusPage status={status} />}></Route>
 
-          {/* volunteer */}
-          <Route path="/login" element={<Loginpage setVolunteerLoggedIn={setVolunteerLoggedIn} setStatus={setStatus}/>}></Route>
-          <Route path="/register" element={<Registerpage setVolunteerLoggedIn={setVolunteerLoggedIn} setStatus={setStatus}/>}></Route>
-          <Route path="/choosetime" element={
+        {/* volunteer */}
+        <Route
+          path="/login"
+          element={
+            <Loginpage
+              setVolunteerLoggedIn={setVolunteerLoggedIn}
+              setStatus={setStatus}
+              setProgress={setProgress}
+            />
+          }
+        ></Route>
+        <Route
+          path="/register"
+          element={
+            <Registerpage
+              setVolunteerLoggedIn={setVolunteerLoggedIn}
+              setStatus={setStatus}
+              setProgress={setProgress}
+            />
+          }
+        ></Route>
+        <Route
+          path="/choosetime"
+          element={
             // <RequireAuth user={volunteerLoggedIn}>
             //   <ChooseTimePage />
             // </RequireAuth>
             <ChooseTimePage />
-          }></Route>
-          <Route path="/info" element={
+          }
+        ></Route>
+        <Route
+          path="/info"
+          element={
             // <RequireAuth user={volunteerLoggedIn}>
             //   <TimeInfoPage />
             // </RequireAuth>
             <TimeInfoPage />
-          }></Route>
+          }
+        ></Route>
 
-
-          {/* student */}
-          <Route path="/studentlogin" element={<StudentLoginPage setStudentLoggedIn={setStudentLoggedIn} setStatus={setStatus}/>}></Route>
-          <Route path="/studentregister" element={<NewStudentPage setStudentLoggedIn={setStudentLoggedIn} setStatus={setStatus}/>}></Route>
-          {/* <Route path="/studentstatus" element={
+        {/* student */}
+        <Route
+          path="/studentlogin"
+          element={
+            <StudentLoginPage
+              setStudentLoggedIn={setStudentLoggedIn}
+              setStatus={setStatus}
+              setProgress={setProgress}
+            />
+          }
+        ></Route>
+        <Route
+          path="/studentregister"
+          element={
+            <NewStudentPage
+              setStudentLoggedIn={setStudentLoggedIn}
+              setStatus={setStatus}
+              setProgress={setProgress}
+            />
+          }
+        ></Route>
+        {/* <Route path="/studentstatus" element={
               <StudentStatusPage status={status}/>
             }>
           </Route> */}
-          <Route path="/studentallocate" element={
+        <Route
+          path="/studentallocate"
+          element={
             // <RequireAuth user={studentLoggedIn}>
             //   <StudentAllocatePage />
             // </RequireAuth>
-            <StudentAllocatePage progress={progress}/>
-          }></Route>
-        </Routes>
-      </BrowserRouter>
+            <StudentAllocatePage progress={progress} />
+          }
+        ></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
