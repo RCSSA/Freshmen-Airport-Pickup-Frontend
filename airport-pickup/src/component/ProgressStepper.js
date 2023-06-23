@@ -5,8 +5,7 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 
 const steps = [
-  '审核通过, 待邮箱验证',
-  '验证完成, 待分配',
+  '信息输入完成, 待分配',
   '分配成功',
 ];
 

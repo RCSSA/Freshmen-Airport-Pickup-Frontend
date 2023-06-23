@@ -28,7 +28,12 @@ export default function StudentAllocatePage(props) {
             </div>
             </div>
         </div>
-        <div>
+        <div className='d-flex full-width flex-column align-items-center'>
+            <button
+                className="btn btn-outline-info fs-5 py-2 homepage-btn"
+            >
+                若信息有误,点此重新注册
+            </button>
             <button
                 onClick={() => {navigate("/");}}
                 className="btn btn-info fs-5 my-3 py-2 homepage-btn"
