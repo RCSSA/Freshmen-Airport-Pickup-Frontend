@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { serverUrl } from "../../const";
 
@@ -32,15 +32,18 @@ export default function Loginpage(props) {
       .then((response) => response.json(data))
       .then((data) => {
         console.log(data);
-        if (
-          data.status === true ||
-          data.message.toLowerCase() === "record found."
-        ) {
+        if (data.found === true && data.confirmed === true){
           alert("登陆成功！");
           setVolunteerLoggedIn(true);
           navigate("/info");
         } else {
-          alert("登陆失败！请重试！");
+          if (data.found === true && data.confirmed === false){
+            props.setStatus(1);
+            navigate("/status");
+          } else {
+            props.setStatus(2);
+            navigate("/status");
+          }
         }
       });
   }
@@ -56,6 +59,7 @@ export default function Loginpage(props) {
               <label htmlFor="validationCustom01" className="fw-bold">名（请输入拼音）</label>
               <input
                 type="text"
+                pattern = "[A-Za-z]+"
                 className="form-control"
                 id="validationCustom01"
                 placeholder="e.g. Yifan"
@@ -68,6 +72,7 @@ export default function Loginpage(props) {
               <label htmlFor="validationCustom02" className="fw-bold">姓（请输入拼音）</label>
               <input
                 type="text"
+                pattern = "[A-Za-z]+"
                 className="form-control"
                 id="validationCustom02"
                 placeholder="e.g. Hong"
