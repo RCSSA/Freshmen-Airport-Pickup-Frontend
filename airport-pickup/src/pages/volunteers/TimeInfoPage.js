@@ -17,9 +17,9 @@ export default function TimeInfoPage() {
           {/* 分配信息 */}
           <div className="d-flex justify-content-between align-items-center full-width mt-3">
             <div className="card text-bg-light p-3">
-              <div>航班号：dafddgdgsga</div>
-              <div>时间:asdasdsa</div>
-              <div>机场:IAH</div>
+              <div>航班号：NH114</div>
+              <div>时间: 2023-06-24-08:23am</div>
+              <div>机场: IAH</div>
             </div>
             <div className="d-flex align-items-center">
               <p className="text-success me-3 mt-3">状态: 分配成功</p>
@@ -34,12 +34,14 @@ export default function TimeInfoPage() {
             >
               增加接机时间段
             </button>
-            <button className="btn btn-info homepage-btn m-2 col-12 col-lg-6" onClick={logout}>
+            <button
+              className="btn btn-info homepage-btn m-2 col-12 col-lg-6"
+              onClick={logout}
+            >
               返回主页
             </button>
           </div>
         </div>
-        
       </div>
     </div>
   );

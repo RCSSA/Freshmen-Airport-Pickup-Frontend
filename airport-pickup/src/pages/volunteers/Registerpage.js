@@ -77,7 +77,7 @@ export default function RegisterPage(props) {
               className="form-control"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
-              placeholder="First Name (e.g. Xiaoming)"
+              placeholder="First Name (e.g. Juan)"
               required
             />
           </div>
@@ -89,7 +89,7 @@ export default function RegisterPage(props) {
               className="form-control"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
-              placeholder="Last Name (e.g. Wang)"
+              placeholder="Last Name (e.g. Huang)"
               required
             />
           </div>
@@ -113,7 +113,7 @@ export default function RegisterPage(props) {
             <input
               type="text"
               className="form-control"
-              placeholder=""
+              placeholder="e.g. _ge_huang_"
               value={wechat}
               onChange={(e) => setWechat(e.target.value)}
             />
@@ -128,6 +128,7 @@ export default function RegisterPage(props) {
               className="form-control"
               name="phone"
               pattern="[0-9]{3}(-)?[0-9]{3}(-)?[0-9]{4}"
+              placeholder="Phone Number"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               required

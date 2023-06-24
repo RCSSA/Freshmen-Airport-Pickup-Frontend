@@ -22,6 +22,11 @@ function App() {
   const [volunteerLoggedIn, setVolunteerLoggedIn] = useState(false);
   const [status, setStatus] = useState(3);
   const [progress, setProgress] = useState(0);
+  const [studentName, setStudentName] = useState("");
+  // const [volName, setVolName] = useState("");
+  const [studentEmail, setStudentEmail] = useState("");
+  const [volEmail, setVolEmail] = useState("");
+
   return (
     <BrowserRouter>
       <BtnAppBar />
@@ -46,6 +51,7 @@ function App() {
               setVolunteerLoggedIn={setVolunteerLoggedIn}
               setStatus={setStatus}
               setProgress={setProgress}
+              setVolEmail={setVolEmail}
             />
           }
         ></Route>
@@ -65,7 +71,7 @@ function App() {
             // <RequireAuth user={volunteerLoggedIn}>
             //   <ChooseTimePage />
             // </RequireAuth>
-            <ChooseTimePage />
+            <ChooseTimePage volEmail={volEmail} />
           }
         ></Route>
         <Route
@@ -86,6 +92,8 @@ function App() {
               setStudentLoggedIn={setStudentLoggedIn}
               setStatus={setStatus}
               setProgress={setProgress}
+              setStudentName={setStudentName}
+              setStudentEmail={setStudentEmail}
             />
           }
         ></Route>
@@ -96,6 +104,8 @@ function App() {
               setStudentLoggedIn={setStudentLoggedIn}
               setStatus={setStatus}
               setProgress={setProgress}
+              setStudentName={setStudentName}
+              setStudentEmail={setStudentEmail}
             />
           }
         ></Route>
@@ -109,7 +119,11 @@ function App() {
             // <RequireAuth user={studentLoggedIn}>
             //   <StudentAllocatePage />
             // </RequireAuth>
-            <StudentAllocatePage progress={progress} />
+            <StudentAllocatePage
+              progress={progress}
+              studentEmail={studentEmail}
+              studentName={studentName}
+            />
           }
         ></Route>
       </Routes>

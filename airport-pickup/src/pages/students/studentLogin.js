@@ -38,7 +38,12 @@ export default function StudentLoginPage(props) {
             ? props.setProgress(1)
             : props.setProgress(2);
           setStudentLoggedIn(true);
-          navigate("/studentallocate");
+          props.setStudentName(firstName + " " + lastName);
+          props.setStudentEmail(email);
+          navigate("/studentallocate", {
+            email,
+            name: firstName + " " + lastName,
+          });
         } else {
           props.setStatus(2);
           navigate("/status");
@@ -62,7 +67,7 @@ export default function StudentLoginPage(props) {
                 pattern="[A-Za-z]+"
                 className="form-control"
                 id="validationCustom01"
-                placeholder="e.g. Yifan"
+                placeholder="e.g. Juan"
                 onChange={(e) => setFirstName(e.target.value)}
                 required
               />
@@ -77,7 +82,7 @@ export default function StudentLoginPage(props) {
                 pattern="[A-Za-z]+"
                 className="form-control"
                 id="validationCustom02"
-                placeholder="e.g. Hong"
+                placeholder="e.g. Huang"
                 onChange={(e) => setLastName(e.target.value)}
                 required
               />
@@ -89,7 +94,7 @@ export default function StudentLoginPage(props) {
             <input
               type="email"
               className="form-control"
-              placeholder="e.g. gh38@rice.edu"
+              placeholder="e.g. gh31@rice.edu"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
