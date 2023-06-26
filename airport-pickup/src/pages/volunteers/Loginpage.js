@@ -36,6 +36,7 @@ export default function Loginpage(props) {
           alert("登陆成功！");
           setVolunteerLoggedIn(true);
           props.setVolEmail(email);
+          props.setStudentList(data.record || []);
           navigate("/info");
         } else {
           if (data.found === true && data.confirmed === false) {

@@ -40,7 +40,7 @@ export default function RegisterPage(props) {
           props.setStatus(1);
           navigate("/status");
         } else {
-          props.setStatus(0);
+          props.setStatus(2);
           navigate("/status");
         }
         // 审核不通过的情况?

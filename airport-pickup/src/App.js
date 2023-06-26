@@ -26,6 +26,8 @@ function App() {
   // const [volName, setVolName] = useState("");
   const [studentEmail, setStudentEmail] = useState("");
   const [volEmail, setVolEmail] = useState("");
+  const [volInfo, setVolInfo] = useState({});
+  const [studentList, setStudentList] = useState([]);
 
   return (
     <BrowserRouter>
@@ -52,6 +54,7 @@ function App() {
               setStatus={setStatus}
               setProgress={setProgress}
               setVolEmail={setVolEmail}
+              setStudentList={setStudentList}
             />
           }
         ></Route>
@@ -80,7 +83,7 @@ function App() {
             // <RequireAuth user={volunteerLoggedIn}>
             //   <TimeInfoPage />
             // </RequireAuth>
-            <TimeInfoPage />
+            <TimeInfoPage studentList={studentList} />
           }
         ></Route>
 
@@ -94,6 +97,7 @@ function App() {
               setProgress={setProgress}
               setStudentName={setStudentName}
               setStudentEmail={setStudentEmail}
+              setVolInfo={setVolInfo}
             />
           }
         ></Route>
@@ -123,6 +127,7 @@ function App() {
               progress={progress}
               studentEmail={studentEmail}
               studentName={studentName}
+              volInfo={volInfo}
             />
           }
         ></Route>

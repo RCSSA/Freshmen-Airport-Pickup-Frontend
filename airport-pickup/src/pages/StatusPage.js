@@ -45,7 +45,7 @@ export default function StatusPage(props) {
       setAlert(
         <div className="full-width">
           <Alert
-            message="尚未注册"
+            message="尚未注册或已被注册"
             description="您尚未注册您的相关信息，请返回主页进行注册后再次尝试登陆。"
             type="error"
             showIcon

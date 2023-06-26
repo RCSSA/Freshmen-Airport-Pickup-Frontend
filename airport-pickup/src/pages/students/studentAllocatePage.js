@@ -27,9 +27,26 @@ export default function StudentAllocatePage(props) {
         <div className="col-12 col-lg-6 p-0 p-lg-5 ps-lg-2">
           <div className="full-width p-3 p-lg-5 card text-bg-light my-3">
             <div className="fw-bold fs-5">志愿者信息</div>
-            <div>姓名：</div>
-            <div>邮箱：</div>
-            <div>微信号：</div>
+            <div>
+              姓名：
+              {props.volInfo &&
+              props.volInfo.vol_firstname &&
+              props.volInfo.vol_lastname
+                ? props.volInfo.vol_firstname + " " + props.volInfo.vol_lastname
+                : "Unknown"}
+            </div>
+            <div>
+              邮箱：
+              {props.volInfo && props.volInfo.vol_email
+                ? props.volInfo.vol_email
+                : "Unknown"}
+            </div>
+            <div>
+              微信号：
+              {props.volInfo && props.volInfo.vol_wechat
+                ? props.volInfo.vol_wechat
+                : "Unknown"}
+            </div>
           </div>
         </div>
       </div>

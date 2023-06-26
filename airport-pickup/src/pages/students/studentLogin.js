@@ -40,6 +40,7 @@ export default function StudentLoginPage(props) {
           setStudentLoggedIn(true);
           props.setStudentName(firstName + " " + lastName);
           props.setStudentEmail(email);
+          props.setVolInfo(data.record);
           navigate("/studentallocate", {
             email,
             name: firstName + " " + lastName,

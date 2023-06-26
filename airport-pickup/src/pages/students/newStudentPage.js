@@ -282,7 +282,7 @@ export default function NewStudentPage(props) {
                       adapterLocale="zh-cn"
                     >
                       <DateTimePicker
-                        label="到达时间（CST）"
+                        label="到达时间（CST 休斯敦时间）"
                         onChange={(e) => setArriveTime(e)}
                         value={dayjs(arriveTime)}
                       />
