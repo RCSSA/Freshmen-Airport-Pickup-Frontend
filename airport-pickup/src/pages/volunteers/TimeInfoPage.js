@@ -1,5 +1,6 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { serverUrl } from "../../const";
 
 export default function TimeInfoPage(props) {
   const navigate = useNavigate();
@@ -7,6 +8,36 @@ export default function TimeInfoPage(props) {
   function logout() {
     navigate("/");
   }
+
+  const handleDeleteByIndex = (index) => {
+    // props.deleteStudent(index);
+    console.log(props.studentList[index]);
+    let data = {};
+    let action = "delete_match_from_volunteer";
+    let url = serverUrl + "?action=" + action;
+    fetch(url, {
+      redirect: "follow",
+      method: "POST",
+      body: JSON.stringify({
+        stud_email: props.studentList[index].email,
+        vol_email: props.volEmail,
+      }),
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8",
+      },
+    })
+      .then((response) => response.json(data))
+      .then((data) => {
+        console.log(data);
+        if (data.status === true) {
+          const newStudentList = props.studentList.filter(
+            (student, i) => i !== index
+          );
+          alert("删除成功");
+          props.setStudentList(newStudentList);
+        } else alert("删除失败");
+      });
+  };
 
   useEffect(() => {
     console.log("TimeInfoPage: props:", props);
@@ -32,7 +63,14 @@ export default function TimeInfoPage(props) {
               <div>机场：{student.airport}</div>
               <div className="d-flex align-items-center">
                 <p className="text-success me-3 mt-3">状态: 分配成功</p>
-                <div className="btn btn-outline-danger">删除</div>
+                <div
+                  className="btn btn-outline-danger"
+                  onClick={() => {
+                    handleDeleteByIndex(index);
+                  }}
+                >
+                  删除
+                </div>
               </div>
             </div>
           ))}

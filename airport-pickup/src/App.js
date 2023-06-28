@@ -83,7 +83,11 @@ function App() {
             // <RequireAuth user={volunteerLoggedIn}>
             //   <TimeInfoPage />
             // </RequireAuth>
-            <TimeInfoPage studentList={studentList} />
+            <TimeInfoPage
+              studentList={studentList}
+              volEmail={volEmail}
+              setStudentList={setStudentList}
+            />
           }
         ></Route>
 
