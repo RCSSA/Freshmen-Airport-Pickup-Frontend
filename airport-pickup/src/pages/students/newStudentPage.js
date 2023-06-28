@@ -27,11 +27,11 @@ export default function NewStudentPage(props) {
   dayjs.extend(utc);
   dayjs.extend(timezone);
   // America/Ojinaga
-  useEffect(()=>{
+  useEffect(() => {
     const getServerData = async () => {
       const dataFromServerHouston = {
         unix: 1687339343000,
-        timezone: "America/Ojinaga"
+        timezone: "America/Ojinaga",
       };
       const datetimeHouston = dayjs(dataFromServerHouston.unix).tz(
         dataFromServerHouston.timezone
@@ -39,7 +39,7 @@ export default function NewStudentPage(props) {
       setArriveTime(datetimeHouston);
     };
     void getServerData();
-  }, [])
+  }, []);
 
   // On submit form, send a request to google sheet
   const handleSubmit = (e) => {
@@ -72,10 +72,17 @@ export default function NewStudentPage(props) {
       .then((response) => response.json(data))
       .then((data) => {
         console.log(data);
-        if (data.found === true && data.confirmed === true){
+        // if (data.found === true && data.confirmed === true){
+        //   alert("登陆成功！");
+        //   setStudentLoggedIn(true);
+        //   navigate("/info");
+        if (data.status === true) {
           alert("登陆成功！");
-          setStudentLoggedIn(true);
-          navigate("/info");
+          props.setStudentLoggedIn(true);
+          props.setProgress(1);
+          props.setStudentName(firstName + " " + lastName);
+          props.setStudentEmail(email);
+          navigate("/studentallocate");
         } else {
           props.setStatus(2);
           navigate("/status");
@@ -121,26 +128,30 @@ export default function NewStudentPage(props) {
               <form className="needs-validation" onSubmit={handleSubmit}>
                 <div className="row form-row">
                   <div className="col-md-4 mb-3">
-                    <label htmlFor="validationCustom01" className="fw-bold">名（请输入拼音）</label>
+                    <label htmlFor="validationCustom01" className="fw-bold">
+                      名（请输入拼音）
+                    </label>
                     <input
                       type="text"
                       pattern = "[A-Za-z]+"
                       className="form-control"
                       id="validationCustom01"
-                      placeholder="e.g. Yifan"
+                      placeholder="e.g. Juan"
                       onChange={(e) => setFirstName(e.target.value)}
                       required
                     />
                     <div className="valid-feedback">Looks good!</div>
                   </div>
                   <div className="col-md-4 mb-3">
-                    <label htmlFor="validationCustom02" className="fw-bold">姓（请输入拼音）</label>
+                    <label htmlFor="validationCustom02" className="fw-bold">
+                      姓（请输入拼音）
+                    </label>
                     <input
                       type="text"
                       pattern = "[A-Za-z]+"
                       className="form-control"
                       id="validationCustom02"
-                      placeholder="e.g. Hong"
+                      placeholder="e.g. Huang"
                       onChange={(e) => setLastName(e.target.value)}
                       required
                     />
@@ -178,7 +189,7 @@ export default function NewStudentPage(props) {
                       type="email"
                       className="form-control"
                       id="email"
-                      placeholder="e.g. bj01@rice.edu"
+                      placeholder="e.g. gh31@rice.edu"
                       pattern=".+@rice.edu"
                       onChange={(e) => setEmail(e.target.value)}
                       required
@@ -199,7 +210,7 @@ export default function NewStudentPage(props) {
                       type="text"
                       className="form-control"
                       id="validationCustom05"
-                      placeholder="WeChat ID (example: yw01)"
+                      placeholder="WeChat ID (example: _ge_huang_)"
                       onChange={(e) => setWechat(e.target.value)}
                       required
                     />
@@ -231,7 +242,9 @@ export default function NewStudentPage(props) {
 
                 <div className="row">
                   <b>
-                    <legend className="col-form-label col-sm-2 pt-0">机场</legend>
+                    <legend className="col-form-label col-sm-2 pt-0">
+                      机场
+                    </legend>
                   </b>
                   <div className="col-sm-10">
                     <div className="form-check">
@@ -273,7 +286,7 @@ export default function NewStudentPage(props) {
                       adapterLocale="zh-cn"
                     >
                       <DateTimePicker
-                        label="到达时间（CST）"
+                        label="到达时间（CST 休斯敦时间）"
                         onChange={(e) => setArriveTime(e)}
                         value={dayjs(arriveTime)}
                       />
@@ -281,7 +294,10 @@ export default function NewStudentPage(props) {
                   </div>
                 </div>
                 <div className="d-flex justify-content-end">
-                  <button className="btn btn-info homepage-btn my-2" type="submit">
+                  <button
+                    className="btn btn-info homepage-btn my-2"
+                    type="submit"
+                  >
                     提交
                   </button>
                 </div>

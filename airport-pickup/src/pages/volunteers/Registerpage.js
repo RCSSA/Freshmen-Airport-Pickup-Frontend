@@ -36,19 +36,26 @@ export default function RegisterPage(props) {
       .then((response) => response.json(data))
       .then((data) => {
         console.log(data);
-        if (data.found === true && data.confirmed === true){
-          props.setStatus(0);
+        // if (data.found === true && data.confirmed === true){
+        //   props.setStatus(0);
+        //   navigate("/status");
+        // } else {
+        //   if (data.found === true && data.confirmed === false){
+        //     props.setStatus(1);
+        //     navigate("/status");
+        //   } else {
+        //     props.setStatus(2);
+        //     navigate("/status");
+        //   }
+  
+        if (data.status === true) {
+          props.setStatus(1);
           navigate("/status");
         } else {
-          if (data.found === true && data.confirmed === false){
-            props.setStatus(1);
-            navigate("/status");
-          } else {
-            props.setStatus(2);
-            navigate("/status");
-          }
-          // 审核不通过的情况?
+          props.setStatus(2);
+          navigate("/status");
         }
+        // 审核不通过的情况?
       });
   }
   useEffect(() => {
@@ -82,7 +89,7 @@ export default function RegisterPage(props) {
               className="form-control"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
-              placeholder="First Name (e.g. Xiaoming)"
+              placeholder="First Name (e.g. Juan)"
               required
             />
           </div>
@@ -94,7 +101,7 @@ export default function RegisterPage(props) {
               className="form-control"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
-              placeholder="Last Name (e.g. Wang)"
+              placeholder="Last Name (e.g. Huang)"
               required
             />
           </div>
@@ -118,7 +125,7 @@ export default function RegisterPage(props) {
             <input
               type="text"
               className="form-control"
-              placeholder=""
+              placeholder="e.g. _ge_huang_"
               value={wechat}
               onChange={(e) => setWechat(e.target.value)}
             />
@@ -133,6 +140,7 @@ export default function RegisterPage(props) {
               className="form-control"
               name="phone"
               pattern="[0-9]{3}(-)?[0-9]{3}(-)?[0-9]{4}"
+              placeholder="Phone Number"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               required

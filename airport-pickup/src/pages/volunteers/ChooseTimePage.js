@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import FullCalendarModel from "../../component/FullCalendar";
 import { serverUrl } from "../../const";
 
-export default function ChooseTimePage() {
+export default function ChooseTimePage(props) {
   const navigate = useNavigate();
   const [loaded, setLoaded] = useState(false);
   const [selected, setSelected] = useState([]); // note down selected event
@@ -138,7 +138,7 @@ export default function ChooseTimePage() {
               airport: event_breakdown[1],
               hour: event_breakdown[2],
               number: parseInt(event_breakdown[3]),
-              vol_email: email,
+              vol_email: props.volEmail,
             },
           ]);
         }
@@ -168,7 +168,7 @@ export default function ChooseTimePage() {
           if (data.num_allocated && data.num_allocated > 0) {
             console.log("成功匹配" + data.num_allocated + "人！");
             alert("成功匹配" + data.num_allocated + "人！");
-            // navigate("/studentstatus");
+            navigate("/info");
           } else {
             alert("很遗憾，（部分）选择时间段未能匹配成功！");
             // navigate("/studentstatus");
@@ -201,15 +201,25 @@ export default function ChooseTimePage() {
             {choices}
           </div>
         </div>
-
-        <div className="d-flex justify-content-center mt-4">
-          <button
-            type="button"
-            className="btn btn-info homepage-btn"
-            onClick={handleBatchMatch}
-          >
-            提交选择
-          </button>
+        <div className="row">
+          <div className="col-lg-7 col-12 justify-content-center mt-4">
+            <button
+              type="button"
+              className="btn btn-secondary"
+              onClick={() => navigate("/info")}
+            >
+              返回
+            </button>
+          </div>
+          <div className="col-lg-5 col-12 justify-content-center mt-4">
+            <button
+              type="button"
+              className="btn btn-info homepage-btn"
+              onClick={handleBatchMatch}
+            >
+              提交选择
+            </button>
+          </div>
         </div>
       </div>
     </div>
