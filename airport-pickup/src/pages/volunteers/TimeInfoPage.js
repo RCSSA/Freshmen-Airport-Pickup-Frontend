@@ -76,7 +76,6 @@ export default function TimeInfoPage(props) {
                   </div>
                 </div>
               </div>
-              
             </div>
           ))}
         </div>

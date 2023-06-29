@@ -166,11 +166,10 @@ export default function ChooseTimePage(props) {
         .then((data) => {
           console.log(data);
           if (data.num_allocated && data.num_allocated > 0) {
-            console.log("成功匹配" + data.num_allocated + "人！");
-            alert("成功匹配" + data.num_allocated + "人！");
-            navigate("/info");
+            alert("成功匹配" + data.num_allocated + "人！，请重新登陆查看状态");
+            navigate("/");
           } else {
-            alert("很遗憾，（部分）选择时间段未能匹配成功！");
+            alert("由于网络原因，部分选择时间段未能匹配成功！");
             // navigate("/studentstatus");
           }
         });
