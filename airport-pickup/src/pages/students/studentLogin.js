@@ -65,7 +65,7 @@ export default function StudentLoginPage(props) {
               </label>
               <input
                 type="text"
-                pattern="[A-Za-z]+"
+                pattern = "[A-Za-z]+"
                 className="form-control"
                 id="validationCustom01"
                 placeholder="e.g. Juan"
@@ -80,7 +80,7 @@ export default function StudentLoginPage(props) {
               </label>
               <input
                 type="text"
-                pattern="[A-Za-z]+"
+                pattern = "[A-Za-z]+"
                 className="form-control"
                 id="validationCustom02"
                 placeholder="e.g. Huang"

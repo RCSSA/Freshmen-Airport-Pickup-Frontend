@@ -72,6 +72,10 @@ export default function NewStudentPage(props) {
       .then((response) => response.json(data))
       .then((data) => {
         console.log(data);
+        // if (data.found === true && data.confirmed === true){
+        //   alert("登陆成功！");
+        //   setStudentLoggedIn(true);
+        //   navigate("/info");
         if (data.status === true) {
           alert("登陆成功！");
           props.setStudentLoggedIn(true);
@@ -129,7 +133,7 @@ export default function NewStudentPage(props) {
                     </label>
                     <input
                       type="text"
-                      pattern="[A-Za-z]+"
+                      pattern = "[A-Za-z]+"
                       className="form-control"
                       id="validationCustom01"
                       placeholder="e.g. Juan"
@@ -144,7 +148,7 @@ export default function NewStudentPage(props) {
                     </label>
                     <input
                       type="text"
-                      pattern="[A-Za-z]+"
+                      pattern = "[A-Za-z]+"
                       className="form-control"
                       id="validationCustom02"
                       placeholder="e.g. Huang"
