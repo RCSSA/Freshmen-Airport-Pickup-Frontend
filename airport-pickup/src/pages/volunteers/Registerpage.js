@@ -47,7 +47,7 @@ export default function RegisterPage(props) {
         //     props.setStatus(2);
         //     navigate("/status");
         //   }
-  
+
         if (data.status === true) {
           props.setStatus(1);
           navigate("/status");
@@ -71,7 +71,7 @@ export default function RegisterPage(props) {
       <div className="col-12 col-md-8">
         <h1 className="fw-bold my-4">接机志愿者注册</h1>
         <div className="col-12 col-md-8">
-          谢谢您参与接机！问卷实时更新，欢迎您选择合适的时间！如果想要接多位学生可多次提交本问卷~
+          谢谢您参与接机！问卷实时更新，欢迎您选择合适的时间！每名志愿者最多选择10名新生~
         </div>
         <div className="my-2">
           免责声明：
@@ -85,7 +85,7 @@ export default function RegisterPage(props) {
             <div className="fw-bold mb-2">名（请输入拼音）</div>
             <input
               type="text"
-              pattern = "[A-Za-z]+"
+              pattern="[A-Za-z]+"
               className="form-control"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
@@ -97,7 +97,7 @@ export default function RegisterPage(props) {
             <div className="fw-bold mb-2">姓（请输入拼音）</div>
             <input
               type="text"
-              pattern = "[A-Za-z]+"
+              pattern="[A-Za-z]+"
               className="form-control"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
@@ -107,12 +107,11 @@ export default function RegisterPage(props) {
           </div>
           <div className="my-2 col-12 col-md-6">
             <div className="mb-2">
-              <b>邮箱</b> (请填入@rice.edu邮箱以便于身份核实)
+              <b>邮箱</b>
             </div>
             <input
               type="email"
               id="email"
-              pattern=".+@rice.edu"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="form-control"
@@ -150,7 +149,7 @@ export default function RegisterPage(props) {
           <div className="form-check mt-4">
             <input
               className="form-check-input"
-              type="radio"
+              type="checkbox"
               name="flexRadioDefault"
               id="flexRadioDefault1"
               required

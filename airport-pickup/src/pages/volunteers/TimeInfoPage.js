@@ -47,7 +47,7 @@ export default function TimeInfoPage(props) {
     <div className="full-width ">
       <div className="full-width d-flex flex-column align-items-center p-5">
         <h1 className="fw-bold my-4">接机信息</h1>
-        <div className="fw-bold">您好，匹配信息如下：</div>
+        <div className="fw-bold">您好，匹配信息如下（最多10名）：</div>
 
         <div>
           {/* 分配信息 */}

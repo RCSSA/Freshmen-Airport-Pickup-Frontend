@@ -181,7 +181,9 @@ export default function ChooseTimePage(props) {
     <div className="row justify-content-center py-5">
       <div className="col-12 col-md-8">
         <h1 className="fw-bold my-4">志愿者接机时间选择</h1>
-        <div className="mt-0 mb-4">请选择接机时间并完善细节，谢谢~</div>
+        <div className="mt-0 mb-4">
+          请选择接机时间并完善细节，每名志愿者最多选择10名新生，谢谢~
+        </div>
         <div className="row">
           <div className="col-lg-9 col-12">
             <FullCalendarModel

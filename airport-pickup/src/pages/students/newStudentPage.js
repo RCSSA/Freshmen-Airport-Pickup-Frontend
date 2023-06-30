@@ -133,7 +133,7 @@ export default function NewStudentPage(props) {
                     </label>
                     <input
                       type="text"
-                      pattern = "[A-Za-z]+"
+                      pattern="[A-Za-z]+"
                       className="form-control"
                       id="validationCustom01"
                       placeholder="e.g. Juan"
@@ -148,7 +148,7 @@ export default function NewStudentPage(props) {
                     </label>
                     <input
                       type="text"
-                      pattern = "[A-Za-z]+"
+                      pattern="[A-Za-z]+"
                       className="form-control"
                       id="validationCustom02"
                       placeholder="e.g. Huang"
@@ -292,6 +292,30 @@ export default function NewStudentPage(props) {
                       />
                     </LocalizationProvider>
                   </div>
+                </div>
+                <div className="form-check mt-4">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault1"
+                    required
+                  />
+                  <label className="form-check-label" for="flexRadioDefault1">
+                    我已知晓一个账号只为一名新生进行匹配接机，如有多名新生需要接机，需要分别填写表格
+                  </label>
+                </div>
+                <div className="form-check mt-4">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault2"
+                    required
+                  />
+                  <label className="form-check-label" for="flexRadioDefault2">
+                    我已阅读并了解免责声明
+                  </label>
                 </div>
                 <div className="d-flex justify-content-end">
                   <button
