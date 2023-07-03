@@ -40,6 +40,11 @@ function App() {
               setStudentLoggedIn={setStudentLoggedIn}
               setVolunteerLoggedIn={setVolunteerLoggedIn}
               setStatus={setStatus}
+              setStudentName={setStudentName}
+              setStudentEmail={setStudentEmail}
+              setVolEmail={setVolEmail}
+              setVolInfo={setVolInfo}
+              setStudentList={setStudentList}
             />
           }
         ></Route>

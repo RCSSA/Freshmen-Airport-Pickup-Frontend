@@ -4,14 +4,19 @@ import HailIcon from "@mui/icons-material/Hail";
 import NoCrashIcon from "@mui/icons-material/NoCrash";
 
 export default function Homepage(props) {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   useEffect(() => {
     props.setStatus(3);
     props.setStudentLoggedIn(false);
     props.setVolunteerLoggedIn(false);
+    props.setStudentName("");
+    props.setStudentEmail("");
+    props.setVolEmail("");
+    props.setVolInfo({});
+    props.setStudentList([]);
   }, []);
-  
+
   return (
     <div className="full-white d-flex justify-content-center align-items-center">
       <div className="row">
