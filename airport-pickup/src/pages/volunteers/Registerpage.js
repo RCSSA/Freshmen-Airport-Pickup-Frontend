@@ -47,11 +47,6 @@ export default function RegisterPage(props) {
         //     props.setStatus(2);
         //     navigate("/status");
         //   }
-<<<<<<< HEAD
-  
-=======
-
->>>>>>> origin/main
         if (data.status === true) {
           props.setStatus(1);
           navigate("/status");
