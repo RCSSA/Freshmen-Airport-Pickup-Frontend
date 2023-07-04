@@ -21,13 +21,17 @@ export default function BtnAppBar() {
             edge="start"
             color="inherit"
             aria-label="menu"
-            onClick={()=>window.location.replace("https://rcssa.rice.edu/")}
+            onClick={() => window.location.replace("https://rcssa.rice.edu/")}
           >
-            <img placeholder="rcssa logo" src={logo} style={{height: "55px"}}/>
+            <img
+              placeholder="rcssa logo"
+              src={logo}
+              style={{ height: "55px" }}
+            />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Button color="inherit" onClick={redirectToHomepage}>
-              RCSSA接机平台
+              RCSSA接机平台(测试版)
             </Button>
           </Typography>
           <Button color="inherit" onClick={redirectToHomepage}>
