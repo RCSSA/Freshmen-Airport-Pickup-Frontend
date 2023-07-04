@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { serverUrl } from "../../const";
+import DeleteModal from "../../component/DeleteModal";
 
 export default function TimeInfoPage(props) {
   const navigate = useNavigate();
