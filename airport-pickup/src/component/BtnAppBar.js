@@ -5,12 +5,12 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
-import { localUrl } from "../const";
+import { siteUrl } from "../const";
 import logo from "../images/logo.png";
 
 export default function BtnAppBar() {
   const redirectToHomepage = () => {
-    window.location.replace(localUrl);
+    window.location.replace(siteUrl);
   };
   return (
     <Box sx={{ color: "primary.main", bgcolor: "text.primary" }}>

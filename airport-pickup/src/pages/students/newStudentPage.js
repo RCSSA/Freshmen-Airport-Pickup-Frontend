@@ -7,9 +7,9 @@ import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 import "dayjs/locale/zh-cn";
-import "react-datetime-picker/dist/DateTimePicker.css";
-import "react-calendar/dist/Calendar.css";
-import "react-clock/dist/Clock.css";
+// import "react-datetime-picker/dist/DateTimePicker.css";
+// import "react-calendar/dist/Calendar.css";
+// import "react-clock/dist/Clock.css";
 import { serverUrl } from "../../const";
 
 export default function NewStudentPage(props) {
