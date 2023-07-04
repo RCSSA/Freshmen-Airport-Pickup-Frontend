@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.54f39ad8.css",
-    "main.js": "/static/js/main.e35bbb70.js",
-    "static/js/787.e3d2d017.chunk.js": "/static/js/787.e3d2d017.chunk.js",
-    "static/media/logo.png": "/static/media/logo.dc3890be84b920d88d0a.png",
-    "static/media/bootstrap-icons.woff?": "/static/media/bootstrap-icons.e559bf06bc84fd9525e6.woff",
-    "static/media/bootstrap-icons.woff2?": "/static/media/bootstrap-icons.ea98e12d2d58747f9fc5.woff2",
-    "index.html": "/index.html",
-    "main.54f39ad8.css.map": "/static/css/main.54f39ad8.css.map",
-    "main.e35bbb70.js.map": "/static/js/main.e35bbb70.js.map",
-    "787.e3d2d017.chunk.js.map": "/static/js/787.e3d2d017.chunk.js.map"
+    "main.css": "/Freshmen-Airport-Pickup-Frontend/static/css/main.7e221210.css",
+    "main.js": "/Freshmen-Airport-Pickup-Frontend/static/js/main.016690a0.js",
+    "static/js/787.e3d2d017.chunk.js": "/Freshmen-Airport-Pickup-Frontend/static/js/787.e3d2d017.chunk.js",
+    "static/media/logo.png": "/Freshmen-Airport-Pickup-Frontend/static/media/logo.dc3890be84b920d88d0a.png",
+    "static/media/bootstrap-icons.woff?": "/Freshmen-Airport-Pickup-Frontend/static/media/bootstrap-icons.e559bf06bc84fd9525e6.woff",
+    "static/media/bootstrap-icons.woff2?": "/Freshmen-Airport-Pickup-Frontend/static/media/bootstrap-icons.ea98e12d2d58747f9fc5.woff2",
+    "index.html": "/Freshmen-Airport-Pickup-Frontend/index.html",
+    "main.7e221210.css.map": "/Freshmen-Airport-Pickup-Frontend/static/css/main.7e221210.css.map",
+    "main.016690a0.js.map": "/Freshmen-Airport-Pickup-Frontend/static/js/main.016690a0.js.map",
+    "787.e3d2d017.chunk.js.map": "/Freshmen-Airport-Pickup-Frontend/static/js/787.e3d2d017.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.54f39ad8.css",
-    "static/js/main.e35bbb70.js"
+    "static/css/main.7e221210.css",
+    "static/js/main.016690a0.js"
   ]
 }
