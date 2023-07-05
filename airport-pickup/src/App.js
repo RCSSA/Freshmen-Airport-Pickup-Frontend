@@ -1,5 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import React, { useState } from "react";
+import { HashRouter, Routes, Route } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Homepage from "./pages/Homepage";
 import Registerpage from "./pages/volunteers/Registerpage";
@@ -28,9 +28,12 @@ function App() {
   const [volEmail, setVolEmail] = useState("");
   const [volInfo, setVolInfo] = useState({});
   const [studentList, setStudentList] = useState([]);
+  useEffect(() => {
+    document.title = "RCSSA Airport Pickup Platform";
+  }, []);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <BtnAppBar />
       <Routes>
         <Route
@@ -141,7 +144,7 @@ function App() {
           }
         ></Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

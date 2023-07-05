@@ -1,6 +1,7 @@
 {
   "name": "airport-pickup",
   "version": "0.1.0",
+  "homepage": "https://rcssa.github.io/Freshmen-Airport-Pickup-Frontend/",
   "private": true,
   "dependencies": {
     "@date-io/moment": "^2.16.1",
@@ -33,6 +34,7 @@
     "rc-progress": "^3.4.2",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.0",
+    "react-datepicker": "^4.15.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.1",
     "react-scripts": "5.0.1",
@@ -43,7 +45,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -62,5 +66,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0",
+    "object-assign": "^4.1.1"
   }
 }
