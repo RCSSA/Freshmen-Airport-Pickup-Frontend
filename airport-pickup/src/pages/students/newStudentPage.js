@@ -23,6 +23,7 @@ export default function NewStudentPage(props) {
   const [airport, setAirport] = useState("IAH");
   const [arriveTime, setArriveTime] = useState(new Date());
   const { setStudentLoggedIn } = props.setStudentLoggedIn; // update student logged in status
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
 
   dayjs.extend(utc);
   dayjs.extend(timezone);
@@ -43,6 +44,7 @@ export default function NewStudentPage(props) {
 
   // On submit form, send a request to google sheet
   const handleSubmit = (e) => {
+    setIsSubmitDisabled(true);
     e.preventDefault();
     console.log("In submiting form ");
     let action = "insert_student";
@@ -134,7 +136,7 @@ export default function NewStudentPage(props) {
                     </label>
                     <input
                       type="text"
-                      pattern = "[A-Za-z]+"
+                      pattern="[A-Za-z]+"
                       className="form-control"
                       id="validationCustom01"
                       placeholder="e.g. Juan"
@@ -149,7 +151,7 @@ export default function NewStudentPage(props) {
                     </label>
                     <input
                       type="text"
-                      pattern = "[A-Za-z]+"
+                      pattern="[A-Za-z]+"
                       className="form-control"
                       id="validationCustom02"
                       placeholder="e.g. Huang"
@@ -321,6 +323,7 @@ export default function NewStudentPage(props) {
                 <div className="d-flex justify-content-end">
                   <button
                     className="btn btn-info homepage-btn my-2"
+                    disabled={isSubmitDisabled}
                     type="submit"
                   >
                     提交

@@ -8,8 +8,10 @@ export default function Loginpage(props) {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const setVolunteerLoggedIn = props.setVolunteerLoggedIn; // update volunteer logged in status
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
 
   function handleSubmit(e) {
+    setIsSubmitDisabled(true);
     e.preventDefault();
     let login_data = {
       firstname: firstName,
@@ -63,7 +65,7 @@ export default function Loginpage(props) {
               </label>
               <input
                 type="text"
-                pattern = "[A-Za-z]+"
+                pattern="[A-Za-z]+"
                 className="form-control"
                 id="validationCustom01"
                 placeholder="e.g. Juan"
@@ -78,7 +80,7 @@ export default function Loginpage(props) {
               </label>
               <input
                 type="text"
-                pattern = "[A-Za-z]+"
+                pattern="[A-Za-z]+"
                 className="form-control"
                 id="validationCustom02"
                 placeholder="e.g. Huang"
@@ -100,7 +102,11 @@ export default function Loginpage(props) {
             />
           </div>
           <div className="d-flex justify-content-end mt-4">
-            <button type="submit" className="btn btn-info homepage-btn">
+            <button
+              type="submit"
+              disabled={isSubmitDisabled}
+              className="btn btn-info homepage-btn"
+            >
               登录
             </button>
           </div>
