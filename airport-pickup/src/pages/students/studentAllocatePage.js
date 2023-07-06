@@ -7,7 +7,7 @@ import { serverUrl } from "../../const";
 export default function StudentAllocatePage(props) {
   const navigate = useNavigate();
 
-  const handleStudentDelete = () => {
+  const handleStudentDelete = (closeRef) => {
     const names = props.studentName.split(" ");
     let data = {};
     let action = "delete_student";
@@ -31,11 +31,12 @@ export default function StudentAllocatePage(props) {
           alert("删除成功");
           navigate("/");
         } else alert("删除失败");
+        closeRef.current.click();
       });
   };
   return (
     <div className="d-flex flex-column align-items-center full-width">
-      <div className="mt-5 full-width pt-3">
+        <div className="mt-5 full-width pt-3">
         <ProgressStepper progress={props.progress} />
       </div>
       <div className="row full-width px-5 pt-2">
@@ -85,7 +86,6 @@ export default function StudentAllocatePage(props) {
                 ? props.volInfo.vol_wechat
                 : ""}
             </div>
-          </div>
         </div>
         <div className="d-flex full-width flex-column align-items-center">
           <DeleteModal
@@ -108,5 +108,6 @@ export default function StudentAllocatePage(props) {
         </div>
       </div>
     </div>
-  );
+  </div>
+  )
 }

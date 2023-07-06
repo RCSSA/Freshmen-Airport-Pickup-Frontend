@@ -10,7 +10,7 @@ export default function TimeInfoPage(props) {
     navigate("/");
   }
 
-  const handleDeleteByIndex = (index) => {
+  const handleDeleteByIndex = (closeRef, index) => {
     // props.deleteStudent(index);
     console.log(props.studentList[index]);
     let data = {};
@@ -30,6 +30,7 @@ export default function TimeInfoPage(props) {
       .then((response) => response.json(data))
       .then((data) => {
         console.log(data);
+        closeRef.current.click();
         if (data.status === true) {
           const newStudentList = props.studentList.filter(
             (student, i) => i !== index
@@ -95,7 +96,7 @@ export default function TimeInfoPage(props) {
                 <div className="col-12 col-lg-6 d-flex align-items-center justify-content-end">
                   <p className="text-success me-3 mt-3">状态: 分配成功</p>
                   <DeleteModal
-                    deleteHandler={() => handleDeleteByIndex(index)}
+                    deleteHandler={(closeRef) => handleDeleteByIndex(closeRef, index)}
                     btnClassName="btn btn-outline-danger"
                     btnChildren={"删除"}
                     modalTitle={"确认删除该分配信息？"}
@@ -118,6 +119,7 @@ export default function TimeInfoPage(props) {
                   </div> */}
                 </div>
               </div>
+              
             </div>
           ))}
         </div>
