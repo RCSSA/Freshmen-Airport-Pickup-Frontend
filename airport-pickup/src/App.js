@@ -27,6 +27,7 @@ function App() {
   const [studentEmail, setStudentEmail] = useState("");
   const [volEmail, setVolEmail] = useState("");
   const [volInfo, setVolInfo] = useState({});
+  const [studentInfo, setStudentInfo] = useState({});
   const [studentList, setStudentList] = useState([]);
   useEffect(() => {
     document.title = "RCSSA Airport Pickup Platform";
@@ -79,23 +80,21 @@ function App() {
         <Route
           path="/choosetime"
           element={
-            // <RequireAuth user={volunteerLoggedIn}>
-            //   <ChooseTimePage />
-            // </RequireAuth>
-            <ChooseTimePage volEmail={volEmail} />
+            <RequireAuth user={volunteerLoggedIn}>
+              <ChooseTimePage volEmail={volEmail} />
+            </RequireAuth>           
           }
         ></Route>
         <Route
           path="/info"
           element={
-            // <RequireAuth user={volunteerLoggedIn}>
-            //   <TimeInfoPage />
-            // </RequireAuth>
-            <TimeInfoPage
+            <RequireAuth user={volunteerLoggedIn}>
+              <TimeInfoPage
               studentList={studentList}
               volEmail={volEmail}
               setStudentList={setStudentList}
-            />
+              />
+            </RequireAuth>
           }
         ></Route>
 
@@ -110,6 +109,7 @@ function App() {
               setStudentName={setStudentName}
               setStudentEmail={setStudentEmail}
               setVolInfo={setVolInfo}
+              setStudentInfo={setStudentInfo}
             />
           }
         ></Route>
@@ -122,25 +122,23 @@ function App() {
               setProgress={setProgress}
               setStudentName={setStudentName}
               setStudentEmail={setStudentEmail}
+              setStudentInfo={setStudentInfo}
             />
           }
         ></Route>
-        {/* <Route path="/studentstatus" element={
-              <StudentStatusPage status={status}/>
-            }>
-          </Route> */}
+       
         <Route
           path="/studentallocate"
           element={
-            // <RequireAuth user={studentLoggedIn}>
-            //   <StudentAllocatePage />
-            // </RequireAuth>
-            <StudentAllocatePage
+            <RequireAuth user={studentLoggedIn}>
+              <StudentAllocatePage
               progress={progress}
               studentEmail={studentEmail}
               studentName={studentName}
               volInfo={volInfo}
+              studentInfo={studentInfo}
             />
+            </RequireAuth>
           }
         ></Route>
       </Routes>

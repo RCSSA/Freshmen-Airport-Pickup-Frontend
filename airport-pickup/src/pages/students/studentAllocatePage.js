@@ -7,7 +7,7 @@ import { serverUrl } from "../../const";
 export default function StudentAllocatePage(props) {
   const navigate = useNavigate();
 
-  const handleStudentDelete = () => {
+  const handleStudentDelete = (closeRef) => {
     const names = props.studentName.split(" ");
     let data = {};
     let action = "delete_student";
@@ -31,6 +31,7 @@ export default function StudentAllocatePage(props) {
           alert("删除成功");
           navigate("/");
         } else alert("删除失败");
+        closeRef.current.click();
       });
   };
   return (
@@ -44,6 +45,18 @@ export default function StudentAllocatePage(props) {
             <div className="fw-bold fs-5">新生信息</div>
             <div>姓名：{props.studentName}</div>
             <div>邮箱：{props.studentEmail}</div>
+            <div>机场：{props.studentInfo.airport}</div>
+            <div>航班号：{props.studentInfo.flight_number}</div>
+            <div>
+              到达机场时间：
+              {new Date(props.studentInfo.arriving_time).toLocaleString(
+                "zh-cn",
+                {
+                  timeZone: "America/Chicago",
+                }
+              )}
+            </div>
+            <div>微信号：{props.studentInfo.wechat}</div>
             {/* <div>到达机场时间：</div>
                 <div>机场：</div>
                 <div>航班号：</div> */}
@@ -74,18 +87,25 @@ export default function StudentAllocatePage(props) {
                 : ""}
             </div>
         </div>
-      </div>
-      <div className="d-flex full-width flex-column align-items-center">
-        <DeleteModal deleteHandler={handleStudentDelete} btnClassName="btn btn-outline-warning fs-5 py-2" btnChildren={"信息有误或取消接机，点此注销账号"}
-          modalTitle={"确认注销账号？"} modalBody={"一旦确认，您在接机平台上此账号的所有信息将被删除，且不可恢复。您可以通过重新输入个人信息来注册新的账号。"}/>
-        <button
-          onClick={() => {
-            navigate("/");
-          }}
-          className="btn btn-info fs-5 my-3 py-2 homepage-btn"
-        >
-          返回首页
-        </button>
+        <div className="d-flex full-width flex-column align-items-center">
+          <DeleteModal
+            deleteHandler={handleStudentDelete}
+            btnClassName="btn btn-outline-warning fs-5 py-2"
+            btnChildren={"信息有误或取消接机，点此注销账号"}
+            modalTitle={"确认注销账号？"}
+            modalBody={
+              "一旦确认，您在接机平台上此账号的所有信息将被删除，且不可恢复。您可以通过重新输入个人信息来注册新的账号。"
+            }
+          />
+          <button
+            onClick={() => {
+              navigate("/");
+            }}
+            className="btn btn-info fs-5 my-3 py-2 homepage-btn"
+          >
+            返回首页
+          </button>
+        </div>
       </div>
     </div>
   </div>

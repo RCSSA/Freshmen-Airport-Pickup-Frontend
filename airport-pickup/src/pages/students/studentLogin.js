@@ -8,8 +8,10 @@ export default function StudentLoginPage(props) {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const setStudentLoggedIn = props.setStudentLoggedIn; // update student logged in status
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
 
   function handleSubmit(e) {
+    setIsSubmitDisabled(true);
     e.preventDefault();
     let login_data = {
       firstname: firstName,
@@ -41,6 +43,13 @@ export default function StudentLoginPage(props) {
           props.setStudentName(firstName + " " + lastName);
           props.setStudentEmail(email);
           props.setVolInfo(data.record);
+          const studentInfo = {
+            wechat: data.wechat,
+            flight_number: data.flight_number,
+            airport: data.airport,
+            arriving_time: data.arriving_time,
+          };
+          props.setStudentInfo(studentInfo);
           navigate("/studentallocate", {
             email,
             name: firstName + " " + lastName,
@@ -65,7 +74,7 @@ export default function StudentLoginPage(props) {
               </label>
               <input
                 type="text"
-                pattern = "[A-Za-z]+"
+                pattern="[A-Za-z]+"
                 className="form-control"
                 id="validationCustom01"
                 placeholder="e.g. Juan"
@@ -80,7 +89,7 @@ export default function StudentLoginPage(props) {
               </label>
               <input
                 type="text"
-                pattern = "[A-Za-z]+"
+                pattern="[A-Za-z]+"
                 className="form-control"
                 id="validationCustom02"
                 placeholder="e.g. Huang"
@@ -101,7 +110,11 @@ export default function StudentLoginPage(props) {
             />
           </div>
           <div className="d-flex justify-content-end mt-4">
-            <button type="submit" className="btn btn-info homepage-btn">
+            <button
+              type="submit"
+              disabled={isSubmitDisabled}
+              className="btn btn-info homepage-btn"
+            >
               登录
             </button>
           </div>

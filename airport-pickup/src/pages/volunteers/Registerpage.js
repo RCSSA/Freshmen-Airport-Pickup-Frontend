@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { serverUrl } from "../../const";
 
@@ -10,8 +10,10 @@ export default function RegisterPage(props) {
   const [wechat, setWechat] = useState("");
   const [phone, setPhone] = useState("");
   const { setVolunteerLoggedIn } = props.setVolunteerLoggedIn; // update volunteer logged in status
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
 
   function onFormSubmit(e) {
+    setIsSubmitDisabled(true);
     e.preventDefault();
     const volunteerInfo = {
       firstname: firstName,
@@ -158,7 +160,11 @@ export default function RegisterPage(props) {
             </label>
           </div>
           <div className="d-flex justify-content-end">
-            <button type="submit" className="btn btn-info homepage-btn my-3">
+            <button
+              type="submit"
+              disabled={isSubmitDisabled}
+              className="btn btn-info homepage-btn my-3"
+            >
               提交
             </button>
           </div>
