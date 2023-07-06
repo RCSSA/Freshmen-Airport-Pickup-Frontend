@@ -48,7 +48,10 @@ export default function TimeInfoPage(props) {
     <div className="full-width ">
       <div className="full-width d-flex flex-column align-items-center p-5">
         <h1 className="fw-bold my-4">接机信息</h1>
-        <div className="fw-bold">您好，匹配信息如下（最多10名）：</div>
+        <div className="fw-bold">
+          您好，匹配信息如下，当前已匹配{props.studentList.length}
+          人（最多10名）：
+        </div>
 
         <div>
           {/* 分配信息 */}
@@ -56,6 +59,9 @@ export default function TimeInfoPage(props) {
             <div className="card text-bg-light p-3 py-4 mt-3" key={index}>
               <div className="row m-0 full-width">
                 <div className="col-12 col-lg-6">
+                  <div>
+                    新生姓名：{student.firstname + " " + student.lastname}
+                  </div>
                   <div>航班号：{student.flight_number}</div>
                   <div>
                     到达机场时间：
@@ -64,11 +70,25 @@ export default function TimeInfoPage(props) {
                     })}
                   </div>
                   <div>机场：{student.airport}</div>
+                  <div>新生邮箱：{student.email}</div>
+                  <div>新生微信号：{student.wechat}</div>
                 </div>
                 <div className="col-12 col-lg-6 d-flex align-items-center justify-content-end">
                   <p className="text-success me-3 mt-3">状态: 分配成功</p>
-                  <DeleteModal deleteHandler={()=>handleDeleteByIndex(index)} btnClassName="btn btn-outline-danger"
-                    btnChildren={"删除"} modalTitle={"确认删除该分配信息？"} modalBody={"...待阐明"}/>
+                  <DeleteModal
+                    deleteHandler={() => handleDeleteByIndex(index)}
+                    btnClassName="btn btn-outline-danger"
+                    btnChildren={"删除"}
+                    modalTitle={"确认删除该分配信息？"}
+                    modalBody={
+                      "到达机场时间：" +
+                      new Date(student.arriving_time).toLocaleString("zh-cn", {
+                        timeZone: "America/Chicago",
+                      }) +
+                      ", 机场：" +
+                      student.airport
+                    }
+                  />
                   {/* <div
                     className="btn btn-outline-danger"
                     onClick={() => {
@@ -79,7 +99,6 @@ export default function TimeInfoPage(props) {
                   </div> */}
                 </div>
               </div>
-              
             </div>
           ))}
         </div>
