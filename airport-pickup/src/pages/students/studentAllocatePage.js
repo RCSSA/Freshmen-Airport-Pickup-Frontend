@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import ProgressStepper from "../../component/ProgressStepper";
+import DeleteModal from "../../component/DeleteModal";
 import { serverUrl } from "../../const";
 
 export default function StudentAllocatePage(props) {
@@ -34,7 +35,7 @@ export default function StudentAllocatePage(props) {
   };
   return (
     <div className="d-flex flex-column align-items-center full-width">
-      <div className="mt-5 full-width pt-3">
+        <div className="mt-5 full-width pt-3">
         <ProgressStepper progress={props.progress} />
       </div>
       <div className="row full-width px-5 pt-2">
@@ -72,16 +73,11 @@ export default function StudentAllocatePage(props) {
                 ? props.volInfo.vol_wechat
                 : ""}
             </div>
-          </div>
         </div>
       </div>
       <div className="d-flex full-width flex-column align-items-center">
-        <button
-          className="btn btn-outline-info fs-5 py-2 btn-danger"
-          onClick={handleStudentDelete}
-        >
-          信息有误或取消接机，点此注销账号
-        </button>
+        <DeleteModal deleteHandler={handleStudentDelete} btnClassName="btn btn-outline-warning fs-5 py-2" btnChildren={"信息有误或取消接机，点此注销账号"}
+          modalTitle={"确认注销账号？"} modalBody={"一旦确认，您在接机平台上此账号的所有信息将被删除，且不可恢复。您可以通过重新输入个人信息来注册新的账号。"}/>
         <button
           onClick={() => {
             navigate("/");
@@ -92,5 +88,6 @@ export default function StudentAllocatePage(props) {
         </button>
       </div>
     </div>
-  );
+  </div>
+  )
 }

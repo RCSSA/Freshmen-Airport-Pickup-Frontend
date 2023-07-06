@@ -34,6 +34,10 @@ export default function BtnAppBar() {
               RCSSA接机平台(测试版)
             </Button>
           </Typography>
+          <Button color="inherit" onClick={()=>{window.location="https://www.google.com"}}>
+            {/* placeholder url */}
+            用户指南
+          </Button>
           <Button color="inherit" onClick={redirectToHomepage}>
             主页
           </Button>

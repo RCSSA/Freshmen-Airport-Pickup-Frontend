@@ -47,7 +47,6 @@ export default function RegisterPage(props) {
         //     props.setStatus(2);
         //     navigate("/status");
         //   }
-
         if (data.status === true) {
           props.setStatus(1);
           navigate("/status");
@@ -85,7 +84,7 @@ export default function RegisterPage(props) {
             <div className="fw-bold mb-2">名（请输入拼音）</div>
             <input
               type="text"
-              pattern="[A-Za-z]+"
+              pattern = "[A-Za-z]+"
               className="form-control"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
@@ -97,7 +96,7 @@ export default function RegisterPage(props) {
             <div className="fw-bold mb-2">姓（请输入拼音）</div>
             <input
               type="text"
-              pattern="[A-Za-z]+"
+              pattern = "[A-Za-z]+"
               className="form-control"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}

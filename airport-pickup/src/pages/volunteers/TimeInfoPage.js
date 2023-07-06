@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { serverUrl } from "../../const";
+import DeleteModal from "../../component/DeleteModal";
 
 export default function TimeInfoPage(props) {
   const navigate = useNavigate();
@@ -66,16 +67,19 @@ export default function TimeInfoPage(props) {
                 </div>
                 <div className="col-12 col-lg-6 d-flex align-items-center justify-content-end">
                   <p className="text-success me-3 mt-3">状态: 分配成功</p>
-                  <div
+                  <DeleteModal deleteHandler={()=>handleDeleteByIndex(index)} btnClassName="btn btn-outline-danger"
+                    btnChildren={"删除"} modalTitle={"确认删除该分配信息？"} modalBody={"...待阐明"}/>
+                  {/* <div
                     className="btn btn-outline-danger"
                     onClick={() => {
                       handleDeleteByIndex(index);
                     }}
                   >
                     删除
-                  </div>
+                  </div> */}
                 </div>
               </div>
+              
             </div>
           ))}
         </div>
