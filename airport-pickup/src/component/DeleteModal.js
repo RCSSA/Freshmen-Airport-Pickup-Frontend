@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useRef } from 'react';
 
 export default function DeleteModal(props) {
+  const modalRef = useRef();
   return (
     <div>
       <button
@@ -8,6 +9,7 @@ export default function DeleteModal(props) {
         className={props.btnClassName}
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
+        ref={modalRef}
       >
         {props.btnChildren}
       </button>
@@ -44,7 +46,7 @@ export default function DeleteModal(props) {
               <button
                 type="button"
                 className="btn btn-primary"
-                onClick={props.deleteHandler}
+                onClick={()=>props.deleteHandler(modalRef)}
               >
                 确认
               </button>

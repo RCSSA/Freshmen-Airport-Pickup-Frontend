@@ -80,23 +80,21 @@ function App() {
         <Route
           path="/choosetime"
           element={
-            // <RequireAuth user={volunteerLoggedIn}>
-            //   <ChooseTimePage />
-            // </RequireAuth>
-            <ChooseTimePage volEmail={volEmail} />
+            <RequireAuth user={volunteerLoggedIn}>
+              <ChooseTimePage volEmail={volEmail} />
+            </RequireAuth>           
           }
         ></Route>
         <Route
           path="/info"
           element={
-            // <RequireAuth user={volunteerLoggedIn}>
-            //   <TimeInfoPage />
-            // </RequireAuth>
-            <TimeInfoPage
+            <RequireAuth user={volunteerLoggedIn}>
+              <TimeInfoPage
               studentList={studentList}
               volEmail={volEmail}
               setStudentList={setStudentList}
-            />
+              />
+            </RequireAuth>
           }
         ></Route>
 
@@ -128,23 +126,19 @@ function App() {
             />
           }
         ></Route>
-        {/* <Route path="/studentstatus" element={
-              <StudentStatusPage status={status}/>
-            }>
-          </Route> */}
+       
         <Route
           path="/studentallocate"
           element={
-            // <RequireAuth user={studentLoggedIn}>
-            //   <StudentAllocatePage />
-            // </RequireAuth>
-            <StudentAllocatePage
+            <RequireAuth user={studentLoggedIn}>
+              <StudentAllocatePage
               progress={progress}
               studentEmail={studentEmail}
               studentName={studentName}
               volInfo={volInfo}
               studentInfo={studentInfo}
             />
+            </RequireAuth>
           }
         ></Route>
       </Routes>
