@@ -60,6 +60,7 @@ export default function NewStudentPage(props) {
       airport: airport,
       arriving_time: arriveTime,
     };
+    props.setStudentInfo(student_data);
     let baseUrl = serverUrl;
     let url = baseUrl + "?action=" + action;
     console.log("Url: ", url, JSON.stringify(student_data));

@@ -27,6 +27,7 @@ function App() {
   const [studentEmail, setStudentEmail] = useState("");
   const [volEmail, setVolEmail] = useState("");
   const [volInfo, setVolInfo] = useState({});
+  const [studentInfo, setStudentInfo] = useState({});
   const [studentList, setStudentList] = useState([]);
   useEffect(() => {
     document.title = "RCSSA Airport Pickup Platform";
@@ -110,6 +111,7 @@ function App() {
               setStudentName={setStudentName}
               setStudentEmail={setStudentEmail}
               setVolInfo={setVolInfo}
+              setStudentInfo={setStudentInfo}
             />
           }
         ></Route>
@@ -122,6 +124,7 @@ function App() {
               setProgress={setProgress}
               setStudentName={setStudentName}
               setStudentEmail={setStudentEmail}
+              setStudentInfo={setStudentInfo}
             />
           }
         ></Route>
@@ -140,6 +143,7 @@ function App() {
               studentEmail={studentEmail}
               studentName={studentName}
               volInfo={volInfo}
+              studentInfo={studentInfo}
             />
           }
         ></Route>

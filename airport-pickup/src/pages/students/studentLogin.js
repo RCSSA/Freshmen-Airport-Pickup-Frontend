@@ -43,6 +43,13 @@ export default function StudentLoginPage(props) {
           props.setStudentName(firstName + " " + lastName);
           props.setStudentEmail(email);
           props.setVolInfo(data.record);
+          const studentInfo = {
+            wechat: data.wechat,
+            flight_number: data.flight_number,
+            airport: data.airport,
+            arriving_time: data.arriving_time,
+          };
+          props.setStudentInfo(studentInfo);
           navigate("/studentallocate", {
             email,
             name: firstName + " " + lastName,
