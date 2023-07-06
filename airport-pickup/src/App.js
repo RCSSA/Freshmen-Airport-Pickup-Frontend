@@ -64,6 +64,7 @@ function App() {
               setProgress={setProgress}
               setVolEmail={setVolEmail}
               setStudentList={setStudentList}
+              setVolInfo={setVolInfo}
             />
           }
         ></Route>
@@ -96,6 +97,7 @@ function App() {
               studentList={studentList}
               volEmail={volEmail}
               setStudentList={setStudentList}
+              volInfo={volInfo}
             />
           }
         ></Route>

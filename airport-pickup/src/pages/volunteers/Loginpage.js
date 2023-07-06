@@ -22,7 +22,7 @@ export default function Loginpage(props) {
     let baseUrl = serverUrl;
     let action = "volunteer_login_search";
     let url = baseUrl + "?action=" + action;
-    console.log("Student login with Url: ", url, JSON.stringify(login_data));
+    console.log("Volunteer login with Url: ", url, JSON.stringify(login_data));
     fetch(url, {
       redirect: "follow",
       method: "POST",
@@ -39,6 +39,7 @@ export default function Loginpage(props) {
           setVolunteerLoggedIn(true);
           props.setVolEmail(email);
           props.setStudentList(data.record || []);
+          props.setVolInfo(login_data);
           navigate("/info");
         } else {
           if (data.found === true && data.confirmed === false) {

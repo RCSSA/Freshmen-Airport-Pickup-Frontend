@@ -151,6 +151,7 @@ export default function ChooseTimePage(props) {
       alert("请先选择接机时间！");
       return;
     }
+    let isMatched = false;
     matchData.forEach((m_data) => {
       const url = serverUrl + "?action=match";
       let data = {};
@@ -166,12 +167,14 @@ export default function ChooseTimePage(props) {
         .then((data) => {
           console.log(data);
           if (data.num_allocated && data.num_allocated > 0) {
-            alert("成功匹配" + data.num_allocated + "人！，请重新登陆查看状态");
-            navigate("/");
+            alert("成功匹配" + data.num_allocated + "人！");
+            isMatched = true;
+            // navigate("/info");
           } else {
             alert("由于网络原因，部分选择时间段未能匹配成功！");
             // navigate("/studentstatus");
           }
+          if (isMatched) navigate("/info");
         });
     });
     // navigate("/info");

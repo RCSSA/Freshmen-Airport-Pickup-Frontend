@@ -42,6 +42,25 @@ export default function TimeInfoPage(props) {
 
   useEffect(() => {
     console.log("TimeInfoPage: props:", props);
+    let data = {};
+    let baseUrl = serverUrl;
+    let action = "volunteer_login_search";
+    let url = baseUrl + "?action=" + action;
+    fetch(url, {
+      redirect: "follow",
+      method: "POST",
+      body: JSON.stringify(props.volInfo),
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8",
+      },
+    })
+      .then((response) => response.json(data))
+      .then((data) => {
+        console.log(data);
+        if (data.found === true && data.confirmed === true) {
+          props.setStudentList(data.record || []);
+        }
+      });
   }, []);
 
   return (
