@@ -31,7 +31,7 @@ export default function NewStudentPage(props) {
   useEffect(() => {
     const getServerData = async () => {
       const dataFromServerHouston = {
-        unix: 1687339343000,
+        unix: 1690866000000,
         timezone: "America/Ojinaga",
       };
       const datetimeHouston = dayjs(dataFromServerHouston.unix).tz(
@@ -137,7 +137,7 @@ export default function NewStudentPage(props) {
                     </label>
                     <input
                       type="text"
-                      pattern = "[A-Za-z]+"
+                      pattern="[A-Za-z]+"
                       className="form-control"
                       id="validationCustom01"
                       placeholder="e.g. Juan"
@@ -152,7 +152,7 @@ export default function NewStudentPage(props) {
                     </label>
                     <input
                       type="text"
-                      pattern = "[A-Za-z]+"
+                      pattern="[A-Za-z]+"
                       className="form-control"
                       id="validationCustom02"
                       placeholder="e.g. Huang"

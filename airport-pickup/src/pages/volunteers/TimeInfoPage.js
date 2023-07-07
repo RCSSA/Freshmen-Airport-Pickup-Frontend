@@ -10,7 +10,7 @@ export default function TimeInfoPage(props) {
     navigate("/");
   }
 
-  const handleDeleteByIndex = (closeRef, index) => {
+  const handleDeleteByIndex = (closeRef, index, enableConfirmBtn) => {
     // props.deleteStudent(index);
     console.log(props.studentList[index]);
     let data = {};
@@ -38,6 +38,7 @@ export default function TimeInfoPage(props) {
           alert("删除成功");
           props.setStudentList(newStudentList);
         } else alert("删除失败");
+        enableConfirmBtn();
       });
   };
 
@@ -96,7 +97,9 @@ export default function TimeInfoPage(props) {
                 <div className="col-12 col-lg-6 d-flex align-items-center justify-content-end">
                   <p className="text-success me-3 mt-3">状态: 分配成功</p>
                   <DeleteModal
-                    deleteHandler={(closeRef) => handleDeleteByIndex(closeRef, index)}
+                    deleteHandler={(closeRef, enableConfirmBtn) =>
+                      handleDeleteByIndex(closeRef, index, enableConfirmBtn)
+                    }
                     btnClassName="btn btn-outline-danger"
                     btnChildren={"删除"}
                     modalTitle={"确认删除该分配信息？"}
@@ -119,7 +122,6 @@ export default function TimeInfoPage(props) {
                   </div> */}
                 </div>
               </div>
-              
             </div>
           ))}
         </div>

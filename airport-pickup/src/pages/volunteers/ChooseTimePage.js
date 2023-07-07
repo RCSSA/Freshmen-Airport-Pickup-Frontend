@@ -152,10 +152,11 @@ export default function ChooseTimePage(props) {
       return;
     }
     let isMatched = false;
+    const promises = [];
     matchData.forEach((m_data) => {
       const url = serverUrl + "?action=match";
       let data = {};
-      fetch(url, {
+      const ret = fetch(url, {
         redirect: "follow",
         method: "POST",
         body: JSON.stringify(m_data),
@@ -174,8 +175,11 @@ export default function ChooseTimePage(props) {
             alert("由于网络原因，部分选择时间段未能匹配成功！");
             // navigate("/studentstatus");
           }
-          if (isMatched) navigate("/info");
         });
+      promises.push(ret);
+    });
+    Promise.all(promises).then(() => {
+      if (isMatched) navigate("/info");
     });
     // navigate("/info");
   };

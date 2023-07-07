@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import HailIcon from "@mui/icons-material/Hail";
 import NoCrashIcon from "@mui/icons-material/NoCrash";
+import { Alert } from "antd";
 
 export default function Homepage(props) {
   const navigate = useNavigate();
@@ -19,7 +20,19 @@ export default function Homepage(props) {
 
   return (
     <div className="full-white pb-3 px-2">
-      <div className="d-flex justify-content-center align-items-center" style={{height: "94%"}}>
+      <div>
+        <br /> <br />
+        <Alert
+          message="测试中"
+          description="当前平台测试中，预计下周正式上线。如急需接机服务请在新生注册中填入自己的信息，并邮件联系gh31@rice.edu，谢谢。"
+          type="warning"
+          showIcon
+        />
+      </div>
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "94%" }}
+      >
         <div className="row">
           <div className="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center p-2">
             <HailIcon fontSize="large" color="primary" />
@@ -62,9 +75,11 @@ export default function Homepage(props) {
           </div>
         </div>
       </div>
-      <div className="d-flex justify-content-center text-secondary text-center">Copyright @ 2023 RCSSA. Frontend development by Alexia Yuening Huang. 
-      Backend development by Allen Sun, Sarah Yao. <br/> Deployment by Weijian Zeng. Product Management by Ge Huang. All rights reserved.</div>
+      <div className="d-flex justify-content-center text-secondary text-center">
+        Copyright @ 2023 RCSSA IT. Frontend development by Alexia Yuening Huang.
+        Backend development by Allen Sun, Sarah Yao. <br /> Product Management
+        by Ge Huang. Special credit to Weijian Zeng. All rights reserved.
+      </div>
     </div>
-    
   );
 }
