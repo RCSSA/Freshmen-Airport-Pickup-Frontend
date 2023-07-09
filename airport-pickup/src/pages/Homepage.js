@@ -20,7 +20,7 @@ export default function Homepage(props) {
 
   return (
     <div className="full-white pb-3 px-2">
-      <div>
+      {/* <div>
         <br /> <br />
         <Alert
           message="测试中"
@@ -28,7 +28,7 @@ export default function Homepage(props) {
           type="warning"
           showIcon
         />
-      </div>
+      </div> */}
       <div
         className="d-flex justify-content-center align-items-center"
         style={{ height: "94%" }}
@@ -78,7 +78,8 @@ export default function Homepage(props) {
       <div className="d-flex justify-content-center text-secondary text-center">
         Copyright @ 2023 RCSSA IT. Frontend development by Alexia Yuening Huang.
         Backend development by Allen Sun, Sarah Yao. <br /> Product Management
-        by Ge Huang. Special credit to Weijian Zeng. All rights reserved.
+        by Ge Huang. <br /> Special credit to Weijian Zeng, James Li, Yankai
+        Wang. All rights reserved.
       </div>
     </div>
   );

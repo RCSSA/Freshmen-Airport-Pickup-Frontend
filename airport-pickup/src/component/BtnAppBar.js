@@ -31,7 +31,7 @@ export default function BtnAppBar() {
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Button color="inherit" onClick={redirectToHomepage}>
-              RCSSA接机平台(测试版)
+              RCSSA接机平台(2.0)
             </Button>
           </Typography>
           <Button
