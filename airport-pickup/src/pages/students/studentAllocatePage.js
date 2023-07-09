@@ -26,7 +26,7 @@ export default function StudentAllocatePage(props) {
     })
       .then((response) => response.json(data))
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.status === true) {
           alert("删除成功");
           navigate("/");

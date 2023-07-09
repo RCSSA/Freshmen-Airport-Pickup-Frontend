@@ -37,18 +37,7 @@ export default function RegisterPage(props) {
     })
       .then((response) => response.json(data))
       .then((data) => {
-        console.log(data);
-        // if (data.found === true && data.confirmed === true){
-        //   props.setStatus(0);
-        //   navigate("/status");
-        // } else {
-        //   if (data.found === true && data.confirmed === false){
-        //     props.setStatus(1);
-        //     navigate("/status");
-        //   } else {
-        //     props.setStatus(2);
-        //     navigate("/status");
-        //   }
+        // console.log(data);
         if (data.status === true) {
           props.setStatus(1);
           navigate("/status");
@@ -59,13 +48,13 @@ export default function RegisterPage(props) {
         // 审核不通过的情况?
       });
   }
-  useEffect(() => {
-    console.log(`firstname: ${firstName} \n`);
-    console.log(`lastname: ${lastName} \n`);
-    console.log(`phonenumber: ${phone} \n`);
-    console.log(`email: ${email} \n`);
-    console.log(`wechat: ${wechat} \n`);
-  }, [firstName, lastName, phone, email, wechat]);
+  // useEffect(() => {
+  //   console.log(`firstname: ${firstName} \n`);
+  //   console.log(`lastname: ${lastName} \n`);
+  //   console.log(`phonenumber: ${phone} \n`);
+  //   console.log(`email: ${email} \n`);
+  //   console.log(`wechat: ${wechat} \n`);
+  // }, [firstName, lastName, phone, email, wechat]);
 
   return (
     <div className="row justify-content-center p-5">
@@ -86,7 +75,7 @@ export default function RegisterPage(props) {
             <div className="fw-bold mb-2">名（请输入拼音）</div>
             <input
               type="text"
-              pattern = "[A-Za-z]+"
+              pattern="[A-Za-z]+"
               className="form-control"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
@@ -98,7 +87,7 @@ export default function RegisterPage(props) {
             <div className="fw-bold mb-2">姓（请输入拼音）</div>
             <input
               type="text"
-              pattern = "[A-Za-z]+"
+              pattern="[A-Za-z]+"
               className="form-control"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
@@ -116,7 +105,7 @@ export default function RegisterPage(props) {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="form-control"
-              placeholder="@rice.edu"
+              placeholder="e.g. xxx@gmail.com, xxx@rice.edu"
               required
             />
           </div>

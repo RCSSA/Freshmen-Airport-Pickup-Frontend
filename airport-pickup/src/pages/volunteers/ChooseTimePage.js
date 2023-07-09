@@ -82,9 +82,9 @@ export default function ChooseTimePage(props) {
     [eventData, pickUpNumber]
   );
 
-  useEffect(() => {
-    console.log("matchData: ", matchData);
-  }, [matchData]);
+  // useEffect(() => {
+  //   console.log("matchData: ", matchData);
+  // }, [matchData]);
 
   useEffect(() => {
     // get all await students
@@ -92,10 +92,10 @@ export default function ChooseTimePage(props) {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         // TODO:: check if status is true
         if (data.status === true) {
-          console.log(data.events);
+          // console.log(data.events);
           eventData = data.events;
           let [a, b, c, d] = dataManagement(eventData);
           fullCalendarEvents = [a, b, c, d];
@@ -166,7 +166,7 @@ export default function ChooseTimePage(props) {
       })
         .then((response) => response.json(data))
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           if (data.num_allocated && data.num_allocated > 0) {
             alert("成功匹配" + data.num_allocated + "人！");
             isMatched = true;
