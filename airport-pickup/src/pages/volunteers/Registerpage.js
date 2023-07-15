@@ -97,7 +97,7 @@ export default function RegisterPage(props) {
           </div>
           <div className="my-2 col-12 col-md-6">
             <div className="mb-2">
-              <b>邮箱</b>
+              <b>邮箱（为方便审核，Rice在校生请使用rice.edu邮箱）</b>
             </div>
             <input
               type="email"

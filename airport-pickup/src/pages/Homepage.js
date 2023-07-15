@@ -29,9 +29,10 @@ export default function Homepage(props) {
           showIcon
         />
       </div> */}
+
       <div
         className="d-flex justify-content-center align-items-center"
-        style={{ height: "94%" }}
+        style={{ height: "70%" }}
       >
         <div className="row">
           <div className="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center p-2">
@@ -75,6 +76,22 @@ export default function Homepage(props) {
           </div>
         </div>
       </div>
+      <div
+        className="d-flex justify-content-center text-center"
+        style={{ height: "10%" }}
+      >
+        <div class="alert alert-info" role="alert">
+          <a href="#" class="alert-link">
+            温馨提示
+          </a>
+          ：由于接机平台使用了谷歌服务，大陆用户请使用VPN访问本网站，敬请谅解。
+        </div>
+      </div>
+      <div
+        className="d-flex justify-content-center text-center"
+        style={{ height: "16%" }}
+      ></div>
+
       <div className="d-flex justify-content-center text-secondary text-center">
         Copyright @ 2023 RCSSA IT. Frontend development by Alexia Yuening Huang.
         Backend development by Allen Sun, Sarah Yao. <br /> Product Management
