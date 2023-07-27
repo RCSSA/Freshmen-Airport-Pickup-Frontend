@@ -22,7 +22,7 @@ export default function StudentLoginPage(props) {
     let baseUrl = serverUrl;
     let action = "student_login_search";
     let url = baseUrl + "?action=" + action;
-    console.log("Student login with Url: ", url, JSON.stringify(login_data));
+    // console.log("Student login with Url: ", url, JSON.stringify(login_data));
     fetch(url, {
       redirect: "follow",
       method: "POST",
@@ -33,7 +33,7 @@ export default function StudentLoginPage(props) {
     })
       .then((response) => response.json(data))
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.found === true && data.confirmed === true) {
           alert("登陆成功！");
           JSON.stringify(data.record) === "{}"

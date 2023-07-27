@@ -82,9 +82,9 @@ export default function ChooseTimePage(props) {
     [eventData, pickUpNumber]
   );
 
-  useEffect(() => {
-    console.log("matchData: ", matchData);
-  }, [matchData]);
+  // useEffect(() => {
+  //   console.log("matchData: ", matchData);
+  // }, [matchData]);
 
   useEffect(() => {
     // get all await students
@@ -92,10 +92,10 @@ export default function ChooseTimePage(props) {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         // TODO:: check if status is true
         if (data.status === true) {
-          console.log(data.events);
+          // console.log(data.events);
           eventData = data.events;
           let [a, b, c, d] = dataManagement(eventData);
           fullCalendarEvents = [a, b, c, d];
@@ -151,10 +151,12 @@ export default function ChooseTimePage(props) {
       alert("请先选择接机时间！");
       return;
     }
+    let isMatched = false;
+    const promises = [];
     matchData.forEach((m_data) => {
       const url = serverUrl + "?action=match";
       let data = {};
-      fetch(url, {
+      const ret = fetch(url, {
         redirect: "follow",
         method: "POST",
         body: JSON.stringify(m_data),
@@ -164,15 +166,20 @@ export default function ChooseTimePage(props) {
       })
         .then((response) => response.json(data))
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           if (data.num_allocated && data.num_allocated > 0) {
-            alert("成功匹配" + data.num_allocated + "人！，请重新登陆查看状态");
-            navigate("/");
+            alert("成功匹配" + data.num_allocated + "人！");
+            isMatched = true;
+            // navigate("/info");
           } else {
             alert("由于网络原因，部分选择时间段未能匹配成功！");
             // navigate("/studentstatus");
           }
         });
+      promises.push(ret);
+    });
+    Promise.all(promises).then(() => {
+      if (isMatched) navigate("/info");
     });
     // navigate("/info");
   };

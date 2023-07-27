@@ -22,7 +22,7 @@ export default function Loginpage(props) {
     let baseUrl = serverUrl;
     let action = "volunteer_login_search";
     let url = baseUrl + "?action=" + action;
-    console.log("Student login with Url: ", url, JSON.stringify(login_data));
+    // console.log("Volunteer login with Url: ", url, JSON.stringify(login_data));
     fetch(url, {
       redirect: "follow",
       method: "POST",
@@ -33,12 +33,13 @@ export default function Loginpage(props) {
     })
       .then((response) => response.json(data))
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.found === true && data.confirmed === true) {
           alert("登陆成功！");
           setVolunteerLoggedIn(true);
           props.setVolEmail(email);
           props.setStudentList(data.record || []);
+          props.setVolInfo(login_data);
           navigate("/info");
         } else {
           if (data.found === true && data.confirmed === false) {

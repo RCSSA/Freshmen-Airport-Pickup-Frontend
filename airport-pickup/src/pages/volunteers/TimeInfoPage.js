@@ -1,18 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { serverUrl } from "../../const";
 import DeleteModal from "../../component/DeleteModal";
 
 export default function TimeInfoPage(props) {
   const navigate = useNavigate();
+  const [loaded, setLoaded] = useState(false);
 
   function logout() {
     navigate("/");
   }
 
-  const handleDeleteByIndex = (closeRef, index) => {
+  const handleDeleteByIndex = (closeRef, index, enableConfirmBtn) => {
     // props.deleteStudent(index);
-    console.log(props.studentList[index]);
+
+    // console.log(props.studentList[index]);
     let data = {};
     let action = "delete_match_from_volunteer";
     let url = serverUrl + "?action=" + action;
@@ -29,7 +31,7 @@ export default function TimeInfoPage(props) {
     })
       .then((response) => response.json(data))
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         closeRef.current.click();
         if (data.status === true) {
           const newStudentList = props.studentList.filter(
@@ -38,22 +40,43 @@ export default function TimeInfoPage(props) {
           alert("删除成功");
           props.setStudentList(newStudentList);
         } else alert("删除失败");
+        enableConfirmBtn();
       });
   };
 
   useEffect(() => {
-    console.log("TimeInfoPage: props:", props);
+    // console.log("TimeInfoPage: props:", props);
+    let data = {};
+    let baseUrl = serverUrl;
+    let action = "volunteer_login_search";
+    let url = baseUrl + "?action=" + action;
+    fetch(url, {
+      redirect: "follow",
+      method: "POST",
+      body: JSON.stringify(props.volInfo),
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8",
+      },
+    })
+      .then((response) => response.json(data))
+      .then((data) => {
+        // console.log(data);
+        if (data.found === true && data.confirmed === true) {
+          props.setStudentList(data.record || []);
+        }
+        setLoaded(true);
+      });
   }, []);
 
-  return (
+  return loaded ? (
     <div className="full-width ">
       <div className="full-width d-flex flex-column align-items-center p-5">
         <h1 className="fw-bold my-4">接机信息</h1>
+
         <div className="fw-bold">
           您好，匹配信息如下，当前已匹配{props.studentList.length}
           人（最多10名）：
         </div>
-
         <div>
           {/* 分配信息 */}
           {props.studentList.map((student, index) => (
@@ -77,7 +100,9 @@ export default function TimeInfoPage(props) {
                 <div className="col-12 col-lg-6 d-flex align-items-center justify-content-end">
                   <p className="text-success me-3 mt-3">状态: 分配成功</p>
                   <DeleteModal
-                    deleteHandler={(closeRef) => handleDeleteByIndex(closeRef, index)}
+                    deleteHandler={(closeRef, enableConfirmBtn) =>
+                      handleDeleteByIndex(closeRef, index, enableConfirmBtn)
+                    }
                     btnClassName="btn btn-outline-danger"
                     btnChildren={"删除"}
                     modalTitle={"确认删除该分配信息？"}
@@ -90,14 +115,6 @@ export default function TimeInfoPage(props) {
                       student.airport
                     }
                   />
-                  {/* <div
-                    className="btn btn-outline-danger"
-                    onClick={() => {
-                      handleDeleteByIndex(index);
-                    }}
-                  >
-                    删除
-                  </div> */}
                 </div>
               </div>
               
@@ -119,6 +136,10 @@ export default function TimeInfoPage(props) {
           </button>
         </div>
       </div>
+    </div>
+  ) : (
+    <div className="spinner-border" role="status">
+      <span className="visually-hidden">Loading...</span>
     </div>
   );
 }

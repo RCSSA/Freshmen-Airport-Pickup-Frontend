@@ -31,7 +31,7 @@ export default function NewStudentPage(props) {
   useEffect(() => {
     const getServerData = async () => {
       const dataFromServerHouston = {
-        unix: 1687339343000,
+        unix: 1690866000000,
         timezone: "America/Ojinaga",
       };
       const datetimeHouston = dayjs(dataFromServerHouston.unix).tz(
@@ -46,7 +46,7 @@ export default function NewStudentPage(props) {
   const handleSubmit = (e) => {
     setIsSubmitDisabled(true);
     e.preventDefault();
-    console.log("In submiting form ");
+    // console.log("In submiting form ");
     let action = "insert_student";
     let data = {};
     //TODO:: Still missing the flight number
@@ -63,7 +63,7 @@ export default function NewStudentPage(props) {
     props.setStudentInfo(student_data);
     let baseUrl = serverUrl;
     let url = baseUrl + "?action=" + action;
-    console.log("Url: ", url, JSON.stringify(student_data));
+    // console.log("Url: ", url, JSON.stringify(student_data));
     fetch(url, {
       redirect: "follow",
       method: "POST",
@@ -74,11 +74,7 @@ export default function NewStudentPage(props) {
     })
       .then((response) => response.json(data))
       .then((data) => {
-        console.log(data);
-        // if (data.found === true && data.confirmed === true){
-        //   alert("登陆成功！");
-        //   setStudentLoggedIn(true);
-        //   navigate("/info");
+        // console.log(data);
         if (data.status === true) {
           alert("登陆成功！");
           props.setStudentLoggedIn(true);
@@ -93,25 +89,25 @@ export default function NewStudentPage(props) {
       });
   };
 
-  useEffect(() => {
-    console.log(`firstname: ${firstName} \n`);
-    console.log(`lastname: ${lastName} \n`);
-    console.log(`phonenumber: ${phoneNumber} \n`);
-    console.log(`email: ${email} \n`);
-    console.log(`wechat: ${wechat} \n`);
-    console.log(`flightnumber: ${flightNumber} \n`);
-    console.log(`airport: ${airport} \n`);
-    console.log(`arrive time: ${arriveTime} \n`);
-  }, [
-    firstName,
-    lastName,
-    phoneNumber,
-    email,
-    wechat,
-    flightNumber,
-    airport,
-    arriveTime,
-  ]);
+  // useEffect(() => {
+  //   console.log(`firstname: ${firstName} \n`);
+  //   console.log(`lastname: ${lastName} \n`);
+  //   console.log(`phonenumber: ${phoneNumber} \n`);
+  //   console.log(`email: ${email} \n`);
+  //   console.log(`wechat: ${wechat} \n`);
+  //   console.log(`flightnumber: ${flightNumber} \n`);
+  //   console.log(`airport: ${airport} \n`);
+  //   console.log(`arrive time: ${arriveTime} \n`);
+  // }, [
+  //   firstName,
+  //   lastName,
+  //   phoneNumber,
+  //   email,
+  //   wechat,
+  //   flightNumber,
+  //   airport,
+  //   arriveTime,
+  // ]);
 
   return (
     <div className="row justify-content-center p-5">

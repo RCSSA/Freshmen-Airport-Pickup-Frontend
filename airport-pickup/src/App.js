@@ -64,6 +64,7 @@ function App() {
               setProgress={setProgress}
               setVolEmail={setVolEmail}
               setStudentList={setStudentList}
+              setVolInfo={setVolInfo}
             />
           }
         ></Route>
@@ -82,7 +83,7 @@ function App() {
           element={
             <RequireAuth user={volunteerLoggedIn}>
               <ChooseTimePage volEmail={volEmail} />
-            </RequireAuth>           
+            </RequireAuth>
           }
         ></Route>
         <Route
@@ -90,9 +91,10 @@ function App() {
           element={
             <RequireAuth user={volunteerLoggedIn}>
               <TimeInfoPage
-              studentList={studentList}
-              volEmail={volEmail}
-              setStudentList={setStudentList}
+                studentList={studentList}
+                volEmail={volEmail}
+                setStudentList={setStudentList}
+                volInfo={volInfo}
               />
             </RequireAuth>
           }
@@ -126,18 +128,17 @@ function App() {
             />
           }
         ></Route>
-       
         <Route
           path="/studentallocate"
           element={
             <RequireAuth user={studentLoggedIn}>
               <StudentAllocatePage
-              progress={progress}
-              studentEmail={studentEmail}
-              studentName={studentName}
-              volInfo={volInfo}
-              studentInfo={studentInfo}
-            />
+                progress={progress}
+                studentEmail={studentEmail}
+                studentName={studentName}
+                volInfo={volInfo}
+                studentInfo={studentInfo}
+              />
             </RequireAuth>
           }
         ></Route>

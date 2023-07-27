@@ -1,7 +1,13 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from "react";
 
 export default function DeleteModal(props) {
   const modalRef = useRef();
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
+
+  useEffect(() => {
+    // get all await students
+    setIsSubmitDisabled(false);
+  }, []);
   return (
     <div>
       <button
@@ -46,7 +52,15 @@ export default function DeleteModal(props) {
               <button
                 type="button"
                 className="btn btn-primary"
-                onClick={()=>props.deleteHandler(modalRef)}
+                disabled={isSubmitDisabled}
+                onClick={() => {
+                  setIsSubmitDisabled(true);
+
+                  props.deleteHandler(modalRef, () =>
+                    setIsSubmitDisabled(false)
+                  );
+                  // setIsSubmitDisabled(false);
+                }}
               >
                 确认
               </button>
