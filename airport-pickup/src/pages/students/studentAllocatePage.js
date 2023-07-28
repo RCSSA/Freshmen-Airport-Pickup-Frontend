@@ -110,5 +110,5 @@ export default function StudentAllocatePage(props) {
         </div>
       </div>
     </div>
-  );
+  )
 }

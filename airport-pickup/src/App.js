@@ -128,7 +128,6 @@ function App() {
             />
           }
         ></Route>
-
         <Route
           path="/studentallocate"
           element={
