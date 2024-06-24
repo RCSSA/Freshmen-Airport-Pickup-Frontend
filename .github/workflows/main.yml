@@ -29,14 +29,6 @@ jobs:
     - name: Build project
       run: npm run build
 
-    # - name: Deploy
-    #   run: |
-
-    #     npm install -g gh-pages
-    #     gh-pages -d build -o origin -b gh-pages-git-action-flow
-    #   env:
-    #     GH_TOKEN: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-
 
     - name: Deploy to GitHub Pages
       run: |
