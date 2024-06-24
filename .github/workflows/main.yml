@@ -29,18 +29,18 @@ jobs:
     - name: Build project
       run: npm run build
 
-    - name: Deploy
-      run: |
+    # - name: Deploy
+    #   run: |
 
-        npm install -g gh-pages
-        gh-pages -d build -o origin -b gh-pages-git-action-flow
-      env:
-        GH_TOKEN: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+    #     npm install -g gh-pages
+    #     gh-pages -d build -o origin -b gh-pages-git-action-flow
+    #   env:
+    #     GH_TOKEN: ${{ secrets.ACTIONS_DEPLOY_KEY }}
 
 
     - name: Deploy to GitHub Pages
       run: |
         echo "machine github.com login ${{ secrets.ACTIONS_DEPLOY_USERNAME }} password ${{ secrets.ACTIONS_DEPLOY_KEY }}" > ~/.netrc
-        gh-pages -d build -b gh-pages
+        gh-pages -d build -o origin -b gh-pages-git-action-flow
       env:
         GH_TOKEN: ${{ secrets.ACTIONS_DEPLOY_KEY }}
