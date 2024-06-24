@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/Freshmen-Airport-Pickup-Frontend/git-action-flow-test/static/css/main.5d23a415.css",
+    "main.js": "/Freshmen-Airport-Pickup-Frontend/git-action-flow-test/static/js/main.6546c735.js",
+    "static/js/787.8e056c2d.chunk.js": "/Freshmen-Airport-Pickup-Frontend/git-action-flow-test/static/js/787.8e056c2d.chunk.js",
+    "static/media/logo.png": "/Freshmen-Airport-Pickup-Frontend/git-action-flow-test/static/media/logo.dc3890be84b920d88d0a.png",
+    "static/media/bootstrap-icons.woff?": "/Freshmen-Airport-Pickup-Frontend/git-action-flow-test/static/media/bootstrap-icons.e559bf06bc84fd9525e6.woff",
+    "static/media/bootstrap-icons.woff2?": "/Freshmen-Airport-Pickup-Frontend/git-action-flow-test/static/media/bootstrap-icons.ea98e12d2d58747f9fc5.woff2",
+    "index.html": "/Freshmen-Airport-Pickup-Frontend/git-action-flow-test/index.html",
+    "main.5d23a415.css.map": "/Freshmen-Airport-Pickup-Frontend/git-action-flow-test/static/css/main.5d23a415.css.map",
+    "main.6546c735.js.map": "/Freshmen-Airport-Pickup-Frontend/git-action-flow-test/static/js/main.6546c735.js.map",
+    "787.8e056c2d.chunk.js.map": "/Freshmen-Airport-Pickup-Frontend/git-action-flow-test/static/js/787.8e056c2d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5d23a415.css",
+    "static/js/main.6546c735.js"
+  ]
+}
