@@ -36,3 +36,11 @@ jobs:
         gh-pages -d build -o origin -b gh-pages-git-action-flow
       env:
         GH_TOKEN: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+
+
+    - name: Deploy to GitHub Pages
+      run: |
+        echo "machine github.com login ${{ secrets.ACTIONS_DEPLOY_USERNAME }} password ${{ secrets.ACTIONS_DEPLOY_KEY }}" > ~/.netrc
+        gh-pages -d build -b gh-pages
+      env:
+        GH_TOKEN: ${{ secrets.ACTIONS_DEPLOY_KEY }}
