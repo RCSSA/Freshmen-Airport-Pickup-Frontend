@@ -1,7 +1,7 @@
 {
   "name": "airport-pickup",
   "version": "0.1.0b",
-  "homepage": "https://rcssa.github.io/Freshmen-Airport-Pickup-Frontend/git-action-flow-test",
+  "homepage": "https://rcssa.github.io/Freshmen-Airport-Pickup-Frontend/",
   "private": true,
   "dependencies": {
     "@date-io/moment": "^2.16.1",
