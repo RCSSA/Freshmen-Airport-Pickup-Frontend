@@ -1,0 +1,33 @@
+name: Deploy Git-Action-Flow
+
+on:
+  push:
+    branches:
+      - git-action-flow-deploy
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build project
+      run: npm run build
+
+    - name: Deploy
+      run: |
+
+        npm install -g gh-pages
+        gh-pages -d build -o origin -b gh-pages-git-action-flow
+      env:
+        GH_TOKEN: ${{ secrets.ACTIONS_DEPLOY_KEY }}
