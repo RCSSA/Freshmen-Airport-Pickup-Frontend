@@ -90,7 +90,7 @@ export default function Homepage(props) {
           Copyright @ 2023 RCSSA IT. Frontend development by Alexia Yuening Huang.
           Backend development by Allen Sun, Sarah Yao. <br /> Product Management
           by Ge Huang. <br /> Special credit to Weijian Zeng, James Li, Yankai
-          Wang. All rights reserved.
+          Wang. All rights reserved...
         </div>
       </div>
     </div>
