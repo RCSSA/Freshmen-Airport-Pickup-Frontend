@@ -27,11 +27,13 @@ export default function NewStudentPage(props) {
 
   dayjs.extend(utc);
   dayjs.extend(timezone);
+  // console.log("hello", dayjs('2024/07/31 22:00:00').unix())
+  // console.log("hi", dayjs.unix(1722488400))
   // America/Ojinaga
   useEffect(() => {
     const getServerData = async () => {
       const dataFromServerHouston = {
-        unix: 1690866000000,
+        unix: 1722488400000,
         timezone: "America/Ojinaga",
       };
       const datetimeHouston = dayjs(dataFromServerHouston.unix).tz(
@@ -114,7 +116,7 @@ export default function NewStudentPage(props) {
       <div className="col-12 col-md-8">
         <h1 className="fw-bold my-4">新生注册</h1>
         <div className="my-2">
-          免责声明： 2023
+          免责声明： 2024
           RCSSA接机活动是莱斯大学中国学生会自发组织的志愿活动，其目的在于帮初到机场的新生排忧解难，给老生认识新生、回馈中国学生群体的机会。本次活动非盈利、非政治、非宗教，万望各方注意、并请谅解。
           世上任何事情皆有不可抗力，所以请各方充分认识参与此活动潜在的风险，然后再决定是否参加此活动。可能存在的风险包括但不限于海陆空交通所造成的一切财产、时间之损失，不论主观还是客观的存在。学生会会尽力提供安全保障包括审核新生、志愿者信息，但学生会终究是庙小香火淡薄，不能保证给到所有人最满意的帮助，还望各位官家大人谅解！
         </div>
