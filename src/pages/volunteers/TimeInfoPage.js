@@ -114,6 +114,7 @@ export default function TimeInfoPage(props) {
                       ", 机场：" +
                       student.airport
                     }
+                    modalId={`deleteModal-${index}`}
                   />
                 </div>
               </div>

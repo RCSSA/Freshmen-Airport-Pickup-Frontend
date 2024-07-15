@@ -14,7 +14,7 @@ export default function DeleteModal(props) {
         type="button"
         className={props.btnClassName}
         data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+        data-bs-target={`#${props.modalId}`}
         ref={modalRef}
       >
         {props.btnChildren}
@@ -22,15 +22,15 @@ export default function DeleteModal(props) {
 
       <div
         className="modal fade"
-        id="exampleModal"
+        id={props.modalId} 
         tabindex="-1"
-        aria-labelledby="exampleModalLabel"
+        aria-labelledby={`${props.modalId}Label`} 
         aria-hidden="true"
       >
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content p-3">
             <div className="modal-header border-0">
-              <h1 className="modal-title fs-5" id="exampleModalLabel">
+              <h1 className="modal-title fs-5" id={`${props.modalId}Label`}>
                 {props.modalTitle}
               </h1>
               <button

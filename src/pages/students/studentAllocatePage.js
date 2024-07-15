@@ -97,6 +97,7 @@ export default function StudentAllocatePage(props) {
               modalBody={
                 "一旦确认，您在接机平台上此账号的所有信息将被删除，且不可恢复。您可以通过重新输入个人信息来注册新的账号。"
               }
+              modalId={`deleteModal`}
             />
             <button
               onClick={() => {
