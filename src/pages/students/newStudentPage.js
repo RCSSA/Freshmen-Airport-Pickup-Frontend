@@ -33,7 +33,7 @@ export default function NewStudentPage(props) {
   useEffect(() => {
     const getServerData = async () => {
       const dataFromServerHouston = {
-        unix: 1690866000000,
+        unix: 1722488400000,
         timezone: "America/Ojinaga",
       };
       const datetimeHouston = dayjs(dataFromServerHouston.unix).tz(
