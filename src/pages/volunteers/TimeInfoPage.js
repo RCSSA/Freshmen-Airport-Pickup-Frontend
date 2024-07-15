@@ -12,6 +12,9 @@ export default function TimeInfoPage(props) {
   }
 
   const handleDeleteByIndex = (closeRef, index, enableConfirmBtn) => {
+    console.log("starting delete!!!!!!!!!!!!");
+    console.log(props.studentList[index].email)
+    console.log(props.volEmail)
     // props.deleteStudent(index);
 
     // console.log(props.studentList[index]);
@@ -114,6 +117,7 @@ export default function TimeInfoPage(props) {
                       ", 机场：" +
                       student.airport
                     }
+                    modalId={`deleteModal-${index}`}
                   />
                 </div>
               </div>
