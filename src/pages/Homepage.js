@@ -87,7 +87,7 @@ export default function Homepage(props) {
         </div>
         
         <div className="d-flex justify-content-center align-items-end text-secondary text-center">
-          Copyright @ 2023 RCSSA IT. Frontend development by Alexia Yuening Huang.
+          Copyright @ 2025 RCSSA IT. Frontend development by Alexia Yuening Huang.
           Backend development by Allen Sun, Sarah Yao. <br /> Product Management
           by Ge Huang. <br /> Special credit to Weijian Zeng, James Li, Yankai
           Wang. All rights reserved...
