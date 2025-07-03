@@ -60,8 +60,8 @@ export default function RegisterPage(props) {
     <div className="row justify-content-center p-5">
       <div className="col-12 col-md-8">
         <h1 className="fw-bold my-4">接机志愿者注册</h1>
-        <div className="col-12 col-md-8">
-          谢谢您参与接机！问卷实时更新，欢迎您选择合适的时间！每名志愿者最多选择10个时间段，接机补贴会按照您前往机场的次数为准进行发放。
+        <div className="my-2">
+          谢谢您参与接机！问卷实时更新，欢迎您选择合适的时间！接机补贴会按照您前往机场的次数为准进行发放。
         </div>
         <div className="my-2">
           免责声明： RCSSA在本次活动中只提供一个志愿者和新生匹配的平台，无法为因此产生的后果承担任何责任。在接机过程中新生可能会遇到因为海关、行李、天气等原因导致的延误，还请您和新生保持联络。希望您可以通过本次活动结识更多的Rice新生！
