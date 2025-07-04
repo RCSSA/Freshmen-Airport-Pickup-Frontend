@@ -75,7 +75,7 @@ export default function TimeInfoPage(props) {
 
         <div className="fw-bold">
           您好，匹配信息如下，当前已匹配{props.studentList.length}
-          人（最多10名）：
+          人：
         </div>
         <div>
           {/* 分配信息 */}
