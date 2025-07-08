@@ -109,7 +109,7 @@ export default function EventInfoModal(props) {
         <div className="color-light-blue">
           友情提醒：新生普遍会携带两个大号托运箱和一个登机箱，请您也考虑行李所需的空间。
           <br />
-          （家用轿车，小型suv大概可以接下两位新生，大suv可以接下三位新生）
+          （家用轿车大约可以接1位新生，小型SUV大约可以接1-2位新生，5座的大型SUV和皮卡大约可以接2-3位新生。）
         </div>
         <form className="d-flex flex-column mt-2" onSubmit={handleSelect}>
           {props.description.map((time, idx) => {
