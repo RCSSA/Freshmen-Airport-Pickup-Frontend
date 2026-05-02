@@ -1,0 +1,39 @@
+Supabase migration progress
+
+Done
+- Supabase project connected: ccyusgdcruwkpdyteogf
+- Database migration applied.
+- Tables created: students, volunteers, matches, app_logs.
+- Matching logic moved to Supabase/Postgres.
+- Matching is concurrency-safe:
+  - student rows use FOR UPDATE SKIP LOCKED
+  - volunteer row is locked before checking the 10-student cap
+- Supabase Edge Function deployed:
+  https://ccyusgdcruwkpdyteogf.supabase.co/functions/v1/airport-pickup
+- Frontend code now reads REACT_APP_API_URL before falling back to old Apps Script.
+- Local .env.local points frontend builds to Supabase.
+- Google Apps Script is kept only for email.
+- Supabase secret GOOGLE_EMAIL_WEBHOOK_URL points to the Apps Script deployment.
+- Smoke test passed.
+
+Reference smoke-test records left in Supabase
+- Student: reference.student.20260502111828@example.com
+- Volunteer: reference.vol.20260502111828@example.com
+- Match status: Matched
+- Volunteer confirmed: true
+- Volunteer matched_count: 1
+
+Need to do
+- Redeploy the frontend to GitHub Pages.
+- Current blocker: GitHub account/token used here has read access only, not push access.
+- Need a GitHub account/token with push access to RCSSA/Freshmen-Airport-Pickup-Frontend.
+- After access is fixed, run:
+  npm run deploy
+
+Important notes
+- The live GitHub Pages site is not updated yet.
+- A build from this machine will use Supabase because .env.local is set.
+- If deploying from another machine or GitHub Actions, set:
+  REACT_APP_API_URL=https://ccyusgdcruwkpdyteogf.supabase.co/functions/v1/airport-pickup
+- Revoke any Supabase/GitHub tokens pasted during setup.
+- Google Apps Script must include the send_email action for email delivery.
