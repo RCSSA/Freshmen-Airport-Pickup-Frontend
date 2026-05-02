@@ -1,0 +1,2 @@
+[functions.airport-pickup]
+verify_jwt = false
