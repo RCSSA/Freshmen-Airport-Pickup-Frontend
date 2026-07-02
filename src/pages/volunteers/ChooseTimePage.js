@@ -136,7 +136,7 @@ export default function ChooseTimePage(props) {
             {
               date: event_breakdown[0],
               airport: event_breakdown[1],
-              hour: event_breakdown[2],
+              hour: event_breakdown[2].replace(/:$/, ""),
               number: parseInt(event_breakdown[3]),
               vol_email: props.volEmail,
             },
@@ -189,7 +189,7 @@ export default function ChooseTimePage(props) {
       <div className="col-12 col-md-8">
         <h1 className="fw-bold my-4">志愿者接机时间选择</h1>
         <div className="mt-0 mb-4">
-          请选择接机时间并完善细节，每名志愿者最多选择10名新生，谢谢~
+          请选择接机时间并完善细节，每名志愿者建议最多选择10名新生，谢谢~
         </div>
         <div className="row">
           <div className="col-lg-9 col-12">

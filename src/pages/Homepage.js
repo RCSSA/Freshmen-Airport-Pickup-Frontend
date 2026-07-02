@@ -81,16 +81,13 @@ export default function Homepage(props) {
               <a href="#" className="alert-link">
                 温馨提示
               </a>
-              ：由于接机平台使用了谷歌服务，大陆用户请使用VPN访问本网站，敬请谅解。
+              ：大陆用户请使用VPN访问本网站，敬请谅解。
             </div>
           </div>
         </div>
         
         <div className="d-flex justify-content-center align-items-end text-secondary text-center">
-          Copyright @ 2023 RCSSA IT. Frontend development by Alexia Yuening Huang.
-          Backend development by Allen Sun, Sarah Yao. <br /> Product Management
-          by Ge Huang. <br /> Special credit to Weijian Zeng, James Li, Yankai
-          Wang. All rights reserved.
+          Copyright @ 2026 RCSSA IT. All rights reserved.
         </div>
       </div>
     </div>

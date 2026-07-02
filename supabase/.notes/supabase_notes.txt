@@ -1,3 +1,16 @@
+schema:
+    table `freshman`
+        firstname, lastname, phone, email, wechat, airport, arrive_time, flight_number, status
+    table `volunteer`
+        firstname, lastname, phone, email, wechat,
+    talbe `match`
+        stu_firstname, stu_lastname, stu_phone, stu_email, stu_wechat, airport, arrive_time, flight_number
+        vol_firstname, vol_lastname, vol_phone, vol_email, vol_wechat
+
+supabase password: Freshmanairportpickup@2026
+
+---
+
 Supabase migration progress
 
 Done

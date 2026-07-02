@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { message } from "antd";
 import { serverUrl } from "../../const";
 
 export default function Loginpage(props) {
@@ -35,7 +36,7 @@ export default function Loginpage(props) {
       .then((data) => {
         // console.log(data);
         if (data.found === true && data.confirmed === true) {
-          alert("登陆成功！");
+          message.success("登录成功！");
           setVolunteerLoggedIn(true);
           props.setVolEmail(email);
           props.setStudentList(data.record || []);
@@ -69,7 +70,7 @@ export default function Loginpage(props) {
                 pattern="[A-Za-z]+"
                 className="form-control"
                 id="validationCustom01"
-                placeholder="e.g. Juan"
+                placeholder="FirstName"
                 onChange={(e) => setFirstName(e.target.value)}
                 required
               />
@@ -84,7 +85,7 @@ export default function Loginpage(props) {
                 pattern="[A-Za-z]+"
                 className="form-control"
                 id="validationCustom02"
-                placeholder="e.g. Huang"
+                placeholder="LastName"
                 onChange={(e) => setLastName(e.target.value)}
                 required
               />
@@ -96,7 +97,7 @@ export default function Loginpage(props) {
             <input
               type="email"
               className="form-control"
-              placeholder="e.g. gh31@rice.edu"
+              placeholder="aabb@rice.edu"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required

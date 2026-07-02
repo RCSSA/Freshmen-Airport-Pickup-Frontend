@@ -93,6 +93,8 @@ Deno.serve(async (req) => {
         return json(await deleteStudent(await parseBody<DeleteStudentPayload>(req)));
       case "delete_match_from_volunteer":
         return json(await deleteMatchFromVolunteer(await parseBody<DeleteMatchPayload>(req)));
+      case "notify_confirmed":
+        return json(await notifyConfirmedVolunteers());
       default:
         return json({ status: false, message: "Unknown action" }, 400);
     }
@@ -483,6 +485,31 @@ async function deleteMatchFromVolunteer(data: DeleteMatchPayload) {
   return { status: true };
 }
 
+async function notifyConfirmedVolunteers() {
+  const { data: volunteers, error } = await supabase
+    .from("volunteers")
+    .select("id, firstname, lastname, email")
+    .eq("confirmed", true)
+    .eq("notified", false);
+
+  if (error) throw error;
+
+  let notified = 0;
+  for (const v of volunteers ?? []) {
+    const ok = await sendEmail(volunteerConfirmedEmail(v.firstname, v.lastname, v.email));
+    if (!ok) continue; // 发失败就不标记，下次还能补发
+    const { error: updateError } = await supabase
+      .from("volunteers")
+      .update({ notified: true })
+      .eq("id", v.id);
+    if (updateError) throw updateError;
+    notified += 1;
+  }
+
+  await log("INFO", `CONFIRMED VOLUNTEERS NOTIFIED : ${notified}`, { notified });
+  return { status: true, notified };
+}
+
 function createDateStructure(date: string) {
   const structure: Record<string, unknown> = {
     date,
@@ -559,12 +586,12 @@ type EmailMessage = {
   body: string;
 };
 
-async function sendEmail(message: EmailMessage) {
+async function sendEmail(message: EmailMessage): Promise<boolean> {
   const webhookUrl = Deno.env.get("GOOGLE_EMAIL_WEBHOOK_URL");
 
   if (!webhookUrl) {
     console.log(`Email skipped: ${message.subject} -> ${message.to}`);
-    return;
+    return false;
   }
 
   const url = new URL(webhookUrl);
@@ -585,13 +612,16 @@ async function sendEmail(message: EmailMessage) {
 
   if (!response.ok) {
     console.error("Google email webhook failed", response.status, await response.text());
-    return;
+    return false;
   }
 
   const result = await response.json().catch(() => null);
   if (result && result.status === false) {
     console.error("Google email webhook returned failure", result);
+    return false;
   }
+
+  return true;
 }
 
 function studentSignupEmail(firstname: string, lastname: string, to: string): EmailMessage {
@@ -614,6 +644,22 @@ function volunteerSignupEmail(firstname: string, lastname: string, to: string): 
     body: `Dear ${firstname} ${lastname},
 
 Thank you for signing up to volunteer for the RCSSA Airport Pickup Program. We will notify you after your volunteer status has been approved.
+
+Best regards,
+Rice Chinese Students and Scholars Association`,
+  };
+}
+
+
+// curl "https://ccyusgdcruwkpdyteogf.supabase.co/functions/v1/airport-pickup?action=notify_confirmed"
+
+function volunteerConfirmedEmail(firstname: string, lastname: string, to: string): EmailMessage {
+  return {
+    to,
+    subject: "[DO NOT REPLY] Your Volunteer Status for the RCSSA Airport Pickup Program Has Been Approved",
+    body: `Dear ${firstname} ${lastname},
+
+Congratulations! Your volunteer status for the RCSSA Airport Pickup Program has been approved. You can now log in to the website and start matching with students who need airport pickup.
 
 Best regards,
 Rice Chinese Students and Scholars Association`,

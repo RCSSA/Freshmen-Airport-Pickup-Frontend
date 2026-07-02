@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { message } from "antd";
 import { serverUrl } from "../../const";
 
 export default function RegisterPage(props) {
@@ -13,6 +14,16 @@ export default function RegisterPage(props) {
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
 
   function onFormSubmit(e) {
+    e.preventDefault()
+
+    const firstInitial = firstName[0].toLowerCase()
+    const lastInitial = lastName[0].toLowerCase()
+    const emailPrefix = email.split("@")[0].toLowerCase()
+    if (!email.endsWith("@rice.edu") || !emailPrefix.includes(firstInitial) || !emailPrefix.includes(lastInitial)) {
+      message.error("请使用正确的 Rice 邮箱")
+      return
+    }
+
     setIsSubmitDisabled(true);
     e.preventDefault();
     const volunteerInfo = {
@@ -61,15 +72,18 @@ export default function RegisterPage(props) {
       <div className="col-12 col-md-8">
         <h1 className="fw-bold my-4">接机志愿者注册</h1>
         <div className="col-12 col-md-8">
-          谢谢您参与接机！问卷实时更新，欢迎您选择合适的时间！每名志愿者最多选择10名新生~
         </div>
         <div className="my-2">
           免责声明：
-          RCSSA在本次活动中只提供一个志愿者和新生匹配的平台，无法为因此产生的后果承担任何责任。在接机过程中可能会出现新生因为海关，行李，天气等原因导致延误，还请您和新生保持联络。希望您可以通过本次活动结识更多的rice新生！
+          RCSSA仅提供志愿者与新生的匹配平台，不对活动中产生的任何后果承担责任。接机过程中如遇海关、行李或天气等原因导致延误，请与新生保持联络。期待您通过本次活动结识更多Rice新生！
         </div>
         <div className="my-2 color-light-blue">
-          友情提醒：新生普遍会携带两个大号托运箱和一个登机箱，请您也考虑行李所需的空间。（家用轿车，小型suv大概可以接下两位新生，大suv可以接下三位新生）
+          友情提醒：新生通常携带两个大型托运箱及一个登机箱，请根据车辆空间合理安排接送人数。（普通轿车/小型SUV建议接2人，大型SUV可接3人）
         </div>
+        <div className="my-2" style={{color: "red"}}>
+          注意：志愿者须亲自驾车或随车接机，不得借此活动宣传政治/宗教内容。经RCSSA IT核实的违规行为将被列入黑名单，影响后续参与RCSSA活动（解释权归RCSSA所有）。
+        </div>
+
         <form className="mt-3 row" onSubmit={(e) => onFormSubmit(e)}>
           <div className="my-2 col-12 col-md-6">
             <div className="fw-bold mb-2">名（请输入拼音）</div>
@@ -79,7 +93,7 @@ export default function RegisterPage(props) {
               className="form-control"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
-              placeholder="First Name (e.g. Juan)"
+              placeholder="FirstName"
               required
             />
           </div>
@@ -91,13 +105,13 @@ export default function RegisterPage(props) {
               className="form-control"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
-              placeholder="Last Name (e.g. Huang)"
+              placeholder="LastName"
               required
             />
           </div>
           <div className="my-2 col-12 col-md-6">
             <div className="mb-2">
-              <b>邮箱（为方便审核，Rice在校生请使用rice.edu邮箱）</b>
+              <b>邮箱（请使用小写英文initial的@rice.edu 邮箱）</b>
             </div>
             <input
               type="email"
@@ -105,7 +119,9 @@ export default function RegisterPage(props) {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="form-control"
-              placeholder="e.g. xxx@gmail.com, xxx@rice.edu"
+              placeholder="aabb@rice.edu"
+              title={"请使用正确的rice邮箱"}
+              pattern=".+@rice\.edu"
               required
             />
           </div>
@@ -114,14 +130,14 @@ export default function RegisterPage(props) {
             <input
               type="text"
               className="form-control"
-              placeholder="e.g. _ge_huang_"
+              placeholder="Wechat ID"
               value={wechat}
               onChange={(e) => setWechat(e.target.value)}
             />
           </div>
           <div className="my-2 col-12 col-md-6">
             <div className="mb-2">
-              <b>手机号</b> (格式: 123-456-7890){" "}
+              <b>手机号</b>
             </div>
             <input
               type="tel"
@@ -129,7 +145,7 @@ export default function RegisterPage(props) {
               className="form-control"
               name="phone"
               pattern="[0-9]{3}(-)?[0-9]{3}(-)?[0-9]{4}"
-              placeholder="Phone Number"
+              placeholder="1234567890"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               required
