@@ -1,20 +1,17 @@
-# RCSSA Airport Pickup Frontend
+# RCSSA Airport Pickup
 
-## Prerequisites
+### Project Overview: 
 
+- Matches incoming Rice freshmen with volunteer drivers
 
-### 1. Please [download](https://www.google.com/search?q=how+to+install+npm&oq=how+to+install+npm&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIHCAcQABiABDIHCAgQABiABDIHCAkQABiABNIBCDM1MjNqMGo0qAIAsAIA&sourceid=chrome&ie=UTF-8) `Node.js` and set up `npm` first
+- Pipeline: students register -> arrival -> volunteers browse calendar and claim slots -> email confirmation sent on match.
 
+### Tech Stack:
 
-### 2. To install all pre dependencies (only execute once)
+- Frontend: React
+- Backend: Supabase; email via Google Apps Script
+- Deploy: Github Pages (frontend) + Supabase cloud (backend)
 
-```
-// install all dependent nodes
-npm install
-```
+### Key gotchas:
 
-## To spin up react app locally
-
-```
-npm start
-```
+- Volunteer must be approved by admin (`confirmed = true` in Supabase dashboard) before they can log in

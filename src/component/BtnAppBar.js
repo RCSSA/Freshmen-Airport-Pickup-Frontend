@@ -5,12 +5,12 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
-import { siteUrl } from "../const";
+import {localUrl, siteUrl} from "../const";
 import logo from "../images/logo.png";
 
 export default function BtnAppBar() {
   const redirectToHomepage = () => {
-    window.location.replace(siteUrl);
+    window.location.replace(siteUrl);  // use localUrl for test, use siteUrl for deployment
   };
   return (
     <Box sx={{ color: "primary.main", bgcolor: "text.primary" }}>
@@ -31,7 +31,7 @@ export default function BtnAppBar() {
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Button color="inherit" onClick={redirectToHomepage}>
-              RCSSA接机平台(2.0)
+              RCSSA接机平台
             </Button>
           </Typography>
           <Button color="inherit" onClick={redirectToHomepage}>

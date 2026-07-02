@@ -92,10 +92,10 @@ export default function StudentAllocatePage(props) {
             <DeleteModal
               deleteHandler={handleStudentDelete}
               btnClassName="btn btn-outline-warning fs-5 py-2"
-              btnChildren={"信息有误或取消接机，点此注销账号"}
-              modalTitle={"确认注销账号？"}
+              btnChildren={"信息有误或取消接机，点此取消表单"}
+              modalTitle={"确认取消表单？"}
               modalBody={
-                "一旦确认，您在接机平台上此账号的所有信息将被删除，且不可恢复。您可以通过重新输入个人信息来注册新的账号。"
+                "一旦确认，您在接机平台上此表单的所有信息将被删除，且不可恢复。您可以通过重新输入个人信息来发起新的表单。"
               }
             />
             <button

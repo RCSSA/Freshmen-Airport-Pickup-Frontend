@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { message } from "antd";
 import { serverUrl } from "../../const";
 
 export default function StudentLoginPage(props) {
@@ -35,7 +36,7 @@ export default function StudentLoginPage(props) {
       .then((data) => {
         // console.log(data);
         if (data.found === true && data.confirmed === true) {
-          alert("登陆成功！");
+          message.success("登录成功！");
           JSON.stringify(data.record) === "{}"
             ? props.setProgress(1)
             : props.setProgress(2);
@@ -77,7 +78,7 @@ export default function StudentLoginPage(props) {
                 pattern="[A-Za-z]+"
                 className="form-control"
                 id="validationCustom01"
-                placeholder="e.g. Juan"
+                placeholder="FirstName"
                 onChange={(e) => setFirstName(e.target.value)}
                 required
               />
@@ -92,7 +93,7 @@ export default function StudentLoginPage(props) {
                 pattern="[A-Za-z]+"
                 className="form-control"
                 id="validationCustom02"
-                placeholder="e.g. Huang"
+                placeholder="LastName"
                 onChange={(e) => setLastName(e.target.value)}
                 required
               />
@@ -100,11 +101,11 @@ export default function StudentLoginPage(props) {
             </div>
           </div>
           <div className="my-2 col-12 col-md-6">
-            <div className="fw-bold mb-2">邮箱</div>
+            <div className="fw-bold mb-2">邮箱（请输入@rice.edu）</div>
             <input
               type="email"
               className="form-control"
-              placeholder="e.g. gh31@rice.edu"
+              placeholder="aabb@rice.edu"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
