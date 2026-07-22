@@ -16,6 +16,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./stylings/styleAH.css";
+import MidAutumnRegisterPage from "./pages/mid-autumn/MidautumnRegisterPage";
+import NewYearRegisterPage from "./pages/new-year/NewYearRegisterPage";
 
 function App() {
   const [studentLoggedIn, setStudentLoggedIn] = useState(false);
@@ -142,6 +144,99 @@ function App() {
             </RequireAuth>
           }
         ></Route>
+
+        {/* mid-autumn */}
+        <Route
+          path="/login"
+          element={
+            <Loginpage
+              setVolunteerLoggedIn={setVolunteerLoggedIn}
+              setStatus={setStatus}
+              setProgress={setProgress}
+              setVolEmail={setVolEmail}
+              setStudentList={setStudentList}
+              setVolInfo={setVolInfo}
+            />
+          }
+        ></Route>
+        <Route
+          path="/midautumnregister"
+          element={
+            <MidAutumnRegisterPage
+              setVolunteerLoggedIn={setVolunteerLoggedIn}
+              setStatus={setStatus}
+              setProgress={setProgress}
+            />
+          }
+        ></Route>
+        <Route
+          path="/choosetime"
+          element={
+            <RequireAuth user={volunteerLoggedIn}>
+              <ChooseTimePage volEmail={volEmail} />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/info"
+          element={
+            <RequireAuth user={volunteerLoggedIn}>
+              <TimeInfoPage
+                studentList={studentList}
+                volEmail={volEmail}
+                setStudentList={setStudentList}
+                volInfo={volInfo}
+              />
+            </RequireAuth>
+          }
+        ></Route>
+
+        {/* new-year */}
+        <Route
+          path="/login"
+          element={
+            <Loginpage
+              setVolunteerLoggedIn={setVolunteerLoggedIn}
+              setStatus={setStatus}
+              setProgress={setProgress}
+              setVolEmail={setVolEmail}
+              setStudentList={setStudentList}
+              setVolInfo={setVolInfo}
+            />
+          }
+        ></Route>
+        <Route
+          path="/newyearregister"
+          element={
+            <NewYearRegisterPage
+              setVolunteerLoggedIn={setVolunteerLoggedIn}
+              setStatus={setStatus}
+              setProgress={setProgress}
+            />
+          }
+        ></Route>
+        <Route
+          path="/choosetime"
+          element={
+            <RequireAuth user={volunteerLoggedIn}>
+              <ChooseTimePage volEmail={volEmail} />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/info"
+          element={
+            <RequireAuth user={volunteerLoggedIn}>
+              <TimeInfoPage
+                studentList={studentList}
+                volEmail={volEmail}
+                setStudentList={setStudentList}
+                volInfo={volInfo}
+              />
+            </RequireAuth>
+          }
+        ></Route>
+        
       </Routes>
     </HashRouter>
   );

@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import HailIcon from "@mui/icons-material/Hail";
 import NoCrashIcon from "@mui/icons-material/NoCrash";
 import { Alert } from "antd";
+import MidautumnIcon from '@mui/icons-material/Brightness2';
+import NewYearIcon from '@mui/icons-material/Celebration';
 
 export default function Homepage(props) {
   const navigate = useNavigate();
@@ -74,6 +76,35 @@ export default function Homepage(props) {
                 </button>
               </div>
             </div>
+
+            {/* 中秋活动抢票按钮 */}
+            <div className="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center p-2">
+              <MidautumnIcon fontSize="large" color="primary" />
+              <div className="button-frame p-3 d-flex flex-column m-1">
+                <button
+                    type="button"
+                    className="btn btn-info fs-5 m-2 py-2 homepage-btn"
+                    onClick={() => navigate("/midautumnregister")}
+                  >
+                    中秋抢票
+                </button>
+              </div>
+            </div>
+
+              {/* 新年活动抢票按钮 */}
+            <div className="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center p-2">
+              <NewYearIcon fontSize="large" color="primary" />
+              <div className="button-frame p-3 d-flex flex-column m-1">
+                <button
+                    type="button"
+                    className="btn btn-info fs-5 m-2 py-2 homepage-btn"
+                    onClick={() => navigate("/newyearregister")}
+                  >
+                    新年抢票
+                </button>
+              </div>
+            </div>
+
           </div>
 
           <div className="d-flex justify-content-center text-center p-5 pt-1 pt-md-3 mb-3">
