@@ -32,6 +32,7 @@ const test_db_url = "1iqVDDJ2UPLThz-ZxvAXy5zdLh21b-8nEUd9imv3AE5E";
 const prod_db_url = "1wi5GHt2LyEQgvL8_I_-ysRg5H-5UTbYl9l_lgJG6ViM";
 //new prod_db: 1wi5GHt2LyEQgvL8_I_-ysRg5H-5UTbYl9l_lgJG6ViM
 const db = SpreadsheetApp.openById(prod_db_url);
+const CURRENT_YEAR = new Date().getFullYear();
 
 function doGet(e) {
   var action = e.parameter.action;
@@ -710,12 +711,12 @@ function student_signup_send_email(stud_firstname, stud_lastname, stud_email){
   MailApp.sendEmail({
     to: stud_email,
     // multi line string!
-    subject: `[DO NOT REPLY] You Have Signed up as New Student for the 2024 RCSSA Airport Pickup Program`,
+    subject: `[DO NOT REPLY] You Have Signed up as New Student for the ${CURRENT_YEAR} RCSSA Airport Pickup Program`,
     name: "RCSSA",
     body: `
 Dear ${stud_firstname} ${stud_lastname},
 
-Thank you for registering for the 2024 RCSSA Airport Pickup Program! We appreciate your interest and look forward to assisting you. We wanted to provide you with some important information regarding the program.
+Thank you for registering for the ${CURRENT_YEAR} RCSSA Airport Pickup Program! We appreciate your interest and look forward to assisting you. We wanted to provide you with some important information regarding the program.
 
 Please note that the matching process may take some time as we strive to find the best volunteer to assist you. Rest assured, we will notify you as soon as a volunteer has been successfully matched with you.
 
@@ -765,12 +766,12 @@ function vol_confirmed_send_email_helper(vol_firstname, vol_lastname, vol_email)
   MailApp.sendEmail({
     to: vol_email,
     // multi line string!
-    subject: `[DO NOT REPLY] Your Volunteer Status for the 2024 RCSSA Airport Pickup Program Has Been Approved`,
+    subject: `[DO NOT REPLY] Your Volunteer Status for the ${CURRENT_YEAR} RCSSA Airport Pickup Program Has Been Approved`,
     name: "RCSSA",
     body: `
 Dear ${vol_firstname} ${vol_lastname},
 
-Congratulations! We are delighted to inform you that your volunteer status for the 2024 RCSSA Airport Pickup Program has been approved!
+Congratulations! We are delighted to inform you that your volunteer status for the ${CURRENT_YEAR} RCSSA Airport Pickup Program has been approved!
 
 You are now able to proceed to the website and begin matching with students who have requested airport pickup. If you need to make a new match or cancel an existing match, please refer to the instructions published on the RCSSA WeChat platform.
 
@@ -792,12 +793,12 @@ function volunteer_signup_send_email(vol_firstname, vol_lastname, vol_email){
   MailApp.sendEmail({
     to: vol_email,
     // multi line string!
-    subject: `[DO NOT REPLY] You Have Signed up as Volunteer for the 2024 RCSSA Airport Pickup Program`,
+    subject: `[DO NOT REPLY] You Have Signed up as Volunteer for the ${CURRENT_YEAR} RCSSA Airport Pickup Program`,
     name: "RCSSA",
     body: `
 Dear ${vol_firstname} ${vol_lastname},
 
-Thank you for signing up to volunteer for the 2024 RCSSA Airport Pickup Program! We greatly appreciate your willingness to assist our new students. Your efforts will undoubtedly make a positive impact on the student's arrival experience. We wanted to provide you with some important information regarding the program.
+Thank you for signing up to volunteer for the ${CURRENT_YEAR} RCSSA Airport Pickup Program! We greatly appreciate your willingness to assist our new students. Your efforts will undoubtedly make a positive impact on the student's arrival experience. We wanted to provide you with some important information regarding the program.
 
 Please note that we are currently in the process of verifying the identity of all volunteers. This verification step ensures the safety and security of our participants. We anticipate that this process may take up to several days to complete.
 
@@ -821,12 +822,12 @@ function volunteer_confirmed_send_email(vol_firstname, vol_lastname, vol_email){
   MailApp.sendEmail({
     to: vol_email,
     // multi line string!
-    subject: `[DO NOT REPLY] Your Volunteer Status for the 2024 RCSSA Airport Pickup Program Has Been Approved`,
+    subject: `[DO NOT REPLY] Your Volunteer Status for the ${CURRENT_YEAR} RCSSA Airport Pickup Program Has Been Approved`,
     name: "RCSSA",
     body: `
 Dear ${vol_firstname} ${vol_lastname},
 
-Congratulations! We are delighted to inform you that your volunteer status for the 2024 RCSSA Airport Pickup Program has been approved!
+Congratulations! We are delighted to inform you that your volunteer status for the ${CURRENT_YEAR} RCSSA Airport Pickup Program has been approved!
 
 You are now able to proceed to the website and begin matching with students who have requested airport pickup. If you need to make a new match or cancel an existing match, please refer to the instructions published on the RCSSA WeChat platform.
 
@@ -854,7 +855,7 @@ function delete_student_send_to_student_email(stud_firstname, stud_lastname, stu
     body: `
 Dear ${stud_firstname} ${stud_lastname},
 
-We hope this message finds you well. We wanted to inform you that your airport pickup request for the 2024 RCSSA Airport Pickup Program has been canceled.
+We hope this message finds you well. We wanted to inform you that your airport pickup request for the ${CURRENT_YEAR} RCSSA Airport Pickup Program has been canceled.
 
 If you want to make a new request, you can refer to the instructions published on the RCSSA WeChat platform. 
 
@@ -882,7 +883,7 @@ function delete_student_send_to_vol_email(stud_firstname, stud_lastname, vol_fir
     body: `
 Dear ${vol_firstname} ${vol_lastname},
 
-Thank you for signing up for the 2024 RCSSA Airport Pickup Program. We appreciate your willingness to volunteer and provide assistance to our new students.
+Thank you for signing up for the ${CURRENT_YEAR} RCSSA Airport Pickup Program. We appreciate your willingness to volunteer and provide assistance to our new students.
 
 We regret to inform you that the student, ${stud_firstname} ${stud_lastname}, whom you were assigned to for airport pickup, has canceled their confirmation. For an updated list of airport pickup matches, please visit our website. We understand that circumstances can change, and we appreciate your understanding in this matter.
 
@@ -912,7 +913,7 @@ function delete_match_send_to_student_email(stud_firstname, stud_lastname, vol_f
     body: `
 Dear ${stud_firstname} ${stud_lastname}, 
 
-Thank you for signing up for the 2024 RCSSA Airport Pickup Program. 
+Thank you for signing up for the ${CURRENT_YEAR} RCSSA Airport Pickup Program. 
 
 We regret to inform you that your assigned volunteer, ${vol_firstname} ${vol_lastname}, has canceled their confirmation. We understand that circumstances can change, and we are working diligently to find a new volunteer for you.
 
@@ -942,7 +943,7 @@ function delete_match_send_to_vol_email(stud_firstname, stud_lastname, vol_first
     body: `
 Dear ${vol_firstname} ${vol_lastname},
 
-We hope this message finds you well. We wanted to inform you that your airport pickup match for the 2024 RCSSA Airport Pickup Program with ${stud_firstname} ${stud_lastname} has been canceled.
+We hope this message finds you well. We wanted to inform you that your airport pickup match for the ${CURRENT_YEAR} RCSSA Airport Pickup Program with ${stud_firstname} ${stud_lastname} has been canceled.
 
 We appreciate your willingness to volunteer and apologize for any inconvenience caused. If you are still available and interested in volunteering for the program, we encourage you to regularly check the website for any new matching opportunities.
 
@@ -971,7 +972,7 @@ function new_match_send_to_stud_email(stud_firstname, stud_lastname, vol_firstna
     body: `
 Dear ${stud_firstname} ${stud_lastname},
 
-Thank you for signing up for the 2024 RCSSA Airport Pickup Program. We appreciate your participation and look forward to assisting you.
+Thank you for signing up for the ${CURRENT_YEAR} RCSSA Airport Pickup Program. We appreciate your participation and look forward to assisting you.
 
 We are pleased to inform you that you have been matched with a volunteer to pick you up from the airport! Your assigned volunteer for airport pickup is ${vol_firstname} ${vol_lastname}. Please reach out to ${vol_firstname} ${vol_lastname} to coordinate the details of your airport pickup. You can contact them via email at ${vol_email} or through WeChat at ${vol_wechat}.
 
