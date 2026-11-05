@@ -85,9 +85,9 @@ export default function Homepage(props) {
             </div>
           </div>
         </div>
-        
+
         <div className="d-flex justify-content-center align-items-end text-secondary text-center">
-          Copyright @ 2026 RCSSA IT. All rights reserved.
+          Copyright @ {new Date().getFullYear()} RCSSA IT. All rights reserved.
         </div>
       </div>
     </div>

@@ -116,7 +116,7 @@ export default function NewStudentPage(props) {
                 <h1 className="fw-bold my-4">新生注册</h1>
                 <div className="my-2">
                     <strong>免责声明：</strong>
-                    2026 RCSSA接机活动由莱斯大学中国学生会自发组织，旨在帮助新生、促进学生交流。本活动非盈利、非政治、非宗教。
+                    {new Date().getFullYear()} RCSSA接机活动由莱斯大学中国学生会自发组织，旨在帮助新生、促进学生交流。本活动非盈利、非政治、非宗教。
                     参与者需自行评估并承担潜在风险，包括但不限于交通意外及财产、时间损失。学生会将尽力审核相关人员信息，但能力有限，无法对所有情况负责，敬请谅解。
                 </div>
                 <div className="my-2 color-light-blue">
