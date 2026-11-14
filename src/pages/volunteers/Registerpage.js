@@ -52,11 +52,18 @@ export default function RegisterPage(props) {
         if (data.status === true) {
           props.setStatus(1);
           navigate("/status");
-        } else {
+        } else if (data.message === "Volunteer already exists") {
           props.setStatus(2);
           navigate("/status");
+        } else {
+          message.error("提交失败，请稍后重试");
+          setIsSubmitDisabled(false);
         }
         // 审核不通过的情况?
+      })
+      .catch(() => {
+        message.error("提交失败，请检查网络后重试");
+        setIsSubmitDisabled(false);
       });
   }
   // useEffect(() => {
