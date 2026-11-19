@@ -100,6 +100,7 @@ export default function TimeInfoPage(props) {
                 <div className="col-12 col-lg-6 d-flex align-items-center justify-content-end">
                   <p className="text-success me-3 mt-3">状态: 分配成功</p>
                   <DeleteModal
+                    modalId={"deleteModal-" + index}
                     deleteHandler={(closeRef, enableConfirmBtn) =>
                       handleDeleteByIndex(closeRef, index, enableConfirmBtn)
                     }

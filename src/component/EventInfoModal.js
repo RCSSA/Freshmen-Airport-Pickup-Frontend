@@ -81,6 +81,12 @@ export default function EventInfoModal(props) {
 
       eventColors[[eventId]] = "#0dcafd";
       setEventColors({ ...eventColors, [`${eventId}`]: "#0dcafd" });
+
+      const resetNumbers = props.pickUpNumber[`${eventId}`].map(() => 0);
+      props.setPickUpNumber({
+        ...props.pickUpNumber,
+        [`${eventId}`]: resetNumbers,
+      });
     }
 
     handleClose();

@@ -81,3 +81,4 @@ This repo currently contains Google service account credentials in tracked files
 - Rotate the Google service account key.
 - Rotate any Supabase database password that was written to local notes.
 - Remove committed secrets from git history.
+
