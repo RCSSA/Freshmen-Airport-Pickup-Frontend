@@ -32,7 +32,7 @@ export default function NewStudentPage(props) {
     useEffect(() => {
         const getServerData = async () => {
             const dataFromServerHouston = {
-                unix:  setArriveTime(dayjs().tz("America/Chicago")),
+                unix: setArriveTime(dayjs().tz("America/Chicago")),
                 timezone: "America/Ojinaga",
             };
             const datetimeHouston = dayjs(dataFromServerHouston.unix).tz(
@@ -116,11 +116,15 @@ export default function NewStudentPage(props) {
                 <h1 className="fw-bold my-4">新生注册</h1>
                 <div className="my-2">
                     <strong>免责声明：</strong>
-                    2026 RCSSA接机活动由莱斯大学中国学生会自发组织，旨在帮助新生、促进学生交流。本活动非盈利、非政治、非宗教。
-                    参与者需自行评估并承担潜在风险，包括但不限于交通意外及财产、时间损失。学生会将尽力审核相关人员信息，但能力有限，无法对所有情况负责，敬请谅解。
+                    2026 RCSSA接机活动由莱斯大学中国学生学者联合会自发组织，旨在帮助新生、促进学生交流。本活动非盈利、非政治、非宗教。
+                    参与者需自行评估并承担潜在风险，包括但不限于交通意外及财产、时间损失。学联将尽力审核相关人员信息，但能力有限，无法对所有情况负责，敬请谅解。
                 </div>
                 <div className="my-2 color-light-blue">
                     友情提醒：请您随身带好相关文件
+                </div>
+                <div className="my-2" style={{color: "red"}}>
+                    重要提醒：为保障新生安全和接机过程的顺利进行，所有接机均由RCSSA平台分配的接机志愿者本人完成，任何私下转包、代接或未经通知的人员更换均不属于RCSSA官方安排。若因特殊情况确需调整，学联仅会通过RCSSA接机平台及官方邮箱（yj67@rice.edu）通知您。如发现接机人与平台信息不一致、有人以任何理由要求更换接机人，或其他异常情况，请立即联系 yj67@rice.edu
+                    进行核实。
                 </div>
                 <div className="justify-content-center form">
                     <div className="row spacing">

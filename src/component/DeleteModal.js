@@ -3,6 +3,7 @@ import React, { useRef, useState, useEffect } from "react";
 export default function DeleteModal(props) {
   const modalRef = useRef();
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
+  const modalId = props.modalId || "exampleModal";
 
   useEffect(() => {
     // get all await students
@@ -14,7 +15,7 @@ export default function DeleteModal(props) {
         type="button"
         className={props.btnClassName}
         data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+        data-bs-target={"#" + modalId}
         ref={modalRef}
       >
         {props.btnChildren}
@@ -22,15 +23,15 @@ export default function DeleteModal(props) {
 
       <div
         className="modal fade"
-        id="exampleModal"
+        id={modalId}
         tabindex="-1"
-        aria-labelledby="exampleModalLabel"
+        aria-labelledby={modalId + "Label"}
         aria-hidden="true"
       >
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content p-3">
             <div className="modal-header border-0">
-              <h1 className="modal-title fs-5" id="exampleModalLabel">
+              <h1 className="modal-title fs-5" id={modalId + "Label"}>
                 {props.modalTitle}
               </h1>
               <button
