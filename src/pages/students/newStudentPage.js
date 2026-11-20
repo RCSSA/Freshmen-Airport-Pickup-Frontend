@@ -83,10 +83,17 @@ export default function NewStudentPage(props) {
                     props.setStudentName(firstName + " " + lastName);
                     props.setStudentEmail(email);
                     navigate("/studentallocate");
-                } else {
+                } else if (data.message === "Student already exists") {
                     props.setStatus(2);
                     navigate("/status");
+                } else {
+                    message.error("提交失败，请稍后重试");
+                    setIsSubmitDisabled(false);
                 }
+            })
+            .catch(() => {
+                message.error("提交失败，请检查网络后重试");
+                setIsSubmitDisabled(false);
             });
     };
 
